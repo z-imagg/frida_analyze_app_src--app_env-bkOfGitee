@@ -66,8 +66,9 @@ exec /busybox-i686 ash -c "/busybox-i686 ls /proc ; /busybox-i686 ps auxf; /busy
 ##### frida监控qemu运行linux4内核
 
 
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/env/main_dockerImage_build_run.sh
 ```shell
-docker run --privileged=true      --name   frida_anlz_ap  --hostname faa_dk --interactive --tty   frida_anlz_ap:0.1_prv
+# docker run --privileged=true      --name   frida_anlz_ap  --hostname faa_dk --interactive --tty   frida_anlz_ap:0.1_prv
 #exit
 
 docker start frida_anlz_ap
