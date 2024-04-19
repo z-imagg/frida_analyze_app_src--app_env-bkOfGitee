@@ -83,6 +83,9 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 ```
 
 http://g:3000/frida_analyze_app_src/frida_js/src/branch/main/fridaJs_runApp.sh
-当提示输入main函数参数时,输入 ```/app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz ``` 
+当提示输入main函数参数时,输入 
+```txt
+/app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+``` 
 
 
