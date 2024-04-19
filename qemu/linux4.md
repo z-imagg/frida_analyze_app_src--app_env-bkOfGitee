@@ -73,6 +73,7 @@ docker run --privileged=true --volume /bal/:/bal/    --name   frida_anlz_ap  --h
 docker start frida_anlz_ap
 docker exec -it frida_anlz_ap  bash
 ```
+在这个docker内 编译qemu, http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#build-qemu
 
 
 ```shell
