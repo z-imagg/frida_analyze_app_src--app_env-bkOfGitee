@@ -33,7 +33,7 @@ git clone -b tag/fridaAnlzAp/release http://giteaz:3000/frida_analyze_app_src/ma
 ( cd /fridaAnlzAp/main ; git_ignore_filemode ;)
 #递归拉取所有子模块
 ( cd /fridaAnlzAp/main &&  git submodule    update --recursive --init )
-chmod +x /fridaAnlzAp/app_bld/docker/*.sh
+chmod +x /fridaAnlzAp/main/app_bld/docker/*.sh
 
 cd /fridaAnlzAp/
 #删除软链接
@@ -44,10 +44,10 @@ ln -s  ./main/analyze_by_graph  ./analyze_by_graph
 ln -s ./main/cmd-wrap  ./cmd-wrap
 ln -s ./main/frida_js   ./frida_js
 ln -s  ./main/github-gitee-GITEA   ./github-gitee-GITEA
+ln -s ./main/app_bld ./app_bld
 # /fridaAnlzAp/x --->  /fridaAnlzAp/main/app/x
 ln -s ./main/app/cgsecurity--testdisk   ./cgsecurity--testdisk
 ln -s ./main/app/torch-cpp  ./torch-cpp
-ln -s ./main/app_bld ./app_bld
 
 
 #   #endregion
