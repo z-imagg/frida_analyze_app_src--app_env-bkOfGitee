@@ -31,9 +31,9 @@ mv /fridaAnlzAp /tmp_fridaAnlzAp ; mkdir -p /fridaAnlzAp/
 git clone -b tag/fridaAnlzAp/release http://giteaz:3000/frida_analyze_app_src/main.git  /fridaAnlzAp/main
 #git项目忽略文件权限变动
 ( cd /fridaAnlzAp/main ; git_ignore_filemode ;)
-chmod +x /fridaAnlzAp/app_bld/docker/*.sh
 #递归拉取所有子模块
 ( cd /fridaAnlzAp/main &&  git submodule    update --recursive --init )
+chmod +x /fridaAnlzAp/app_bld/docker/*.sh
 
 cd /fridaAnlzAp/
 #删除软链接
