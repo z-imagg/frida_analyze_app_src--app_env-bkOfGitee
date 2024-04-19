@@ -11,11 +11,11 @@ set -e
 shopt -s expand_aliases
 
 mkdir -p /app/pack/ /app/
-chmod +x /fridaAnlzAp/app_bld/docker/*.sh
+chmod +x /fridaAnlzAp/app_bld/env/*.sh
 
-source /fridaAnlzAp/app_bld/docker/file_web_srv.sh
-source /fridaAnlzAp/app_bld/docker/util.sh
-source /fridaAnlzAp/app_bld/docker/local_domain.sh
+source /fridaAnlzAp/app_bld/env/file_web_srv.sh
+source /fridaAnlzAp/app_bld/env/util.sh
+source /fridaAnlzAp/app_bld/env/local_domain.sh
 
 #去此脚本所在目录
 declare -r f=$(readlink -f ${BASH_SOURCE[0]})  ; declare -r d=$(dirname $f)

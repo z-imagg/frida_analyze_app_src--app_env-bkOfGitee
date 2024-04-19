@@ -10,16 +10,16 @@
 
 #dk# WORKDIR /
 
-#dk# COPY /fridaAnlzAp/app_bld/docker /fridaAnlzAp/app_bld/docker
+#dk# COPY /fridaAnlzAp/app_bld/env /fridaAnlzAp/app_bld/env
 
 
 ## 下载包 、 解压包 
 #dk# RUN bash -c ''' \
 { \
 #公共依赖
-source /fridaAnlzAp/app_bld/docker/common_all.sh && \
+source /fridaAnlzAp/app_bld/env/common_all.sh && \
 #下载安装包们
-/fridaAnlzAp/app_bld/docker/dl_pack.sh && \
+/fridaAnlzAp/app_bld/env/dl_pack.sh && \
 true ;} \
 || false #dk# '''
 
@@ -28,7 +28,7 @@ true ;} \
 #dk# RUN bash -c ''' \
 { \
 #公共依赖
-source /fridaAnlzAp/app_bld/docker/common_all.sh && \
+source /fridaAnlzAp/app_bld/env/common_all.sh && \
 #miniconda3
 { [[ -f /app/Miniconda3-py310_22.11.1-1/bin/python ]] || bash  /app/pack/Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -p /app/Miniconda3-py310_22.11.1-1/ ;} && \
 source /app/Miniconda3-py310_22.11.1-1/bin/activate && which python && \
@@ -40,7 +40,7 @@ true ;} \
 #dk# RUN bash -c ''' \
 { \
 #公共依赖
-source /fridaAnlzAp/app_bld/docker/common_all.sh && \
+source /fridaAnlzAp/app_bld/env/common_all.sh && \
 #jdk11 
 export JAVA_HOME=/app/zulu11.70.15-ca-jdk11.0.22-linux_x64 && \
 #neo4j-4.4.32
@@ -68,8 +68,8 @@ true ;} \
 #dk# RUN bash -c ''' \
 { \
 #公共依赖
-source /fridaAnlzAp/app_bld/docker/common_all.sh && \
-cp -v /fridaAnlzAp/app_bld/docker/.bashrc ~/.bashrc && \
+source /fridaAnlzAp/app_bld/env/common_all.sh && \
+cp -v /fridaAnlzAp/app_bld/env/.bashrc ~/.bashrc && \
 # rm -frv /app/pack && \
 ls /app/ /fridaAnlzAp  && \
 true ;} \
@@ -86,4 +86,4 @@ true ;} \
 
 
 
-#dk# ENTRYPOINT [ "/fridaAnlzAp/app_bld/docker/docker_entry.sh" ]
+#dk# ENTRYPOINT [ "/fridaAnlzAp/app_bld/env/docker_entry.sh" ]
