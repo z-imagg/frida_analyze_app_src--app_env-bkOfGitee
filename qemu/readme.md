@@ -19,7 +19,7 @@ apt-file search --regexp  "/ninja$"
 #ninja-build: /usr/bin/ninja               
 
 ```
-#### 编译qemu
+#### build-qemu
 参考, https://hlyani.github.io/notes/openstack/qemu_make.html
 
 ```shell
