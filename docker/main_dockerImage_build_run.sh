@@ -11,8 +11,8 @@ set -e
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
 # docker system prune -a
 
-source /fridaAnlzAp/main/docker/file_web_srv.sh
-source /fridaAnlzAp/main/docker/util.sh
+source /fridaAnlzAp/app_bld/docker/file_web_srv.sh
+source /fridaAnlzAp/app_bld/docker/util.sh
 
 #去此脚本所在目录
 declare -r f=$(readlink -f ${BASH_SOURCE[0]})  ; declare -r d=$(dirname $f)
@@ -29,7 +29,7 @@ which python || {  echo "$errMsg6" && exit 6 ;}
 
 #构建基础镜像 
 bash   convert_sh_to_Dockerfile.sh base_ubuntu_22.04.Dockerfile.sh base_ubuntu_22.04.Dockerfile
-[[ $(docker images -q  --filter "reference=base_ubuntu_22.04.04" | wc -l ) -gt 0 ]] ||  docker build --progress=plain --no-cache  -f "/fridaAnlzAp/main/docker/base_ubuntu_22.04.Dockerfile" -t base_ubuntu_22.04.04:0.1 "/" 
+[[ $(docker images -q  --filter "reference=base_ubuntu_22.04.04" | wc -l ) -gt 0 ]] ||  docker build --progress=plain --no-cache  -f "/fridaAnlzAp/app_bld/docker/base_ubuntu_22.04.Dockerfile" -t base_ubuntu_22.04.04:0.1 "/" 
 
 #删除现有 frida_anlz_ap镜像
 instanceIdLs=$(docker ps -a  -q --filter "ancestor=frida_anlz_ap:0.1_prv")
@@ -52,7 +52,7 @@ docker images -q  --filter "reference=frida_anlz_ap" |xargs -I%  docker image rm
 #重建镜像
 # --pull  --rm
 bash   convert_sh_to_Dockerfile.sh fridaAnlzAp.Dockerfile.sh fridaAnlzAp.Dockerfile
-docker build --progress=plain --add-host=giteaz:10.0.4.9    --no-cache  -f "/fridaAnlzAp/main/docker/fridaAnlzAp.Dockerfile" -t frida_anlz_ap:0.1_prv "/" 
+docker build --progress=plain --add-host=giteaz:10.0.4.9    --no-cache  -f "/fridaAnlzAp/app_bld/docker/fridaAnlzAp.Dockerfile" -t frida_anlz_ap:0.1_prv "/" 
 
 #启动 frida_anlz_ap镜像
 # 开发时用的一些选项 ：   --rm  、  -v hostDir:dirInDocker  、  -v  /tmp/app/:/app/ 、  -v  /tmp/fridaAnlzAp:/fridaAnlzAp

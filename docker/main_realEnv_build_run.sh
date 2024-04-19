@@ -9,8 +9,8 @@
 set -e
 
 
-source /fridaAnlzAp/main/docker/file_web_srv.sh
-source /fridaAnlzAp/main/docker/util.sh
+source /fridaAnlzAp/app_bld/docker/file_web_srv.sh
+source /fridaAnlzAp/app_bld/docker/util.sh
 
 #去此脚本所在目录
 declare -r f=$(readlink -f ${BASH_SOURCE[0]})  ; declare -r d=$(dirname $f)

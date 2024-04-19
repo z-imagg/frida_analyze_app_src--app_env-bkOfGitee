@@ -11,10 +11,10 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-chmod +x /fridaAnlzAp/main/docker/*.sh
+chmod +x /fridaAnlzAp/app_bld/docker/*.sh
 
-source /fridaAnlzAp/main/docker/util.sh
-source /fridaAnlzAp/main/docker/local_domain.sh
+source /fridaAnlzAp/app_bld/docker/util.sh
+source /fridaAnlzAp/app_bld/docker/local_domain.sh
 
 
 
@@ -26,12 +26,12 @@ source /fridaAnlzAp/main/docker/local_domain.sh
 local_domain_set
 
 #本项目fridaAnlzAp 代码拉取
-#  删除 构建Dockerfile时 用的目录 /fridaAnlzAp/main/docker
+#  删除 构建Dockerfile时 用的目录 /fridaAnlzAp/app_bld/docker
 mv /fridaAnlzAp /tmp_fridaAnlzAp ; mkdir -p /fridaAnlzAp/
 git clone -b tag/fridaAnlzAp/release http://giteaz:3000/frida_analyze_app_src/main.git  /fridaAnlzAp/main
 #git项目忽略文件权限变动
 ( cd /fridaAnlzAp/main ; git_ignore_filemode ;)
-chmod +x /fridaAnlzAp/main/docker/*.sh
+chmod +x /fridaAnlzAp/app_bld/docker/*.sh
 #递归拉取所有子模块
 ( cd /fridaAnlzAp/main &&  git submodule    update --recursive --init )
 
@@ -47,6 +47,7 @@ ln -s  ./main/github-gitee-GITEA   ./github-gitee-GITEA
 # /fridaAnlzAp/x --->  /fridaAnlzAp/main/app/x
 ln -s ./main/app/cgsecurity--testdisk   ./cgsecurity--testdisk
 ln -s ./main/app/torch-cpp  ./torch-cpp
+ln -s ./main/app_bld ./app_bld
 
 
 #   #endregion
