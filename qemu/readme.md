@@ -20,9 +20,9 @@ apt-file search --regexp  "/ninja$"
 
 ```
 
-#### 拦截器编译器（可选，但对分析业务来说是必须的）
+#### 拦截编译器（正常编译可不拦截，但分析业务需要拦截）
 
-http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
+拦截编译器步骤 ， http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
 
 
 cmd-wrap拦截到的qemu编译命令例子，  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/cmd-wrap-example-complile-cmd/cc-1713609271802564436-53625.log
