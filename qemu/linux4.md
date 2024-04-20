@@ -125,3 +125,16 @@ wc -l       /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log  /fridaAnlzAp/fri
 ```appOut-*.log``` 比 ```frida-out-Mix-*.log``` 多出的日志行数为```817557-817137==420```行， 即  ```linux4内核启动输出日志``` 为420行日志
 
 
+
+```shell
+mv /fridaAnlzAp/frida_js/*log* ~/log_qemu_gen_code/
+ls -l  ~/log_qemu_gen_code/
+#-rw-r--r-- 1 root root 127599400 Apr 20 03:47 appOut-1713584459.log
+#-rw-r--r-- 1 root root 127573526 Apr 20 03:47 frida-out-Mix-1713584459.log
+#-rw-r--r-- 1 root root        63 Apr 20 03:47 frida-out-Mix-1713584459.log.md5sum.txt
+#-rw-r--r-- 1 root root 127163736 Apr 20 03:47 frida-out-PrefixPure-1713584459.log
+#-rw-r--r-- 1 root root        70 Apr 20 03:47 frida-out-PrefixPure-1713584459.log.md5sum.txt
+#-rw-r--r-- 1 root root 124712352 Apr 20 03:47 frida-out-Pure-1713584459.log
+#-rw-r--r-- 1 root root        64 Apr 20 03:47 frida-out-Pure-1713584459.log.md5sum.txt
+
+```
