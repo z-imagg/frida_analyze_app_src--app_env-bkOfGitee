@@ -236,7 +236,7 @@ static inline void cpu_loop_exec_tb(CPUState *cpu, TranslationBlock *tb,
  
  请复制   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#build-qemu
 
-只修改以下一行
+修改如下：
 
 ```shell
 
