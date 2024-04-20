@@ -1,5 +1,12 @@
 #### interceptor_compiler_gcc_g++
 
+对编译器施加拦截步骤：
+
+1. [remove_interceptor](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#remove_interceptor)
+2. [add_interceptor](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#add_interceptor)
+3. [app_build_step](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#app_build_step)
+4. [remove_interceptor](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#remove_interceptor)
+
 **开始编译前，撤销拦截器、放置拦截器**
 
 ##### 撤销拦截器
@@ -30,8 +37,8 @@ python --version #Python 3.10.12
 
 ```
 
-##### 编译正文
-略，根据实际情况进行
+##### app_build_step
+应用程序编译步骤正文， 略，根据实际情况进行
 
 ##### remove_interceptor
 **编译完成后，撤销拦截器**
