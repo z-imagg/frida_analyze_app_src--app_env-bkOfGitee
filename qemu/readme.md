@@ -54,7 +54,7 @@ make -j4
 
 ##### 【结论】
 
-【结论】
+###### 结论
 
 1. 若 编译开关```CONFIG_TCG_INTERPRETER```是允许的， 则 有```函数tcg_qemu_tb_exec```
 2. 若 编译开关```CONFIG_TCG_INTERPRETER```是禁止的， 则 有```函数指针变量tcg_qemu_tb_exec``` 指向 ```函数tcg_splitwx_to_rx``` 
