@@ -105,7 +105,7 @@ http://g:3000/frida_analyze_app_src/frida_js/src/branch/main/fridaJs_runApp.sh
 /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
 ``` 
 
-输出日志： ``appOut-*.log``` == ```linux4内核启动输出日志``` + ```frida-out-Mix-*.log```
+输出日志： ```appOut-*.log``` == ```linux4内核启动输出日志``` + ```frida-out-Mix-*.log```
 ```shell
 
 
