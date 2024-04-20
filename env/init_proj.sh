@@ -41,7 +41,7 @@ find  .  -maxdepth 1 -type l | xargs -I% unlink %
 #直接子模块 或 app 链接到 上层目录
 # /fridaAnlzAp/x --->  /fridaAnlzAp/main/x
 ln -s  ./main/analyze_by_graph  ./analyze_by_graph
-ln -s ./main/cmd-wrap  ./cmd-wrap
+ln -s ./main/cmd-wrap  /app/cmd-wrap
 ln -s ./main/frida_js   ./frida_js
 ln -s  ./main/github-gitee-GITEA   ./github-gitee-GITEA
 ln -s ./main/app_bld ./app_bld
