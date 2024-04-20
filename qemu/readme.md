@@ -64,6 +64,8 @@ find /app/qemu/build-v8.2.2 -name "*.h" | xargs -I% grep -Hn CONFIG_TCG_INTERPRE
 ```
 ```/app/qemu/build-v8.2.2/config-host.h:352:#undef CONFIG_TCG_INTERPRETER``` 表明 编译开关 ```CONFIG_TCG_INTERPRETER``` 确实是禁止的 
 
+##### ptr:tcg_qemu_tb_exec
+
 https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/tcg/tcg.c
 
 ```c++
@@ -81,6 +83,7 @@ void tcg_prologue_init(void)
 //...
 ```
 
+##### func:tcg_qemu_tb_exec
 https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/tcg/tci.c
 
 ```c++
