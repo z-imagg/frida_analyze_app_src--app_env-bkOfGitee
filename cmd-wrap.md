@@ -1,6 +1,8 @@
 #### interceptor_compiler_gcc_g++
 
-##### 开始编译前，放置拦截器
+##### add_interceptor
+
+**开始编译前，放置拦截器**
 
 基于拦截器版本， [cmd-wrap.git/4659a](http://giteaz:3000/bal/cmd-wrap/commit/4659ac5f7352e34cf055b7769b6eaaaa5fb6882a)  ,  [cmd-wrap.git/tag_release](http://giteaz:3000/bal/cmd-wrap/src/tag/tag_release)
 
@@ -27,7 +29,9 @@ python --version #Python 3.10.12
 ##### 编译正文
 略，根据实际情况进行
 
-##### 编译完成后，撤销拦截器
+##### remove_interceptor
+**编译完成后，撤销拦截器**
+
 ```shell
 #撤销拦截器
 bash /app/cmd-wrap/script/remove_interceptor.sh
