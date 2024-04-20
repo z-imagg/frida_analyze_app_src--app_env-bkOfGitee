@@ -240,11 +240,14 @@ static inline void cpu_loop_exec_tb(CPUState *cpu, TranslationBlock *tb,
 
 ```shell
 
-#...
+#开头增加一行
+rm -fr /app/qemu
 
-#mkdir /app/qemu/build-v8.2.2; cd /app/qemu/build-v8.2.2;  #改为
-mkdir /app/qemu/build-v8.2.2-modify; cd /app/qemu/build-v8.2.2-modify;
+#git clone -b v8.2.2  ...  #改为
+git clone -b fridaAnlzAp/app/qemu/v8.2.2   https://gitee.com/imagg/qemu--qemu.git /app/qemu
 
-#...
+#末尾增加一行
+ln -s /app/qemu/build-v8.2.2 /app/qemu/build-v8.2.2-modify
+
 
 ```
