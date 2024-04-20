@@ -97,7 +97,7 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 
 ```
 
-http://g:3000/frida_analyze_app_src/frida_js/src/branch/main/fridaJs_runApp.sh
+http://giteaz:3000/frida_analyze_app_src/frida_js/src/tag/tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok/fridaJs_runApp.sh
 
 ```bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh```
 其.ts中已经写死了如下 目标应用:
