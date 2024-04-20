@@ -25,6 +25,8 @@ apt-file search --regexp  "/ninja$"
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
 
 
+cmd-wrap拦截到的qemu编译命令例子，  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/cmd-wrap-example-complile-cmd/cc-1713609271802564436-53625.log
+
 ##### 一个备忘
 原始编译```-O2 -g```:
 ```
@@ -36,6 +38,8 @@ http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#int
 ```
 32M /app/qemu/build-v8.2.2/qemu-system-x86_64
 ```
+
+
 
 #### build-qemu
 
