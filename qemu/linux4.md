@@ -117,6 +117,6 @@ wc -l       /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log  /fridaAnlzAp/fri
 #    817557 /fridaAnlzAp/frida_js/appOut-1713584459.log
 
 ```
-```appOut-*.log``` 比 ```frida-out-Mix-*.log``` 多出的日志行数为420行， 即  ```linux4内核启动输出日志``` 为420行日志
+```appOut-*.log``` 比 ```frida-out-Mix-*.log``` 多出的日志行数为```817557-817137==420```行， 即  ```linux4内核启动输出日志``` 为420行日志
 
 
