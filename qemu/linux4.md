@@ -201,3 +201,30 @@ qemu中的函数cpu_exec在linux4内核启动、关机过程中 执行了 47788/
 
 人工观看 函数 cpu_exec 所在源文件```/app/qemu/accel/tcg/cpu-exec.c```, 发现新目标 : 
 ```cpu_exec_loop```   , ```tb_lookup```, ```cpu_loop_exec_tb```
+
+```shell
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep cpu_exec_loop
+# 22995: 00000000006f6710  2678 FUNC    LOCAL  DEFAULT   16 cpu_exec_loop
+
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | egrep "tb_lookup$"
+# 22986: 00000000006f6070   219 FUNC    LOCAL  DEFAULT   16 tb_lookup
+# 54140: 00000000008d46b0   154 FUNC    GLOBAL DEFAULT   16 tcg_tb_lookup
+```
+
+```shell
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "cpu_loop_exec_tb"
+#elf的调试符号表中无该符号
+```
+函数cpu_loop_exec_tb是内联的，因此elf的调试符号表中没有其
+
+
+https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/accel/tcg/cpu-exec.c
+
+```cpp
+// file : /app/qemu/accel/tcg/cpu-exec.c
+
+static inline void cpu_loop_exec_tb(CPUState *cpu, TranslationBlock *tb,
+                                    vaddr pc, TranslationBlock **last_tb,
+                                    int *tb_exit)
+{
+```
