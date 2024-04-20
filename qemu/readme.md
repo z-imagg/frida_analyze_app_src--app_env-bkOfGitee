@@ -50,7 +50,7 @@ make -j4
 ```
 
 
-#####   tcg_qemu_tb_exec
+####   tcg_qemu_tb_exec
 
 ```shell
 readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "tcg_qemu_tb_exec"
