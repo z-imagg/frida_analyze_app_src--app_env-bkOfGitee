@@ -7,8 +7,9 @@
 ```shell
 git clone -b tag_release http://giteaz:3000/bal/cmd-wrap.git   /app/cmd-wrap
 
-#建立python虚拟环境 /app/cmd-wrap/.venv/
-bash /app/cmd-wrap/script/env_prepare.sh
+#只有 当前未激活miniconda3时，才需要此句
+#  建立python虚拟环境 /app/cmd-wrap/.venv/
+# bash /app/cmd-wrap/script/env_prepare.sh
 
 #编写 原始命令、入口命令
 bash -x /app/cmd-wrap/script/cmd_setup.sh
@@ -30,5 +31,8 @@ python --version #Python 3.10.12
 ```shell
 #撤销拦截器
 bash /app/cmd-wrap/script/remove_interceptor.sh
-deactivate
+
+
+#  若上文 已 建立python虚拟环境 /app/cmd-wrap/.venv/， 才需要此句
+# deactivate
 ```
