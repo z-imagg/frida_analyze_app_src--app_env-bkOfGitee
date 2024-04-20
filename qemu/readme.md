@@ -52,12 +52,16 @@ make -j4
 
 ####  qemu源码中的 tcg_qemu_tb_exec
 
+##### 编译开关```CONFIG_TCG_INTERPRETER```是禁止的
+
+###### elf中的tcg_qemu_tb_exec
 ```shell
 readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "tcg_qemu_tb_exec"
 #  45244: 00000000016d4a60     8 OBJECT  GLOBAL DEFAULT   28 tcg_qemu_tb_exec
 ```
 注意 tcg_qemu_tb_exec 不是FUNC 而是 OBJECT ，   结合[ptr:tcg_qemu_tb_exec](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#ptrtcg_qemu_tb_exec) 、 [func:tcg_qemu_tb_exec](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#functcg_qemu_tb_exec) 可知 编译开关```CONFIG_TCG_INTERPRETER```是禁止的
 
+###### ```config-host.h```中的 CONFIG_TCG_INTERPRETER
 ```shell
 find /app/qemu/build-v8.2.2 -name "*.h" | xargs -I% grep -Hn CONFIG_TCG_INTERPRETER  %
 #/app/qemu/build-v8.2.2/config-host.h:352:#undef CONFIG_TCG_INTERPRETER
