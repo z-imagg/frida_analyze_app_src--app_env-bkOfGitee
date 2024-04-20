@@ -10,7 +10,7 @@
 **开始编译前，撤销拦截器、放置拦截器**
 
 ##### 撤销拦截器
-http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#remove_interceptor
+[remove_interceptor](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#remove_interceptor)
 
 ##### add_interceptor
 
