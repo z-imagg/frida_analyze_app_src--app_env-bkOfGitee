@@ -7,11 +7,11 @@ docker exec -it u22 bash
 ```
 
 
-##### 编译linux4内核、制作启动盘
+#### 编译linux4内核、制作启动盘
 http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/readme.md
 
  
-##### qemu下的linux4终端 人工正常关机 
+#### qemu下的linux4终端 人工正常关机 
 
 ```shell
 /busybox-i686 ls /proc
@@ -28,7 +28,7 @@ http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOn
 
 
 
-##### qemu下的linux4  脚本正常关机 
+#### qemu下的linux4  脚本正常关机 
 
 脚本关机 ```cat /bal/bldLinux4RunOnBochs/init``` : 
 ```shell
@@ -40,9 +40,9 @@ exec /busybox-i686 ash -c "/busybox-i686 ls /proc ; /busybox-i686 ps auxf; /busy
 
 
 
-##### qemu运行linux
+#### qemu运行linux
 
-######  自编译的qemu-system-x86_64 8.2.2 正常启动字符界面
+#####  自编译的qemu-system-x86_64 8.2.2 正常启动字符界面
 
 ```shell
 /app/qemu/build-v8.2.2/qemu-system-x86_64 --version
@@ -63,7 +63,7 @@ exec /busybox-i686 ash -c "/busybox-i686 ls /proc ; /busybox-i686 ps auxf; /busy
 
 
 
-##### frida监控qemu运行linux4内核
+#### frida监控qemu运行linux4内核
 
 
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/env/main_dockerImage_build_run.sh
@@ -96,7 +96,7 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 # 37431: 00000000003153f0    23 FUNC    GLOBAL DEFAULT   16 main
 
 ```
-######  跟踪 tcg_gen_code 、 tb_gen_code 、 gen_intermediate_code
+#####  跟踪 tcg_gen_code 、 tb_gen_code 、 gen_intermediate_code
 标签 tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok
 
 http://giteaz:3000/frida_analyze_app_src/main/src/tag/tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok
