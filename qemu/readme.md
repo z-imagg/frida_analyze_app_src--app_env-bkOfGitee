@@ -52,7 +52,12 @@ make -j4
 
 ####  qemu源码中的 tcg_qemu_tb_exec
 
-##### tcg_qemu_tb_exec为函数而非指针 == 允许 CONFIG_TCG_INTERPRETER 
+默认情况下 编译开关 tcg_qemu_tb_exec为指针而非函数 
+
+##### 如何 修改 ？ 使得   tcg_qemu_tb_exec为函数而非指针 
+
+tcg_qemu_tb_exec为函数而非指针 == 允许 CONFIG_TCG_INTERPRETER 
+
 ```shell
 ../configure --target-list=i386-softmmu,x86_64-softmmu --enable-tcg-interpreter --enable-tcg 
 ```
