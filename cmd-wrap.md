@@ -1,8 +1,12 @@
 #### interceptor_compiler_gcc_g++
 
+**开始编译前，撤销拦截器、放置拦截器**
+
+##### 撤销拦截器
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#remove_interceptor
+
 ##### add_interceptor
 
-**开始编译前，放置拦截器**
 
 基于拦截器版本， [cmd-wrap.git/4659a](http://giteaz:3000/bal/cmd-wrap/commit/4659ac5f7352e34cf055b7769b6eaaaa5fb6882a)  ,  [cmd-wrap.git/tag_release](http://giteaz:3000/bal/cmd-wrap/src/tag/tag_release)
 
