@@ -19,7 +19,16 @@ apt-file search --regexp  "/ninja$"
 #ninja-build: /usr/bin/ninja               
 
 ```
+
+#### 拦截器编译器（可选，但对分析业务来说是必须的）
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
+
+这里实际使用的cmd-wrap版本 ， http://giteaz:3000/bal/cmd-wrap/commit/3cdb3ddb6e30803cbe1ca105d85453190e61b4be
+
+
 #### build-qemu
+
 参考, https://hlyani.github.io/notes/openstack/qemu_make.html
 
 ```shell
