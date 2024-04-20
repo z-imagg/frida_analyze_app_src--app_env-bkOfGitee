@@ -127,8 +127,8 @@ wc -l       /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log  /fridaAnlzAp/fri
 
 
 ```shell
-mv /fridaAnlzAp/frida_js/*log* ~/log_qemu_gen_code/
-ls -l  ~/log_qemu_gen_code/
+mv /fridaAnlzAp/frida_js/*log* ~/log_qemu__gen_code/
+ls -l  ~/log_qemu__gen_code/
 #-rw-r--r-- 1 root root 127599400 Apr 20 03:47 appOut-1713584459.log
 #-rw-r--r-- 1 root root 127573526 Apr 20 03:47 frida-out-Mix-1713584459.log
 #-rw-r--r-- 1 root root        63 Apr 20 03:47 frida-out-Mix-1713584459.log.md5sum.txt
@@ -137,7 +137,7 @@ ls -l  ~/log_qemu_gen_code/
 #-rw-r--r-- 1 root root 124712352 Apr 20 03:47 frida-out-Pure-1713584459.log
 #-rw-r--r-- 1 root root        64 Apr 20 03:47 frida-out-Pure-1713584459.log.md5sum.txt
 
-ls -lh  ~/log_qemu_gen_code/
+ls -lh  ~/log_qemu__gen_code/
 #-rw-r--r-- 1 root root 122M Apr 20 03:47 appOut-1713584459.log
 #-rw-r--r-- 1 root root 122M Apr 20 03:47 frida-out-Mix-1713584459.log
 #-rw-r--r-- 1 root root   63 Apr 20 03:47 frida-out-Mix-1713584459.log.md5sum.txt
@@ -147,3 +147,53 @@ ls -lh  ~/log_qemu_gen_code/
 #-rw-r--r-- 1 root root   64 Apr 20 03:47 frida-out-Pure-1713584459.log.md5sum.txt
 
 ```
+
+
+
+#####  跟踪 cpu_exec
+
+函数cpu_exec不与linux4内核中函数一一对应
+
+```shell
+mv /fridaAnlzAp/frida_js/*log* ~/log_qemu__cpu_exec/
+
+appLogF=~/log_qemu__cpu_exec/appOut-1713585924.log
+fridaLogF=~/log_qemu__cpu_exec/frida-out-Mix-1713585924.log
+wc -l     $fridaLogF  $fridaLogF
+#   95581 /root/log_qemu__cpu_exec/frida-out-Mix-1713585924.log
+#   95981 /root/log_qemu__cpu_exec/appOut-1713585924.log
+
+linux4KernelLogLnCnt=$(( $( cat $appLogF | wc -l  ) - $( cat      $fridaLogF   | wc -l )   ))
+
+echo "linux4内核输出日志行数==${linux4KernelLogLnCnt}"
+```
+linux4内核输出日志行数==400
+
+```shell
+ls -l  ~/log_qemu__cpu_exec/
+#-rw-r--r-- 1 root root 15130720 Apr 20 04:07 appOut-1713585924.log
+#-rw-r--r-- 1 root root 15105006 Apr 20 04:07 frida-out-Mix-1713585924.log
+#-rw-r--r-- 1 root root       63 Apr 20 04:07 frida-out-Mix-1713585924.log.md5sum.txt
+#-rw-r--r-- 1 root root 15056584 Apr 20 04:07 frida-out-PrefixPure-1713585924.log
+#-rw-r--r-- 1 root root       70 Apr 20 04:07 frida-out-PrefixPure-1713585924.log.md5sum.txt
+#-rw-r--r-- 1 root root 14769856 Apr 20 04:07 frida-out-Pure-1713585924.log
+#-rw-r--r-- 1 root root       64 Apr 20 04:07 frida-out-Pure-1713585924.log.md5sum.txt
+
+ls -lh  ~/log_qemu__cpu_exec/
+#-rw-r--r-- 1 root root 15M Apr 20 04:07 appOut-1713585924.log
+#-rw-r--r-- 1 root root 15M Apr 20 04:07 frida-out-Mix-1713585924.log
+#-rw-r--r-- 1 root root  63 Apr 20 04:07 frida-out-Mix-1713585924.log.md5sum.txt
+#-rw-r--r-- 1 root root 15M Apr 20 04:07 frida-out-PrefixPure-1713585924.log
+#-rw-r--r-- 1 root root  70 Apr 20 04:07 frida-out-PrefixPure-1713585924.log.md5sum.txt
+#-rw-r--r-- 1 root root 15M Apr 20 04:07 frida-out-Pure-1713585924.log
+#-rw-r--r-- 1 root root  64 Apr 20 04:07 frida-out-Pure-1713585924.log.md5sum.txt
+
+```
+
+```shell
+wc -l  ~/log_qemu__cpu_exec/frida-out-*.log                
+#   95581 /root/log_qemu__cpu_exec/frida-out-Mix-1713585924.log
+#   47788 /root/log_qemu__cpu_exec/frida-out-PrefixPure-1713585924.log
+#   47788 /root/log_qemu__cpu_exec/frida-out-Pure-1713585924.log
+```
+qemu中的函数cpu_exec在linux4内核启动、关机过程中 执行了 47788/2 == 23894 次，  才2万多次，  说明 函数cpu_exec不与linux4内核中函数一一对应
