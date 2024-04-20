@@ -232,4 +232,19 @@ static inline void cpu_loop_exec_tb(CPUState *cpu, TranslationBlock *tb,
 
 ##### 跟踪 cpu_loop_exec_tb
 
- 编译qemu的分支 ```fridaAnlzAp/app/qemu/v8.2.2```,  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#build-qemu
+ 编译qemu的分支 ```fridaAnlzAp/app/qemu/v8.2.2```,  
+ 
+ 请复制   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#build-qemu
+
+只修改以下一行
+
+```shell
+
+#...
+
+#mkdir /app/qemu/build-v8.2.2; cd /app/qemu/build-v8.2.2;  #改为
+mkdir /app/qemu/build-v8.2.2-modify; cd /app/qemu/build-v8.2.2-modify;
+
+#...
+
+```
