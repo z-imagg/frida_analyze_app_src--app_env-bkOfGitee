@@ -152,7 +152,7 @@ ls -lh  ~/log_qemu__gen_code/
 
 #####  跟踪 cpu_exec
 
-函数cpu_exec不与linux4内核中函数一一对应
+结论：  函数cpu_exec不与linux4内核中函数一一对应
 
 ```shell
 mv /fridaAnlzAp/frida_js/*log* ~/log_qemu__cpu_exec/
@@ -197,3 +197,7 @@ wc -l  ~/log_qemu__cpu_exec/frida-out-*.log
 #   47788 /root/log_qemu__cpu_exec/frida-out-Pure-1713585924.log
 ```
 qemu中的函数cpu_exec在linux4内核启动、关机过程中 执行了 47788/2 == 23894 次，  才2万多次，  说明 函数cpu_exec不与linux4内核中函数一一对应
+
+
+人工观看 函数 cpu_exec 所在源文件```/app/qemu/accel/tcg/cpu-exec.c```, 发现新目标 : 
+```cpu_exec_loop```   , ```tb_lookup```, ```cpu_loop_exec_tb```
