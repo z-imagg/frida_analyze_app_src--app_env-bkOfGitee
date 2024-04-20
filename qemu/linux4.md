@@ -98,9 +98,23 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 ```
 
 http://g:3000/frida_analyze_app_src/frida_js/src/branch/main/fridaJs_runApp.sh
-当提示输入main函数参数时,输入 
+```bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh```
+其.ts中已经写死了如下 目标应用:
 ```txt
 /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
 ``` 
+
+输出日志： ``appOut-*.log``` == ```linux4内核启动输出日志``` + ```frida-out-Mix-*.log```
+```shell
+
+
+grep "Early table checksum verification disabled"      /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log  /fridaAnlzAp/frida_js/appOut-1713584459.log 
+# /fridaAnlzAp/frida_js/appOut-1713584459.log:[    0.000000] ACPI: Early table checksum verification disabled
+
+wc -l       /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log  /fridaAnlzAp/frida_js/appOut-1713584459.log 
+#    817137 /fridaAnlzAp/frida_js/frida-out-Mix-1713584459.log
+#    817557 /fridaAnlzAp/frida_js/appOut-1713584459.log
+
+```
 
 
