@@ -52,7 +52,7 @@ make -j4
 
 ####  qemu源码中的 tcg_qemu_tb_exec
 
-##### 允许 CONFIG_TCG_INTERPRETER 
+##### tcg_qemu_tb_exec为函数而非指针 == 允许 CONFIG_TCG_INTERPRETER 
 ```shell
 ../configure --target-list=i386-softmmu,x86_64-softmmu --enable-tcg-interpreter --enable-tcg 
 ```
