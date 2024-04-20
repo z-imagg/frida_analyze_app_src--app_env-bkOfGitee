@@ -188,6 +188,12 @@ readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "tcg_qemu_t
 ```
 注意 tcg_qemu_tb_exec 不是FUNC 而是 OBJECT ， 这说明 编译开关CONFIG_TCG_INTERPRETER是禁止的
 
+```shell
+find /app/qemu/build-v8.2.2 -name "*.h" | xargs -I% grep -Hn CONFIG_TCG_INTERPRETER  %
+#/app/qemu/build-v8.2.2/config-host.h:352:#undef CONFIG_TCG_INTERPRETER
+```
+```/app/qemu/build-v8.2.2/config-host.h:352:#undef CONFIG_TCG_INTERPRETER``` 表明 编译开关 CONFIG_TCG_INTERPRETER 确实是禁止的 
+
 https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/tcg/tcg.c
 
 ```c++
