@@ -37,25 +37,10 @@ git clone https://gitee.com/disk_recovery/cgsecurity--testdisk.git
 
 ##### 2. 编译器的拦截器（可选）（对分析业务来说是必须的）
 
-基于拦截器版本， http://giteaz:3000/bal/cmd-wrap/commit/3cdb3ddb6e30803cbe1ca105d85453190e61b4be
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
 
-```shell
+这里实际使用的cmd-wrap版本 ， http://giteaz:3000/bal/cmd-wrap/commit/3cdb3ddb6e30803cbe1ca105d85453190e61b4be
 
-#建立python虚拟环境 /app/cmd-wrap/.venv/
-bash /app/cmd-wrap/script/env_prepare.sh
-
-#编写 原始命令、入口命令
-bash -x /app/cmd-wrap/script/cmd_setup.sh
-
-which c++ #/usr/bin/c++
-
-readlink -f $(which c++) #/app/cmd-wrap/bin/interceptor_xx.py
-
-which python #/app/cmd-wrap/.venv/bin/python
-
-python --version #Python 3.10.12
-
-```
 
 #####  3. 编译正文
 ```shell
