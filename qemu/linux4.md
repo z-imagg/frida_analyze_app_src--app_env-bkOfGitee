@@ -137,4 +137,13 @@ ls -l  ~/log_qemu_gen_code/
 #-rw-r--r-- 1 root root 124712352 Apr 20 03:47 frida-out-Pure-1713584459.log
 #-rw-r--r-- 1 root root        64 Apr 20 03:47 frida-out-Pure-1713584459.log.md5sum.txt
 
+ls -lh  ~/log_qemu_gen_code/
+#-rw-r--r-- 1 root root 122M Apr 20 03:47 appOut-1713584459.log
+#-rw-r--r-- 1 root root 122M Apr 20 03:47 frida-out-Mix-1713584459.log
+#-rw-r--r-- 1 root root   63 Apr 20 03:47 frida-out-Mix-1713584459.log.md5sum.txt
+#-rw-r--r-- 1 root root 122M Apr 20 03:47 frida-out-PrefixPure-1713584459.log
+#-rw-r--r-- 1 root root   70 Apr 20 03:47 frida-out-PrefixPure-1713584459.log.md5sum.txt
+#-rw-r--r-- 1 root root 119M Apr 20 03:47 frida-out-Pure-1713584459.log
+#-rw-r--r-- 1 root root   64 Apr 20 03:47 frida-out-Pure-1713584459.log.md5sum.txt
+
 ```
