@@ -24,8 +24,7 @@ apt-file search --regexp  "/ninja$"
 
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
 
-这里实际使用的cmd-wrap版本 ， http://giteaz:3000/bal/cmd-wrap/commit/3cdb3ddb6e30803cbe1ca105d85453190e61b4be
-
+ 
 
 #### build-qemu
 
