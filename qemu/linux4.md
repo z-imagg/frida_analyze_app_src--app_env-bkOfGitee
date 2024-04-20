@@ -96,6 +96,11 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 # 37431: 00000000003153f0    23 FUNC    GLOBAL DEFAULT   16 main
 
 ```
+######  跟踪 tcg_gen_code 、 tb_gen_code 、 gen_intermediate_code
+标签 tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok
+
+http://giteaz:3000/frida_analyze_app_src/main/src/tag/tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok
+
 
 http://giteaz:3000/frida_analyze_app_src/frida_js/src/tag/tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok/fridaJs_runApp.sh
 
