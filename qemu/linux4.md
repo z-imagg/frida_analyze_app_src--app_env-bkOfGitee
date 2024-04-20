@@ -251,3 +251,16 @@ ln -s /app/qemu/build-v8.2.2 /app/qemu/build-v8.2.2-modify
 
 
 ```
+
+
+```shell
+wc -l      /fridaAnlzAp/frida_js/appOut-1713591230.log
+#7804757 /fridaAnlzAp/frida_js/appOut-1713591230.log
+
+ls -lh       /fridaAnlzAp/frida_js/appOut-1713591230.log  
+#-rw-r--r-- 1 root root 1.3G Apr 20 06:18 /fridaAnlzAp/frida_js/appOut-1713591230.log
+
+```
+
+感觉 cpu_loop_exec_tb 跟踪的 是 每一条指令， 日志行数目到了 780万行 还没运行结束
+
