@@ -52,10 +52,21 @@ make -j4
 
 ####  qemu源码中的 tcg_qemu_tb_exec
 
-##### 允许 CONFIG_TCG_INTERPRETER 尝试
+##### 允许 CONFIG_TCG_INTERPRETER 
 ```shell
 ../configure --target-list=i386-softmmu,x86_64-softmmu --enable-tcg-interpreter --enable-tcg 
 ```
+
+```shell
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "__app_func_call__"
+# 54127: 000000000087a526     5 FUNC    GLOBAL DEFAULT   16 __app_func_call__
+```
+
+```shell
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "tcg_qemu_tb_exec"
+# 45181: 000000000087a52b  6263 FUNC    GLOBAL DEFAULT   16 tcg_qemu_tb_exec
+```
+注意 tcg_qemu_tb_exec 是FUNC 而不是 OBJECT, 结合[ptr:tcg_qemu_tb_exec](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#ptrtcg_qemu_tb_exec) 、 [func:tcg_qemu_tb_exec](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/readme.md#functcg_qemu_tb_exec) 可知 编译开关```CONFIG_TCG_INTERPRETER```是允许
 
 ##### 【结论】
 
