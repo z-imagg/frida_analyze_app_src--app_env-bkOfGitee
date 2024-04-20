@@ -180,6 +180,44 @@ readelf --symbols ./qemu-system-x86_64 | egrep -w 'translator_loop|translate_ins
  40688: 00000000006d9f50  1118 FUNC    GLOBAL DEFAULT   16 translator_loop
 ```
 
+#####   tcg_qemu_tb_exec
+
+```shell
+readelf --symbols   /app/qemu/build-v8.2.2/qemu-system-x86_64 | grep "tcg_qemu_tb_exec"
+#  45244: 00000000016d4a60     8 OBJECT  GLOBAL DEFAULT   28 tcg_qemu_tb_exec
+```
+注意 tcg_qemu_tb_exec 不是FUNC 而是 OBJECT ， 这说明 编译开关CONFIG_TCG_INTERPRETER是禁止的
+
+https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/tcg/tcg.c
+
+```c++
+// tcg/tcg.c
+
+
+void tcg_prologue_init(void)
+{
+//...
+
+#ifndef CONFIG_TCG_INTERPRETER
+    tcg_qemu_tb_exec = (tcg_prologue_fn *)tcg_splitwx_to_rx(s->code_ptr);
+    // tcg_qemu_tb_exec 是函数指针， 指向函数 tcg_splitwx_to_rx
+#endif
+//...
+```
+
+https://gitee.com/imagg/qemu--qemu/blob/v8.2.2/tcg/tci.c
+
+```c++
+// tcg/tci.c
+// 函数 tcg_qemu_tb_exec
+uintptr_t QEMU_DISABLE_CFI tcg_qemu_tb_exec(CPUArchState *env,
+                                            const void *v_tb_ptr)
+{
+// ...
+}
+
+```
+
 #### qemu使用
 ```shell
 /app/qemu/build-v8.2.2/qemu-system-x86_64 --help
