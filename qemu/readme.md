@@ -24,7 +24,18 @@ apt-file search --regexp  "/ninja$"
 
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/cmd-wrap.md#interceptor_compiler_gcc_g
 
- 
+
+##### 一个备忘
+原始编译```-O2 -g```:
+```
+71M /app/qemu/build-v8.2.2/qemu-system-x86_64
+```
+
+
+用cmd-wrap改为```-O1 -g1```， 没想到尺寸变小了 :
+```
+32M /app/qemu/build-v8.2.2/qemu-system-x86_64
+```
 
 #### build-qemu
 
