@@ -153,7 +153,6 @@ grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715453.log    | cut -d'"' -f 20 
 ```
 
 排除巨量次数函数，如下：
-   注意 本次修改的qemu代码写死了 最多只读取文件```/tmp/FrdaIgnFnLs.txt```的前20行，如果超出， 要修改本次qemu代码
 ```shell
 cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 0x555555c4bcc0
@@ -173,6 +172,16 @@ cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 0x555555b14000
 EOF
 ```
+
+注意 本次qemu代码修改 最多只读取文件```/tmp/FrdaIgnFnLs.txt```的前20行（宏定义```#define _FrdaIgnFnLmt 20```），如果超出， 请修改以下源文件中的宏定义```#define _FrdaIgnFnLmt 更大的数值比如60``````
+https://gitee.com/imagg/qemu--qemu/blob/tag/fridaAnlzAp/qemu__linux4__boot_ok3/system/main.c
+```cpp
+// file: system/main.c
+
+//最大只能有FrdaIgnFnLmt个忽略地址
+#define _FrdaIgnFnLmt 20
+```
+
 
 再次执行```fridaJs_runApp.sh```，  日志会小很多, 居然就大约10分钟不到，就跑完了
 ```shell
