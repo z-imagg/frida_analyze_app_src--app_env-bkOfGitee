@@ -103,6 +103,20 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
      http://giteaz:3000/frida_analyze_app_src/main/src/tag/tag/fridaAnlzAp/qemu__linux4__boot_ok3  
      https://gitee.com/imagg/qemu--qemu/tree/tag/fridaAnlzAp/qemu__linux4__boot_ok3
 
+所用代码指纹如下
+```shell
+git --git-dir=/app/qemu/.git rev-parse HEAD
+# 2e51efb4cadfac5dcdd371ec345292abe98240fe
+
+git --git-dir=/fridaAnlzAp/main/.git rev-parse HEAD
+# ee9dfe953ac4f8a97ffacc360fd228b5d9b2b892
+
+
+md5sum /app/qemu/build-v8.2.2/qemu-system-x86_64
+# c21e373d11757d342f716d19ed9c02cf  /app/qemu/build-v8.2.2/qemu-system-x86_64
+
+```
+
 先运行一次 ```fridaJs_runApp.sh```获得日志文件```appOut-1713713504.log```，统计linux4内核中函数调用次数，巨量次数的函数地址如下：
     注意 估计 重新编译qemu后， 这些函数地址 会不一样 
 ```shell
@@ -159,7 +173,61 @@ cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 EOF
 ```
 
-再次执行```fridaJs_runApp.sh```，  日志会小很多
+再次执行```fridaJs_runApp.sh```，  日志会小很多, 居然就大约10分钟不到，就跑完了
+```shell
+
+
+wc -l  /fridaAnlzAp/frida_js/*.log 
+#    37739 /fridaAnlzAp/frida_js/appOut-1713715689.log
+#    37340 /fridaAnlzAp/frida_js/frida-out-Mix-1713715689.log
+#    18667 /fridaAnlzAp/frida_js/frida-out-PrefixPure-1713715689.log
+#    18667 /fridaAnlzAp/frida_js/frida-out-Pure-1713715689.log
+
+grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715689.log    | cut -d'"' -f 20 | sort | uniq  --count | sort -nr
+#    4866 555555b740f0
+#    2724 555555b13f50
+#    2250 555555b7c690
+#    1936 555555b13f80
+#    1780 555555b13ef0
+#    1306 555555b13f20
+#    1072 555555b73350
+#     740 555555b73f60
+#     664 555555b7a590
+#     662 555555b65790
+#     204 555555b14760
+#     148 555555b142a0
+#      74 555555b735a0
+#      38 555555b653b0
+#      26 555555b61200
+#      22 555555b658b0
+#      22 555555b611f0
+#      22 555555b5ffa0
+#      22 555555b11da0
+#      12 555555b61240
+#      12 555555b13c90
+#      10 555555b7add0
+#       6 555555b79b50
+#       5 555555b14ca0
+#       4 555555b7cae0
+#       4 555555b7b010
+#       4 555555b79df0
+#       4 555555b73250
+#       4 555555b61140
+#       4 555555b61120
+#       4 555555b60520
+#       4 555555b5ff20
+#       4 555555b5fe20
+#       2 555555b60d50
+#       2 555555b60ac0
+#       2 555555b60970
+#       2 555555b601e0
+
+```
+
+
+
+
+
 
 
 #### frida监控qemu运行linux4内核 时，   跟踪xx函数
