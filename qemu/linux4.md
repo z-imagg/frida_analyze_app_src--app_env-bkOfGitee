@@ -115,6 +115,13 @@ grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713713504.log  | cut -d'"' -f 20 | 
 # 24906 555555b7a150
 # 21084 555555b13ec0
 ```
+
+```shell
+grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713714349.log   | cut -d'"' -f 20 | sort | uniq  --count | sort -nr
+#  436570 555555b74000
+#  436366 555555b7c920
+
+```
 排除巨量次数函数，如下：
 ```shell
 cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
@@ -127,6 +134,8 @@ cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 0x555555b5e080
 0x555555b7a150
 0x555555b13ec0
+0x555555b74000
+0x555555b7c920
 EOF
 ```
 
