@@ -97,7 +97,7 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 
 
 
-#### frida监控qemu运行linux4内核 时，  frida跳过linux4内核中某些巨量函数调用
+#### frida监控qemu运行linux4内核 时，  frida跳过linux4内核中某些巨量函数调用 后， 约10分钟qemu能运行完linux4内核
 
 按照标签: 
      http://giteaz:3000/frida_analyze_app_src/main/src/tag/tag/fridaAnlzAp/qemu__linux4__boot_ok3  
@@ -182,6 +182,18 @@ wc -l  /fridaAnlzAp/frida_js/*.log
 #    37340 /fridaAnlzAp/frida_js/frida-out-Mix-1713715689.log
 #    18667 /fridaAnlzAp/frida_js/frida-out-PrefixPure-1713715689.log
 #    18667 /fridaAnlzAp/frida_js/frida-out-Pure-1713715689.log
+
+ls -lh /fridaAnlzAp/frida_js/*.log
+# -rw-r--r-- 1 root root 5.8M Apr 21 16:09 /fridaAnlzAp/frida_js/appOut-1713715689.log
+# -rw-r--r-- 1 root root 5.7M Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-Mix-1713715689.log
+# -rw-r--r-- 1 root root 5.7M Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-PrefixPure-1713715689.log
+# -rw-r--r-- 1 root root 5.6M Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-Pure-1713715689.log
+
+ls -l /fridaAnlzAp/frida_js/*.log
+# -rw-r--r-- 1 root root 5996380 Apr 21 16:09 /fridaAnlzAp/frida_js/appOut-1713715689.log
+# -rw-r--r-- 1 root root 5970680 Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-Mix-1713715689.log
+# -rw-r--r-- 1 root root 5951258 Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-PrefixPure-1713715689.log
+# -rw-r--r-- 1 root root 5839256 Apr 21 16:09 /fridaAnlzAp/frida_js/frida-out-Pure-1713715689.log
 
 grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715689.log    | cut -d'"' -f 20 | sort | uniq  --count | sort -nr
 #    4866 555555b740f0
