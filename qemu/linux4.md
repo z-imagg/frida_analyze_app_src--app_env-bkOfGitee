@@ -61,8 +61,6 @@ exec /busybox-i686 ash -c "/busybox-i686 ls /proc ; /busybox-i686 ps auxf; /busy
  
 
 
-
-
 #### frida监控qemu运行linux4内核
 
 
@@ -96,6 +94,47 @@ readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 # 37431: 00000000003153f0    23 FUNC    GLOBAL DEFAULT   16 main
 
 ```
+
+
+
+#### frida监控qemu运行linux4内核 时，  frida跳过linux4内核中某些巨量函数调用
+
+按照标签: 
+     http://giteaz:3000/frida_analyze_app_src/main/src/tag/tag/fridaAnlzAp/qemu__linux4__boot_ok3  
+     https://gitee.com/imagg/qemu--qemu/tree/tag/fridaAnlzAp/qemu__linux4__boot_ok3
+
+先运行一次 ```fridaJs_runApp.sh```获得日志文件```appOut-1713713504.log```，统计linux4内核中函数调用次数，巨量次数的函数地址如下：
+    注意 估计 重新编译qemu后， 这些函数地址 会不一样 
+```shell
+grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713713504.log  | cut -d'"' -f 20 | sort | uniq  --count | sort -nr
+# 728396 555555b5d0e0
+# 75774 555555b14c90
+# 48476 555555b5e090
+# 37826 555555b13e90
+# 28562 555555b5e080
+# 24906 555555b7a150
+# 21084 555555b13ec0
+```
+排除巨量次数函数，如下：
+```shell
+cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
+0x555555c4bcc0
+0x555555b5de80
+0x555555b5d0e0
+0x555555b14c90
+0x555555b5e090
+0x555555b13e90
+0x555555b5e080
+0x555555b7a150
+0x555555b13ec0
+EOF
+```
+
+再次执行```fridaJs_runApp.sh```，  日志会小很多
+
+
+#### frida监控qemu运行linux4内核 时，   跟踪xx函数
+
 #####  跟踪 tcg_gen_code 、 tb_gen_code 、 gen_intermediate_code
 标签 tag/fridaAnlzAp/qemu__gen_code__linux4__boot_ok
 
