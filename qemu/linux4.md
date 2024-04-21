@@ -173,7 +173,8 @@ cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 EOF
 ```
 
-注意 本次qemu代码修改 最多只读取文件```/tmp/FrdaIgnFnLs.txt```的前20行（宏定义```#define _FrdaIgnFnLmt 20```），如果超出， 请修改以下源文件中的宏定义```#define _FrdaIgnFnLmt 更大的数值比如60``````
+注意 本次qemu代码修改 最多只读取文件```/tmp/FrdaIgnFnLs.txt```的前20行（宏定义```#define _FrdaIgnFnLmt 20```），如果超出， 比如修改为60```#define _FrdaIgnFnLmt 60```
+
 https://gitee.com/imagg/qemu--qemu/blob/tag/fridaAnlzAp/qemu__linux4__boot_ok3/system/main.c
 ```cpp
 // file: system/main.c
