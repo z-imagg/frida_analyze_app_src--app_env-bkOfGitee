@@ -130,6 +130,14 @@ grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715134.log    | cut -d'"' -f 20 
 #后面没列出来的都是不足1万次
 ```
 
+```shell
+grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715453.log    | cut -d'"' -f 20 | sort | uniq  --count | sort -nr
+#   76881 555555b73310
+#   17922 555555b13fb0
+#   17646 555555b14000
+#后面没列出来的都是不足1万次
+```
+
 排除巨量次数函数，如下：
 ```shell
 cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
@@ -145,6 +153,9 @@ cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 0x555555b74000
 0x555555b7c920
 0x555555b5e2c0
+0x555555b73310
+0x555555b13fb0
+0x555555b14000
 EOF
 ```
 
