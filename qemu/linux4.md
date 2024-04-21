@@ -153,6 +153,7 @@ grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715453.log    | cut -d'"' -f 20 
 ```
 
 排除巨量次数函数，如下：
+   注意 本次修改的qemu代码写死了 最多只读取文件```/tmp/FrdaIgnFnLs.txt```的前20行，如果超出， 要修改本次qemu代码
 ```shell
 cat  << 'EOF' > /tmp/FrdaIgnFnLs.txt
 0x555555c4bcc0
