@@ -5,7 +5,6 @@ https://gitee.com/repok/linux.git
 https://gitee.com/repok/linux/tree/linux-4.14.y/  ，  https://gitee.com/repok/linux/commit/050272a0423e68207fd2367831ae610680129062
 
 
-https://gitee.com/repok/linux/tree/linux-4.14.y--flag__spy_func/  ， https://gitee.com/repok/linux/commit/072fcdb7a3f54436f2922baf577040fe927b237a
 
 #### 编译linux4内核、制作启动盘
 http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/readme.md

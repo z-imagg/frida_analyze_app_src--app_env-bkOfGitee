@@ -62,6 +62,10 @@ http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/fri
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4_ignoreHugeFunc.md
 
 
+#### frida监控qemu运行linux4内核 ，linux4源码中新加入特定标记参数值的函数调用， frida由该参数值找到函数地址 与 System.map 中地址比对 获得 qemu 对 linux4函数地址 变换规律
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4//frida_qemu_linux4_flag__spy_func.md
+
 **以下是非主流程内容**
 
 #### qemu编译产物
