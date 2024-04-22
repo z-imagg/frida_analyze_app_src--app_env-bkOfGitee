@@ -7,7 +7,11 @@
 cmd-wrap拦截到的qemu编译命令例子，  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/cmd-wrap-example-complile-cmd/cc-1713609271802564436-53625.log
 
 
-#### 在docker实例中编译qemu
+
+#### build-qemu
+
+
+#### qemu编译docker环境
 
 ```base_ubuntu_22.04.04:0.1 ``` 来自 http://giteaz:3000/frida_analyze_app_src/main/src/branch/fridaAnlzAp/docker/docker/main_dockerImage_build_run.sh
 
@@ -18,7 +22,7 @@ docker run -itd --name u22 --hostname u22_dk base_ubuntu_22.04:0.1
 docker exec -it u22 bash
 ```
 
-#### build-qemu
+##### 编译qemu正文
 
 参考, https://hlyani.github.io/notes/openstack/qemu_make.html
 
@@ -58,7 +62,7 @@ http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/fri
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4_ignoreHugeFunc.md
 
 
-以下是非主流程内容:
+**以下是非主流程内容**
 
 #### qemu编译产物
 
