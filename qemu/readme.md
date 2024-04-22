@@ -8,16 +8,15 @@ cmd-wrap拦截到的qemu编译命令例子，  http://giteaz:3000/frida_analyze_
 
 
 #### 在docker实例中编译qemu
-http://g:3000/frida_analyze_app_src/main/src/branch/main/docker/base_ubuntu_22_Dockerfile
+
+```base_ubuntu_22.04.04:0.1 ``` 来自 http://giteaz:3000/frida_analyze_app_src/main/src/branch/fridaAnlzAp/docker/docker/main_dockerImage_build_run.sh
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/env/base_ubuntu_22.04.Dockerfile.sh
 
 ```shell
 docker run -itd --name u22 --hostname u22_dk base_ubuntu_22.04:0.1
 docker exec -it u22 bash
 ```
-
-
-
-
 
 #### build-qemu
 
@@ -45,11 +44,30 @@ make -j4
 ```--enable-tcg-interpreter --enable-tcg ``` 使得   [tcg_qemu_tb_exec 为函数而非指针](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/qemu_tcg_qemu_tb_exec.md)
 
 
-#### 编译产物
+#### qemu运行linux4
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/qemu_linux4.md
+
+
+#### frida监控qemu运行linux4内核
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md
+
+
+#### frida监控qemu运行linux4内核 时，  frida跳过linux4内核中某些巨量函数调用 后， 约10分钟qemu能运行完linux4内核
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4_ignoreHugeFunc.md
+
+
+以下是非主流程内容:
+
+#### qemu编译产物
 
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/qemu_detail.md#compile_production
 
 
-#### 若干函数
-
+#### qemu若干函数
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/qemu_some_func.md
+
+
+#### frida监控qemu运行linux4内核 时，   跟踪tcg_gen_code函数
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4_traceFunc.md
