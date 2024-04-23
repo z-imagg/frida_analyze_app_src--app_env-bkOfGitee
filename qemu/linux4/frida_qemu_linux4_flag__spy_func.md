@@ -21,7 +21,12 @@ frida监控qemu运行linux4内核 , http://giteaz:3000/frida_analyze_app_src/app
 ** frida监控qemu运行linux4内核 时，  linux4内核中已经添加入参0为特定标记值0x44BB55CC的函数flag__spy_func调用， 为了方便frida通过标记参数识别到此函数 **
 
 ```shell
+
+bash -x /bal/bldLinux4RunOnBochs/build-linux4.15.y-on-x64_u22.04.3LTS.sh
+
 grep flag__spy_func /bal/linux-stable/System.map 
 # c1b50a82 T flag__spy_func
 
 ```
+
+[copy_linux4_kernel_to_docker](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#copy_linux4_kernel_to_docker)
