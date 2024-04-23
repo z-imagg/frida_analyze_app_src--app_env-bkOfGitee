@@ -54,6 +54,8 @@ make -j4
 # make install
 
 ```
+同 https://gitee.com/imagg/qemu--qemu/blob/fridaAnlzAp/app/qemu/v8.2.2/rebuild.sh
+
 
 ```--enable-tcg-interpreter --enable-tcg ``` 使得   [tcg_qemu_tb_exec 为函数而非指针](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/qemu_tcg_qemu_tb_exec.md)
 
