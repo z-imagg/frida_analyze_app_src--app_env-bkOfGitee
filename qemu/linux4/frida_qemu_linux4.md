@@ -14,7 +14,7 @@ http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/env/main_docker
 
 #### frida监控qemu运行linux4内核
 
-
+##### copy_linux4_kernel_to_docker
 ```shell
 # docker run --privileged=true      --name   frida_anlz_ap  --hostname faa_dk --interactive --tty   frida_anlz_ap:0.1_prv
 # exit
@@ -36,7 +36,7 @@ F=/bal/bldLinux4RunOnBochs/HD50MB200C16H32S.img docker_mkdir_cp
 docker start frida_anlz_ap
 docker exec -it frida_anlz_ap  bash
 ```
-
+##### frida_qemu_linux4
 
 ```shell
 readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
