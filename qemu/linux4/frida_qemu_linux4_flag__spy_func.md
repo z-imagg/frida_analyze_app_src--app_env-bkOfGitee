@@ -74,7 +74,7 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 clear
 
 cat  << 'EOF' > gdb_script.txt
-break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4432 && (int)_wrap_ffi_call___callIdx<=4432+1000
+break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4456 && (int)_wrap_ffi_call___callIdx<=4456+1000
 commands 1
   printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
   frame 2
