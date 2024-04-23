@@ -38,7 +38,7 @@ bash -x /app/cmd-wrap/script/cmd_setup.sh   ;   bash  /app/qemu/rebuild.sh &&  b
 bash -x /bal/bldLinux4RunOnBochs/build-linux4.15.y-on-x64_u22.04.3LTS.sh
 
 grep flag__spy_func /bal/linux-stable/System.map 
-# c1b50a82 T flag__spy_func
+# c1b5042c T flag__spy_func
 
 ```
 
