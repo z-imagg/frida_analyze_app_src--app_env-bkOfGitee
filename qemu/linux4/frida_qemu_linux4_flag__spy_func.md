@@ -71,6 +71,7 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 
 
 ```shell
+#gdb 以4432~4432+1000 再c 500 发现了4456后立即输出 'flag__spy_func.at_linux_src_code==0xc5d5042c'
 clear
 
 cat  << 'EOF' > gdb_script.txt
@@ -86,7 +87,6 @@ run
 EOF
 
 GDB_qemu_linux4
-
 
 #frame 2停止在:
 # 2  0x0000555555e434d2 in tcg_qemu_tb_exec () at ../tcg/tci.c:455
