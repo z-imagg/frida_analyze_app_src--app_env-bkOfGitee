@@ -39,7 +39,7 @@ docker exec -it frida_anlz_ap  bash
 ##### frida_qemu_linux4
 
 ```shell
-readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
+#readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 # 37431: 00000000003153f0    23 FUNC    GLOBAL DEFAULT   16 main
 
 bash -x /fridaAnlzAp/main/fridaJs_runApp.sh
