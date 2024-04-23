@@ -72,6 +72,10 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 
 ```
 
+```shell
+break _wrap_ffi_call___callIdx__inc if _wfCallIdx==4400
+```
+
 ##### 4.frida_qemu_linux4
 [frida_qemu_linux4](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#frida_qemu_linux4)
 
