@@ -50,27 +50,17 @@ grep flag__spy_func /bal/linux-stable/System.map
 bash  /app/qemu/run_linux4_kernel.sh   2>&1 | tee qemu_linux4.log
 ```
 
-```shell
 
-grep -Hn "flag__spy_func.at_linux_src_code" qemu_linux4.log
-# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
-```
+qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内  【间隔为1, 放到ffi_call前】,  https://gitee.com/imagg/qemu--qemu/commit/320599147aec5ac279071adf4a50c1619bb3de7d
 
-qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧2】间隔为10,  https://gitee.com/imagg/qemu--qemu/commit/5a198d086a200b38a6ed46170f62f779600968c2
 ```shell
 grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
-# qemu_linux4.log:43:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4390
-# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
-# qemu_linux4.log:143:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
-```
-
-qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧3】间隔为1,  https://gitee.com/imagg/qemu--qemu/commit/d3a9fdebb51ccd87f6763cb3651d322708b3c18e
-```shell
-grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
-# qemu_linux4.log:34:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
-# qemu_linux4.log:35:[    0.000000] flag__spy_func.at_linux_src_code==0xc715042c
+# qemu_linux4.log:4469:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4444
+# qemu_linux4.log:4470:[    0.000000] flag__spy_func.at_linux_src_code==0xc4d5042c
+# qemu_linux4.log:4558:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4445
 
 ```
+
 
 ```shell
 alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz'
