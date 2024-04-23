@@ -46,7 +46,7 @@ grep flag__spy_func /bal/linux-stable/System.map
 [copy_linux4_kernel_to_docker](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#copy_linux4_kernel_to_docker)
 ##### 3. qemu_linux
 ```shell
-bash  /app/qemu/run_linux4_kernel.sh
+bash  /app/qemu/run_linux4_kernel.sh   2>&1 | tee qemu_linux4.log
 
 #                  [    0.000000] flag__spy_func.at_linux_src_code==0xc355042c
 
