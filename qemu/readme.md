@@ -46,9 +46,10 @@ git clone -b v8.2.2 https://gitee.com/imagg/qemu--qemu.git /app/qemu
 
 ```shell
 #编译步骤
-mkdir /app/qemu/build-v8.2.2; cd /app/qemu/build-v8.2.2;
+buildDir="/app/qemu/build-v8.2.2"
+rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 #  以下三行为编译步骤
-../configure --target-list=i386-softmmu,x86_64-softmmu --enable-tcg-interpreter --enable-tcg 
+../configure --target-list=i386-softmmu,x86_64-softmmu --enable-tcg-interpreter --enable-tcg && \ 
 make -j4
 # make install
 
