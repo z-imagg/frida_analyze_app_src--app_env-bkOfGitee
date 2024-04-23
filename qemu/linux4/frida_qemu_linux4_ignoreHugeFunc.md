@@ -167,5 +167,16 @@ grep "__@__@"  /fridaAnlzAp/frida_js/appOut-1713715689.log    | cut -d'"' -f 20 
 
 
 
+**命令备忘**
+
+##### watch_appOut-X.log
+监控日志文件 【形如 ```/fridaAnlzAp/frida_js/appOut-1713836715.log``` 】中 fnArgLs 的取值，  
+
+```shell
+watch -n 30 "grep '__@__@'  $(ls /fridaAnlzAp/frida_js/appOut-*.log | head -n 1)  | cut -d'\"' -f 20 | sort | uniq  --count | sort -nr"
+
+```
+
+注意如果frida_js改变了```console.log```样式，则上面的```-f 20```需要调整
 
 
