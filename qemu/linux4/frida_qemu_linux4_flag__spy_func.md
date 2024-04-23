@@ -51,13 +51,13 @@ bash  /app/qemu/run_linux4_kernel.sh   2>&1 | tee qemu_linux4.log
 ```
 
 
-qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内  【间隔为1, 放到ffi_call前】,  https://gitee.com/imagg/qemu--qemu/commit/320599147aec5ac279071adf4a50c1619bb3de7d
+qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内  【间隔为1, 放到ffi_call前, fflush】,  https://gitee.com/imagg/qemu--qemu/commit/xxx
 
 ```shell
 grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
-# qemu_linux4.log:4469:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4444
-# qemu_linux4.log:4470:[    0.000000] flag__spy_func.at_linux_src_code==0xc4d5042c
-# qemu_linux4.log:4558:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4445
+# qemu_linux4.log:4457:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4432
+# qemu_linux4.log:4458:[    0.000000] flag__spy_func.at_linux_src_code==0xc795042c
+# qemu_linux4.log:4546:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4433
 
 ```
 
@@ -74,7 +74,7 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 clear
 
 cat  << 'EOF' > gdb_script.txt
-break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4444 && (int)_wrap_ffi_call___callIdx<=4444+10
+break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4432 && (int)_wrap_ffi_call___callIdx<=4432+10
 commands 1
   printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
   frame 2
