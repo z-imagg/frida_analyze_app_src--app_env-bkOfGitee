@@ -79,6 +79,13 @@ gdb  --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "conso
 # break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx==4400
 
 ```
+可能是因为 qemu日志输出 或 linux4 日志输出有缓存， 导致日志先后并不能反应代码执行先后， 以上条件已经错了过 linux4中的标记函数
+
+```shell
+#只好更换大范围gdb断点
+# break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx>=4000 || (int)_wfCallIdx<=4400
+
+```
 
 ##### 4.frida_qemu_linux4
 [frida_qemu_linux4](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#frida_qemu_linux4)
