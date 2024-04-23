@@ -72,10 +72,11 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 
 ```shell
 #gdb 以4432~4432+1000 再c 500 发现了4456后立即输出 'flag__spy_func.at_linux_src_code==0xc5d5042c'
+
 clear
 
 cat  << 'EOF' > gdb_script.txt
-break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4456 && (int)_wrap_ffi_call___callIdx<=4456+1000
+break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4456 && (int)_wrap_ffi_call___callIdx<=4459+1000
 commands 1
   printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
   frame 2
