@@ -28,6 +28,7 @@ docker exec -it u22 bash
 
 参考, https://hlyani.github.io/notes/openstack/qemu_make.html
 
+###### dependency
 ```shell
 #安装依赖
 apt install -y python3-venv python3-pip  ninja-build pkg-config libglib2.0-dev
@@ -38,11 +39,15 @@ pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
 sudo apt install libpixman-1-dev  libpixman-1-0  
 ```
 
+###### git repo
 ```shell
 #拉代码
 git clone -b v8.2.2 https://gitee.com/imagg/qemu--qemu.git /app/qemu
 #file /app/qemu--qemu/.git/config
 ```
+
+###### build-step
+同 https://gitee.com/imagg/qemu--qemu/blob/fridaAnlzAp/app/qemu/v8.2.2/rebuild.sh
 
 ```shell
 #编译步骤
@@ -54,7 +59,6 @@ make -j4
 # make install
 
 ```
-同 https://gitee.com/imagg/qemu--qemu/blob/fridaAnlzAp/app/qemu/v8.2.2/rebuild.sh
 
 
 ```--enable-tcg-interpreter --enable-tcg ``` 使得   [tcg_qemu_tb_exec 为函数而非指针](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/qemu_tcg_qemu_tb_exec.md)
