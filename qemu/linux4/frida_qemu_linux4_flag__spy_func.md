@@ -56,7 +56,7 @@ grep -Hn "flag__spy_func.at_linux_src_code" qemu_linux4.log
 # qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
 ```
 
-qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧2】,  https://gitee.com/imagg/qemu--qemu/commit/5a198d086a200b38a6ed46170f62f779600968c2
+qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧2】间隔为10,  https://gitee.com/imagg/qemu--qemu/commit/5a198d086a200b38a6ed46170f62f779600968c2
 ```shell
 grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
 # qemu_linux4.log:43:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4390
@@ -64,7 +64,7 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 # qemu_linux4.log:143:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
 ```
 
-qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧3】,  https://gitee.com/imagg/qemu--qemu/commit/d3a9fdebb51ccd87f6763cb3651d322708b3c18e
+qemu中给ffi_call调用编号,应用linux4内核中标记函数,多次运行以收紧,gdb日志中靠近标记函数的调用编号可进标记函数调用链内 【收紧3】间隔为1,  https://gitee.com/imagg/qemu--qemu/commit/d3a9fdebb51ccd87f6763cb3651d322708b3c18e
 ```shell
 grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
 # qemu_linux4.log:34:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
