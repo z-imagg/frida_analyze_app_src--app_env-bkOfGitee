@@ -41,11 +41,6 @@ grep flag__spy_func /bal/linux-stable/System.map
 # c1b5042c T flag__spy_func
 
 
-grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
-# qemu_linux4.log:43:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4390
-# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
-# qemu_linux4.log:143:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
-
 ```
 
 
@@ -53,10 +48,20 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 ##### 3. qemu_linux
 ```shell
 bash  /app/qemu/run_linux4_kernel.sh   2>&1 | tee qemu_linux4.log
+```
 
-#                  [    0.000000] flag__spy_func.at_linux_src_code==0xc355042c
+```shell
+
+grep -Hn "flag__spy_func.at_linux_src_code" qemu_linux4.log
+# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
+
+grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
+# qemu_linux4.log:43:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4390
+# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
+# qemu_linux4.log:143:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
 
 ```
+
 ##### 4.frida_qemu_linux4
 [frida_qemu_linux4](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#frida_qemu_linux4)
 
