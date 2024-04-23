@@ -30,7 +30,7 @@ frida监控qemu运行linux4内核 , http://giteaz:3000/frida_analyze_app_src/app
 
 或简写为
 ```shell
-bash -x /app/cmd-wrap/script/cmd_setup.sh   &&   bash  /app/qemu/rebuild.sh &&  bash /app/cmd-wrap/script/remove_interceptor.sh
+bash -x /app/cmd-wrap/script/cmd_setup.sh   ;   bash  /app/qemu/rebuild.sh &&  bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 ##### 2.build-linux4
 ```shell
