@@ -47,6 +47,9 @@ grep flag__spy_func /bal/linux-stable/System.map
 ##### 3. qemu_linux
 ```shell
 bash  /app/qemu/run_linux4_kernel.sh
+
+#                  [    0.000000] flag__spy_func.at_linux_src_code==0xc355042c
+
 ```
 ##### 4.frida_qemu_linux4
 [frida_qemu_linux4](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#frida_qemu_linux4)
