@@ -70,7 +70,7 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 
  https://gitee.com/imagg/qemu--qemu/blob/8f322fc49ed017ca9c1634c93ed740b88f214cd9/gdb_script.txt
 
-放弃qemu源码中的```lib_ffi```原因：
+放弃qemu源码中的```--enable-tcg-interpreter --enable-tcg``` 、 ```lib_ffi```原因：
 
 1. 此时是qemu是解释性的，和bochs一样
 
