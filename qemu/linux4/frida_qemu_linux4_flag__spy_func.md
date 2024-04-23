@@ -102,40 +102,8 @@ GDB_qemu_linux4
 ```
 
 工具函数
+https://gitee.com/imagg/qemu--qemu/blob/99baa5d934b4293afe7b2682d216cc5d67b5d3f7/gdb_loop_find__qemu_linux4.sh
 
-```shell
-function gdb_loop_find() {
-    
-clear
-
-alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz'
-
-
-
-
-cat  << 'EOF' > gdb_script.txt.template
-break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx==guess_i
-commands 1
-  printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
-  frame 2
-  print func
-end
-
-run
-
-EOF
-
-for k in $(seq 4000 5000); do
-    sed  "s/guess_i/$k/g" gdb_script.txt.template > gdb_script.txt
-    GDB_qemu_linux4  2>&1 | tee qemu_linux4.log
-    grep "flag__spy_func.at_linux_src_code" qemu_linux4.log && { echo "k=$k" ; break ;}
-done
-
-
-
-}
-
-```
 
 ##### 4.frida_qemu_linux4
 [frida_qemu_linux4](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#frida_qemu_linux4)
