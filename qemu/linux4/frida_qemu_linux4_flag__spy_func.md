@@ -68,29 +68,39 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 
 ```
 
+ https://gitee.com/imagg/qemu--qemu/blob/8f322fc49ed017ca9c1634c93ed740b88f214cd9/gdb_script.txt
+
+放弃qemu源码中的```lib_ffi```原因：
+
+1. 此时是qemu是解释性的，和bochs一样
+
+    lib_ffi调用的实际上都是 形如 ```helper_fninit``` 、 ```helper_divl_EAX``` 的 qemu函数，显然这是在将linux4中指令解释成qemu这些函数来执行，而lib_ffi就是这中间的桥梁
+
+2.  gdb无法精确定位```_wrap_ffi_call___callIdx```的数值，甚至范围都不能精确确定，可能是 qemu自身的stdout、被解释的linux4的stdout缓存 在作怪
+
+    gdb下能出现日志```flag__spy_func.at_linux_src_code```的```_wrap_ffi_call___callIdx```的范围在一个很小的范围内浮动， 当FrdaIgnFnLs.txt取以下函数地址列表时候， ```_wrap_ffi_call___callIdx```的范围大约是```4448到4460```， 并且 gdb的```continue N```或者```nexti N``` 给出的```_wrap_ffi_call___callIdx```精确值经常不一样，如果```countinue 1```很多次 直到超出```4460```也不会出现日志```flag__spy_func.at_linux_src_code```
 
 
-```shell
-#gdb 以4432~4432+1000 再c 500 发现了4456后立即输出 'flag__spy_func.at_linux_src_code==0xc5d5042c'
 
-clear
 
-cat  << 'EOF' > gdb_script.txt
-break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4456 && (int)_wrap_ffi_call___callIdx<=4459+1000
-commands 1
-  printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
-  frame 2
-  print func
-end
 
-run
-
-EOF
-
-GDB_qemu_linux4
-
-#frame 2停止在:
-# 2  0x0000555555e434d2 in tcg_qemu_tb_exec () at ../tcg/tci.c:455
+FrdaIgnFnLs.txt: 
+```txt
+0x555555c4bcc0
+0x555555b5de80
+0x555555b5d0e0
+0x555555b14c90
+0x555555b5e090
+0x555555b13e90
+0x555555b5e080
+0x555555b7a150
+0x555555b13ec0
+0x555555b74000
+0x555555b7c920
+0x555555b5e2c0
+0x555555b73310
+0x555555b13fb0
+0x555555b14000
 
 ```
 
