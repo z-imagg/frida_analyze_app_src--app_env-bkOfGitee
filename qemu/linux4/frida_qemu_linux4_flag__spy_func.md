@@ -40,6 +40,12 @@ bash -x /bal/bldLinux4RunOnBochs/build-linux4.15.y-on-x64_u22.04.3LTS.sh
 grep flag__spy_func /bal/linux-stable/System.map 
 # c1b5042c T flag__spy_func
 
+
+grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src_code"
+# qemu_linux4.log:43:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4390
+# qemu_linux4.log:44:[    0.000000] flag__spy_func.at_linux_src_code==0xc575042c
+# qemu_linux4.log:143:##threadId=140737333511744,_wrap_ffi_call___callIdx.at_qemu_src_code=4400
+
 ```
 
 
