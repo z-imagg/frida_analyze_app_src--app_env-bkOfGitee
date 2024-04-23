@@ -73,28 +73,20 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 ```
 
 ```shell
-alias GDB_qemu_linux4='gdb --batch  --quiet  --command=gdb_script.txt --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz'
+alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz'
 
-
-#增加以下条件断点
-# break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx==4400
-
-```
-可能是因为 qemu日志输出 或 linux4 日志输出有缓存， 导致日志先后并不能反应代码执行先后， 以上条件已经错了过 linux4中的标记函数
-
-```shell
-#只好更换大范围gdb断点
-# break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx>=4000 || (int)_wfCallIdx<=4400
 
 ```
 
+
+
 ```shell
-#不在范围 4200~4300
 cat  << 'EOF' > gdb_script.txt
-break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx>=4290 && (int)_wfCallIdx<=4300
+break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4447 && (int)_wrap_ffi_call___callIdx<=4447+10
 commands 1
-  printf "_wfCallIdx=%d\n",(int)_wfCallIdx
-  exit
+  printf "_wrap_ffi_call___callIdx=%d\n",(int)_wrap_ffi_call___callIdx
+  frame 2
+  print func
 end
 
 run
@@ -102,6 +94,17 @@ run
 EOF
 
 GDB_qemu_linux4
+
+
+#frame 2停止在:
+# 2  0x0000555555e434d2 in tcg_qemu_tb_exec () at ../tcg/tci.c:455
+
+```
+
+```shell
+#gdb条件举例
+# break _wrap_ffi_call___callIdx__inc if (int)_wrap_ffi_call___callIdx>=4447 && (int)_wrap_ffi_call___callIdx<=4448
+
 
 ```
 
