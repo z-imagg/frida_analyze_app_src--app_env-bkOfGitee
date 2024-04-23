@@ -1,3 +1,38 @@
+#### drop-qemu-tcg-reason
+
+放弃qemu源码中的```--enable-tcg-interpreter --enable-tcg``` 、 ```lib_ffi```原因：
+
+1. 此时是qemu是解释性的，和bochs一样
+
+    lib_ffi调用的实际上都是 形如 ```helper_fninit``` 、 ```helper_divl_EAX``` 的 qemu函数，显然这是在将linux4中指令解释成qemu这些函数来执行，而lib_ffi就是这中间的桥梁
+
+2.  gdb无法精确定位```_wrap_ffi_call___callIdx```的数值，甚至范围都不能精确确定，可能是 qemu自身的stdout、被解释的linux4的stdout缓存 在作怪
+
+    gdb下能出现日志```flag__spy_func.at_linux_src_code```的```_wrap_ffi_call___callIdx```的范围在一个很小的范围内浮动， 当FrdaIgnFnLs.txt取以下函数地址列表时候， ```_wrap_ffi_call___callIdx```的范围大约是```4448到4460```， 并且 gdb的```continue N```或者```nexti N``` 给出的```_wrap_ffi_call___callIdx```精确值经常不一样，如果```countinue 1```很多次 直到超出```4460```也不会出现日志```flag__spy_func.at_linux_src_code```
+
+
+
+
+
+FrdaIgnFnLs.txt: 
+```txt
+0x555555c4bcc0
+0x555555b5de80
+0x555555b5d0e0
+0x555555b14c90
+0x555555b5e090
+0x555555b13e90
+0x555555b5e080
+0x555555b7a150
+0x555555b13ec0
+0x555555b74000
+0x555555b7c920
+0x555555b5e2c0
+0x555555b73310
+0x555555b13fb0
+0x555555b14000
+
+```
 
 #### linux仓库
 
@@ -45,6 +80,9 @@ grep flag__spy_func /bal/linux-stable/System.map
 
 
 [copy_linux4_kernel_to_docker](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/linux4/frida_qemu_linux4.md#copy_linux4_kernel_to_docker)
+
+
+
 ##### 3. qemu_linux
 ```shell
 bash  /app/qemu/run_linux4_kernel.sh   2>&1 | tee qemu_linux4.log
@@ -70,39 +108,7 @@ alias GDB_qemu_linux4='gdb   --quiet  --command=gdb_script.txt --args /app/qemu/
 
  https://gitee.com/imagg/qemu--qemu/blob/8f322fc49ed017ca9c1634c93ed740b88f214cd9/gdb_script.txt
 
-放弃qemu源码中的```--enable-tcg-interpreter --enable-tcg``` 、 ```lib_ffi```原因：
 
-1. 此时是qemu是解释性的，和bochs一样
-
-    lib_ffi调用的实际上都是 形如 ```helper_fninit``` 、 ```helper_divl_EAX``` 的 qemu函数，显然这是在将linux4中指令解释成qemu这些函数来执行，而lib_ffi就是这中间的桥梁
-
-2.  gdb无法精确定位```_wrap_ffi_call___callIdx```的数值，甚至范围都不能精确确定，可能是 qemu自身的stdout、被解释的linux4的stdout缓存 在作怪
-
-    gdb下能出现日志```flag__spy_func.at_linux_src_code```的```_wrap_ffi_call___callIdx```的范围在一个很小的范围内浮动， 当FrdaIgnFnLs.txt取以下函数地址列表时候， ```_wrap_ffi_call___callIdx```的范围大约是```4448到4460```， 并且 gdb的```continue N```或者```nexti N``` 给出的```_wrap_ffi_call___callIdx```精确值经常不一样，如果```countinue 1```很多次 直到超出```4460```也不会出现日志```flag__spy_func.at_linux_src_code```
-
-
-
-
-
-FrdaIgnFnLs.txt: 
-```txt
-0x555555c4bcc0
-0x555555b5de80
-0x555555b5d0e0
-0x555555b14c90
-0x555555b5e090
-0x555555b13e90
-0x555555b5e080
-0x555555b7a150
-0x555555b13ec0
-0x555555b74000
-0x555555b7c920
-0x555555b5e2c0
-0x555555b73310
-0x555555b13fb0
-0x555555b14000
-
-```
 
 ```shell
 #gdb条件举例
