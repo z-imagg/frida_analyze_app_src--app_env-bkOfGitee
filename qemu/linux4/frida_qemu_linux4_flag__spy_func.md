@@ -73,7 +73,11 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 ```
 
 ```shell
-break _wrap_ffi_call___callIdx__inc if _wfCallIdx==4400
+gdb  --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+
+#增加以下条件断点
+# break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx==4400
+
 ```
 
 ##### 4.frida_qemu_linux4
