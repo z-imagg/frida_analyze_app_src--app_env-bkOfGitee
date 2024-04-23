@@ -73,7 +73,8 @@ grep -Hn "at_" qemu_linux4.log   | grep  -A 1 -B 1  "flag__spy_func.at_linux_src
 ```
 
 ```shell
-gdb  --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+alias GDB_qemu_linux4='gdb --batch  --quiet  --command=gdb_script.txt --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz'
+
 
 #增加以下条件断点
 # break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx==4400
@@ -84,6 +85,23 @@ gdb  --args /app/qemu/build-v8.2.2/qemu-system-x86_64 -nographic  -append "conso
 ```shell
 #只好更换大范围gdb断点
 # break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx>=4000 || (int)_wfCallIdx<=4400
+
+```
+
+```shell
+#不在范围 4200~4300
+cat  << 'EOF' > gdb_script.txt
+break _wrap_ffi_call___callIdx__inc if (int)_wfCallIdx>=4290 && (int)_wfCallIdx<=4300
+commands 1
+  printf "_wfCallIdx=%d\n",(int)_wfCallIdx
+  exit
+end
+
+run
+
+EOF
+
+GDB_qemu_linux4
 
 ```
 
