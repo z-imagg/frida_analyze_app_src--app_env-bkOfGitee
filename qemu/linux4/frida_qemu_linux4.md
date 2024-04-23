@@ -42,7 +42,7 @@ docker exec -it frida_anlz_ap  bash
 #readelf --symbols /app/qemu/build/qemu-system-x86_64 | egrep "main$"
 # 37431: 00000000003153f0    23 FUNC    GLOBAL DEFAULT   16 main
 
-bash -x /fridaAnlzAp/main/fridaJs_runApp.sh
+bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh
 ```
 其.ts中已经写死了如下 目标应用:
 ```txt
