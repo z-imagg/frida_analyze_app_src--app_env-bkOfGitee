@@ -36,7 +36,16 @@ bash /app/cmd-wrap/script/remove_interceptor.sh
 
 qemu运行linux4
 ```shell
-/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 \
+#qemu显示linux4中函数地址的日志
+-d exec,int,cpu -D qemu.log  \
+-nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
 
 ```
+
+
+
+
+qemu显示linux4中函数地址的日志, http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md
+
 其他, http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/misc.md
