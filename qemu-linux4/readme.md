@@ -1,4 +1,7 @@
 
+http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/readme.md
+
+
 科学上网 克隆git仓库、递归克隆子仓库
 ```shell
 source  /app/wiki/computer/bash_completion/bash_completion-gitproxy.md.sh
