@@ -1,7 +1,9 @@
 qemu显示linux4中函数地址的日志:
 ```/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -d exec,int,cpu -D qemu.log```
 
+发现过程如下:
 
+1.
 ```./x86_64-softmmu/qemu-system-x86_64 --help|grep log```
 ```
 -d item1,...    enable logging of specified items (use '-d help' for a list of log items)
@@ -20,6 +22,7 @@ cpu             show CPU registers before entering a TB (lots of logs)
 ...
 ```
 
+2.
 以下搜索 ```CPU_LOG_EXEC```
 
 https://gitee.com/imagg/qemu--qemu/blob/v5.0.0/util/log.c
