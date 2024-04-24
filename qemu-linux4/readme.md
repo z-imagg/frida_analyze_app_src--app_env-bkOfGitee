@@ -13,6 +13,12 @@ git config --global --unset https.proxy
 ```
 
 qemu-v5.0.0 禁止tcg解释器 编译步骤
+
+可选，启用拦截器
+```shell
+bash -x /app/cmd-wrap/script/cmd_setup.sh
+```
+
 ```shell
 #编译步骤
 buildDir="/app/qemu/build-v5.0.0" && \
@@ -21,9 +27,11 @@ rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 ../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-debug-tcg  && \ 
 make -j4
 # make install
+```
 
-
-
+可选，移除拦截器
+```shell
+bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 
 
