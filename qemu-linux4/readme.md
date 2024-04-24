@@ -34,5 +34,9 @@ make -j4
 bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 
+qemu运行linux4
+```shell
+/app/qemu/build-v5.0.0/qemu-system-x86_64 -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
 
+```
 其他, http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/misc.md
