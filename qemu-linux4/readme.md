@@ -27,4 +27,4 @@ make -j4
 ```
 
 
-其他
+其他, http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/misc.md
