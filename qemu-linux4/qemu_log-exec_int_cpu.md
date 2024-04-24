@@ -38,6 +38,7 @@ const QEMULogItem qemu_log_items[] = {
 ```
 
 
+###### cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr
 https://gitee.com/imagg/qemu--qemu/blob/v5.0.0/accel/tcg/cpu-exec.c
 
 ```cpp
