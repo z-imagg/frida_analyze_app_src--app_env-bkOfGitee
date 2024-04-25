@@ -136,7 +136,7 @@ apt install -y sudo
 ```
 
 ```shell
-source /app/cmd-wrap/script/env_prepare.sh
+#source /app/cmd-wrap/script/env_prepare.sh #已经在frida_anlz_ap:0.1_prv 内执行过了
 bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
