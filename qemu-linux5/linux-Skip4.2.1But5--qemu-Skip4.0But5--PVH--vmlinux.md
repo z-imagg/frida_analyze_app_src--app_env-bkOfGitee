@@ -5,7 +5,7 @@
 - https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
 
 实现条件: 
-- qemu >= 4.0
+- qemu >= 4.0 . 放弃4.0而用5.0, 因为4.0编译总是报错 ```config-temp/qemu-conf.c:2:10: fatal error: qnio/qnio_api.h: No such file or director```
 - linux >=4.21, 开启CONFIG_PVH=y  . 找不到4.21, 用其下一个版本5.0,  
 
 ##### 编译linux-5.0
