@@ -126,7 +126,7 @@ make -j4
 
 1. qemu启动linux+busybox 后 等待gdb连接
 ```shell
-/app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386 -gdb tcp::1234 -S  -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/linux-stable/initRamFsHome//initramfs-busybox-i686.cpio.tar.gz
+/app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386 -gdb tcp::1234 -S  -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/linux-stable/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
 
 #等待gdb连接
 
