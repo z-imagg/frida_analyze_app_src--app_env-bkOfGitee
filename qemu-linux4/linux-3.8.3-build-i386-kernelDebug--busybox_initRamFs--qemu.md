@@ -99,7 +99,7 @@ apt install -y build-essential python3-venv python3-pip  ninja-build pkg-config 
 pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
 
 #  qemu 5.0.0 、 6.2.0  需要的依赖，  qemu v8.2.2 不需要
-sudo apt install libpixman-1-dev  libpixman-1-0  
+apt install -y libpixman-1-dev  libpixman-1-0  
 
 ```
 
