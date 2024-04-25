@@ -76,8 +76,7 @@ cp busybox-i686 init $RT/ &&  cd $RT  && \
 # 创建 initrd
 { find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  )
 ```
-http://giteaz:3000/bal/bal/raw/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init
-
+http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init
 
 ##### 失败记录
 
