@@ -171,7 +171,7 @@ bash /app/cmd-wrap/script/remove_interceptor.sh
 
 
 
-##### qemu启动vmlinux(卡在'Booting from ROM...')
+##### qemu启动vmlinux
 
 若用x86_64的qemu 并 配合 x86_64的vmlinux, 则qemu正常启动linux内核
 ```shell
@@ -187,4 +187,39 @@ Booting from ROM..  #卡在这里， 实际是 屏幕在不断闪烁
 ```
 
 
+##### qemu启动vmlinux 并在qemu视角中通过调试符号看到linux-5.11内核源码中的函数名字
 
+```shell
+ /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/vmlinux     -initrd /bal/linux-stable/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
+
+```
+
+选项d可以是列表 比如 ``` -d exec,int,cpu ```， 帮助请看 ```qemu-system-x86_64  -d --help```
+
+
+```shell
+grep -E  "^Trace .+\] .+$" qemu.log | head -n 5  
+# Trace 0: 0x7e5a3817fe40 [0000000000000000/ffffffff810006c0/0xc090] early_setup_idt
+# Trace 0: 0x7e5a38180a80 [0000000000000000/ffffffff82d2647a/0xc290] x86_64_start_kernel
+# Trace 0: 0x7e5a38180c40 [0000000000000000/ffffffff82d26490/0xc290] x86_64_start_kernel
+# Trace 0: 0x7e5a38180ec0 [0000000000000000/ffffffff82d2615a/0xc290] reset_early_page_tables
+# Trace 0: 0x7e5a381810c0 [0000000000000000/ffffffff82d26175/0xc290] reset_early_page_tables
+```
+行末尾的函数名 比如 early_setup_idt, 正是 [qemu.git/v5.0.0/accel/tcg/cpu-exec.c](https://gitee.com/imagg/qemu--qemu/blob/v5.0.0/accel/tcg/cpu-exec.c) 中的cpu_tb_exec 函数中的 ```lookup_symbol(itb->pc)```的取值
+
+```cpp
+static inline tcg_target_ulong cpu_tb_exec(CPUState *cpu, TranslationBlock *itb)
+{
+    //...
+
+    qemu_log_mask_and_addr(CPU_LOG_EXEC,  //
+    itb->pc,
+                           "Trace %d: %p ["
+                           TARGET_FMT_lx "/" TARGET_FMT_lx "/%#x] %s\n",
+                           cpu->cpu_index, itb->tc.ptr,
+                           itb->cs_base, itb->pc, itb->flags,
+                           lookup_symbol(itb->pc));
+```
+
+
+ 这里期望了很久，也没看到```lookup_symbol(itb->pc)```的取值 [cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md#cpu-execccpu_tb_execqemu_log_mask_and_addr)
