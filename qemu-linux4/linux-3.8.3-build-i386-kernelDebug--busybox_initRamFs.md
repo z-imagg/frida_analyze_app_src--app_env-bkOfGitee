@@ -64,6 +64,8 @@ linux-4.14-y编译后,  任何地方都没有文件vmlinux
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
 
+wget http://giteaz:3000/bal/bal/raw/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init
+
 # 执行 cpio_gzip 以 生成 initRamFS
 initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
 RT=initramfs && \
