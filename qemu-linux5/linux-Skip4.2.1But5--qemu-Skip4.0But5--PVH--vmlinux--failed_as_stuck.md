@@ -1,5 +1,9 @@
 目标: qemu加载vmlinux
 
+结果：qemu启动vmlinux 卡在'Booting from ROM...'， 
+
+收获：虽然启动卡住了， 但 至少说明 vmlinux中的PVH是被qemu-5认可的
+
 参考:  
 - https://stefano-garzarella.github.io/posts/2019-08-23-qemu-linux-kernel-pvh/
 - https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
@@ -155,26 +159,6 @@ qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter--disable-tcg.sh](http
 bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 
-*softmmu/qemu中竟然没有load_symbols,为何？ 难道是inline了？不像
-```shell
-readelf --symbols /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386  | grep load_symbols
-readelf --symbols /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64  | grep load_symbols
-```
-而 disas.c:/lookup_symbol 就是去查询 全局变量 disas.c:/syminfos 的
-
-linux-user/elfload.c:/load_symbols 填充全局变量  disas.c:/syminfos
-
-qemu中竟然没有load_symbols, 因此 全局变量 disas.c:/syminfos 为 空 
-
-
-
-
-linux-user/qemu有load_symbols
-```shell
-readelf --symbols /app/qemu/build-v5.0.0/i386-linux-user/qemu-i386  | grep load_symbols
-#   2750: 00000000001076c0   717 FUNC    LOCAL  DEFAULT   15 load_symbols
-```
-
 
 
 
@@ -191,5 +175,8 @@ SeaBIOS (version rel-1.13.0-0-gf21b5a4aeb02-prebuilt.qemu.org)
 iPXE (http://ipxe.org) 00:02.0 C000 PCI2.10 PnP PMM+07F907B0+07EF07B0 C000
 Booting from ROM..  #卡在这里， 实际是 屏幕在不断闪烁
 ```
+
+
+虽然启动卡住了， 但 至少说明 vmlinux中的PVH是被qemu-5认可的
 
 
