@@ -24,30 +24,6 @@ cd /bal/linux-stable/include/linux/; ls compiler-gcc*
 # compiler-gcc.h  compiler-gcc3.h  compiler-gcc4.h
 ```
 
-ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
-
-1. ubuntu 22.04编译linux-3.8.3报错:
-```shell
-#0. 编译linux内核步骤
-
-#include/linux/compiler-gcc.h:100:1: fatal error: linux/compiler-gcc11.h: No such file or directory
-```
-
-
-
-2. ubuntu 16.04编译linux-3.8.3报错:
-```shell
-docker pull ubuntu:16.04
-docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
-docker exec -it u14  bash
-
-
-#0. 编译linux内核步骤
-#include/linux/compiler-gcc.h:100:30: fatal error: linux/compiler-gcc5.h: No such file or directory
-
-
-
-```
 
 3. ubuntu 14.04 正常编译 linux-3.8.3:
 ```shell
@@ -78,3 +54,34 @@ file arch/x86/boot/bzImage
 linux-4.14-y编译后,  任何地方都没有文件vmlinux  
 
 但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
+
+
+____
+
+以下是失败的尝试
+
+
+ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
+
+1. ubuntu 22.04编译linux-3.8.3报错:
+```shell
+#0. 编译linux内核步骤
+
+#include/linux/compiler-gcc.h:100:1: fatal error: linux/compiler-gcc11.h: No such file or directory
+```
+
+
+
+2. ubuntu 16.04编译linux-3.8.3报错:
+```shell
+docker pull ubuntu:16.04
+docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
+docker exec -it u14  bash
+
+
+#0. 编译linux内核步骤
+#include/linux/compiler-gcc.h:100:30: fatal error: linux/compiler-gcc5.h: No such file or directory
+
+
+
+```
