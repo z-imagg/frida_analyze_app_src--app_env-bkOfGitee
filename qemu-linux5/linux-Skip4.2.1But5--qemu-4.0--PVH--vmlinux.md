@@ -31,10 +31,17 @@ docker exec -it u16  bash
 
 ```shell
 apt update
-apt install -y build-essential flex bison  libncurses5-dev
+apt install -y build-essential  
+
 #libncurses5-dev被menuconfig需要
+apt install -y libncurses5-dev
+
 #flex bison 被linux-5.0需要,  但linux-4.14-y不需要
- 
+#解决报错: 找不到 flex
+apt install -y flex
+#解决报错: 找不到 bison
+apt install -y bison
+
 #解决报错: 找不到 ssl/bio.h
 apt install -y libssl-dev
 #解决报错: 找不到bc
