@@ -1,3 +1,7 @@
+#解决报错
+apt install -y libelf-dev 
+
+#编译步骤
 cd /bal/linux-stable/ && \
 make mrproper && \
 make clean && \
