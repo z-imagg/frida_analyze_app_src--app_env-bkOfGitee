@@ -95,6 +95,23 @@ ls -lh $initrdF
 [init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
 [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
 
+##### ubuntu22下编译qemu-v5.0.0
+```shell
+docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -itd ubuntu:22.04
+docker exec -it u22  bash
+
+```
+
+```shell
+#编译步骤
+buildDir="/app/qemu/build-v5.0.0" && \
+rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
+#  以下三行为编译步骤
+../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-debug-tcg  && \ 
+make -j4
+# make install
+
+```
 
 ##### qemu启动linux+busybox
 
