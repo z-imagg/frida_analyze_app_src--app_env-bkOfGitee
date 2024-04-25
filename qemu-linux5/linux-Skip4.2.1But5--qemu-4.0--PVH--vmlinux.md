@@ -4,12 +4,7 @@ linux-4.21找不到，其下一个版本是linux-5.0
 
 linux-5.0, 2019年3月3日发布， 最佳匹配时刻估计是ubuntu 16.04
 
-基本依赖安装
-```shell
-apt update
-apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential libncurses5-dev
-#libncurses5-dev被menuconfig需要
-```
+
 
 0. 编译linux内核步骤
 
@@ -36,7 +31,10 @@ docker exec -it u16  bash
 
 ```shell
 apt update
-apt install -y build-essential 
+apt install -y build-essential flex bison  libncurses5-dev
+#libncurses5-dev被menuconfig需要
+#flex bison 被linux-5.0需要,  但linux-4.14-y不需要
+apt install -y git
 
 gcc --version
 # gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
