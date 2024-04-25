@@ -7,3 +7,7 @@ cd /app/qemu/build-v8.2.2;
 make -j4 && \
 #make install && \
 ln -s /app/qemu/build-v8.2.2 /app/qemu/build-v8.2.2-modify
+
+
+
+# --enable-debug-info 貌似没什么用
