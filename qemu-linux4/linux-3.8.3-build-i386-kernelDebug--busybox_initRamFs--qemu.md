@@ -83,6 +83,12 @@ ls -lh $initrdF
 [init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
 [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
 
+
+加cmd-wrap删除```-Wall```以避免以下错误
+```
+/app/qemu/block/vpc.c:360:51: error: array subscript 'VHDDynDiskHeader {aka struct vhd_dyndisk_header}[0]' is partly outside array bounds of 'uint8_t[512]' {aka 'unsigned char[512]'} [-Werror=array-bounds]
+```
+
 ##### ubuntu22下编译qemu-v5.0.0
 ```shell
 docker run --privileged=true --volume /app/qemu/:/app/qemu/ --volume /app/cmd-wrap/:/app/cmd-wrap/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -itd ubuntu:22.04
