@@ -115,6 +115,7 @@ apt install -y sudo
 ```
 
 ```shell
+source /app/cmd-wrap/script/env_prepare.sh
 bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
