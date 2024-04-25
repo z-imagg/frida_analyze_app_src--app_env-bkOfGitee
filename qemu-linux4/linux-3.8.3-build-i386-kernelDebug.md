@@ -7,10 +7,10 @@ apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential
 
 0. 编译linux内核步骤
 ```shell
-make mrproper
-make clean
-make ARCH=i386 CC=gcc defconfig
-make ARCH=i386 CC=gcc menuconfig
+make mrproper && \
+make clean && \
+make ARCH=i386 CC=gcc defconfig && \
+make ARCH=i386 CC=gcc menuconfig && \
 make ARCH=i386 CC=gcc -j 6  V=1
 ```
 menuconfig时，手工启用内核调试
