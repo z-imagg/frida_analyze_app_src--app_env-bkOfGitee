@@ -23,7 +23,7 @@ linux-5.0, 2019年3月3日发布， 最佳匹配时刻估计是ubuntu 16.04
 
 
 
-0. 编译linux内核步骤
+1. 编译linux内核步骤
 
 
 用[~~linux_i386__build.sh~~](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_i386__build.sh) 会导致 qemu启动vmlinux 卡在'Booting from ROM...'，,
@@ -36,7 +36,7 @@ menuconfig时， 尝试手工启用 内核调试、PVM
 
 
 
-3. ubuntu 16.04 正常编译 linux-5.0:
+2. ubuntu 16.04 正常编译 linux-5.0:
 ```shell
 docker pull ubuntu:16.04
 docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
