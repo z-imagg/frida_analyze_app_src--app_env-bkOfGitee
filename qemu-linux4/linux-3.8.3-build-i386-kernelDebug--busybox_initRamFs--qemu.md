@@ -104,11 +104,18 @@ pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
 #  qemu 5.0.0 、 6.2.0  需要的依赖，  qemu v8.2.2 不需要
 apt install -y libpixman-1-dev  libpixman-1-0  
 
+#cmd-wrap需要sudo
+apt install -y sudo 
+
 ```
 
 加cmd-wrap删除```-Wall```以避免以下错误
 ```
 /app/qemu/block/vpc.c:360:51: error: array subscript 'VHDDynDiskHeader {aka struct vhd_dyndisk_header}[0]' is partly outside array bounds of 'uint8_t[512]' {aka 'unsigned char[512]'} [-Werror=array-bounds]
+```
+
+```shell
+bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
 qemu编译步骤
@@ -119,7 +126,11 @@ rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 ../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-debug-tcg  && \ 
 make -j4
 # make install
+```
 
+
+```shell
+bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 
 ##### qemu启动linux+busybox
