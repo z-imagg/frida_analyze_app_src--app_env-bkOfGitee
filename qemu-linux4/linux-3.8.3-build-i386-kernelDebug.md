@@ -67,6 +67,11 @@ file   vmlinux
 # vmlinux: ELF 32-bit LSB  executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=175d32c27dddf299ef711c291a7dd0e8c9626832, not stripped
 
 
+ls -lh arch/x86/boot/bzImage 
+# -rw-r--r--  5.1M   arch/x86/boot/bzImage
+file arch/x86/boot/bzImage 
+# arch/x86/boot/bzImage: x86 boot sector
+
 ```
 注意:
 
