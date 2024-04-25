@@ -140,7 +140,7 @@ source /app/cmd-wrap/script/env_prepare.sh
 bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
-qemu编译步骤, [rebuild-v4.0.0--disable-tcg-interpreter--disable-tcg.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/script/rebuild-v4.0.0--disable-tcg-interpreter--enable-debug-tcg.sh)
+qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter--disable-tcg.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/script/rebuild-v5.0.0--disable-tcg-interpreter--disable-tcg.sh)
 
 - ```*-linux-user``` : 用户态模拟，  系统调用转发给物理宿主机操作系统. 因此不支持执行内核
 - ```*-softmmu```    ：全系统模拟 
