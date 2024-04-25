@@ -74,6 +74,8 @@ F=/bal/linux-stable/vmlinux; dk_cp_u14_to_u22
 ##### busybox作为initramfs
 
 ```shell
+cd /bal/bldLinux4RunOnBochs/
+
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
 
@@ -93,6 +95,14 @@ ls -lh $initrdF
 [init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
 [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
 
+
+##### qemu启动linux+busybox
+
+```shell
+/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -d exec,int,cpu -D qemu.log  -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+
+
+```
 ##### 失败记录
 
 
