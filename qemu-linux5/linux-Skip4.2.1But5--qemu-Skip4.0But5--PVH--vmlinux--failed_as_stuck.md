@@ -21,7 +21,11 @@ linux-5.0, 2019年3月3日发布， 最佳匹配时刻估计是ubuntu 16.04
 
 0. 编译linux内核步骤
 
-http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_build.sh
+
+用[~~linux_i386__build.sh~~](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_i386__build.sh) 会导致 qemu启动vmlinux 卡在'Booting from ROM...'，,
+
+用[linux_x86_64__build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_x86_64__build.sh)则qemu正常启动
+
 
 menuconfig时， 尝试手工启用 内核调试、PVM
 
