@@ -12,13 +12,9 @@ apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential l
 ```
 
 0. 编译linux内核步骤
-```shell
-make mrproper && \
-make clean && \
-make ARCH=i386 CC=gcc defconfig && \
-make ARCH=i386 CC=gcc menuconfig && \
-make ARCH=i386 CC=gcc -j 6  V=1
-```
+
+http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_build.sh
+
 menuconfig时，手工启用内核调试
 
 启用内核调试 ，这个参考对吗？   https://www.kerneltravel.net/blog/2021/debug_kernel_szp/
@@ -32,12 +28,18 @@ cd /bal/linux-stable/include/linux/; ls compiler-gcc*
 
 3. ubuntu 14.04 正常编译 linux-3.8.3:
 ```shell
-docker pull ubuntu:14.04
-docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u14 --hostname u14 -itd ubuntu:14.04
-docker exec -it u14  bash
+docker pull ubuntu:16.04
+docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
+docker exec -it u16  bash
+
+```
+
+```shell
+apt update
+apt install -y build-essential 
 
 gcc --version
-# gcc (Ubuntu 4.8.4-2ubuntu1~14.04.4) 4.8.4
+# gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
 
 #0. 编译linux内核步骤
 
