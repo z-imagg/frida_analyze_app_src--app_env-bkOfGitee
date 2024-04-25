@@ -5,7 +5,7 @@
 - https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
 
 实现条件: 
-- qemu >=0 4.0
+- qemu >= 4.0
 - linux >=4.21, 开启CONFIG_PVH=y  . 找不到4.21, 用其下一个版本5.0,  
 
 ##### 编译linux-5.0
@@ -19,18 +19,12 @@ linux-5.0, 2019年3月3日发布， 最佳匹配时刻估计是ubuntu 16.04
 
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_build.sh
 
-menuconfig时，手工启用内核调试
-
-启用内核调试 ，这个参考对吗？   https://www.kerneltravel.net/blog/2021/debug_kernel_szp/
+menuconfig时， 尝试手工启用 内核调试、PVM
 
 
-```shell
-cd /bal/linux-stable/include/linux/; ls compiler-gcc*
-# compiler-gcc.h  compiler-gcc3.h  compiler-gcc4.h
-```
 
 
-3. ubuntu 14.04 正常编译 linux-3.8.3:
+3. ubuntu 16.04 正常编译 linux-5.0:
 ```shell
 docker pull ubuntu:16.04
 docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
@@ -57,7 +51,7 @@ apt install -y libssl-dev
 apt install -y bc
 
 #工具
-apt install -y git
+apt install -y git file
 
 gcc --version
 # gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
@@ -66,23 +60,20 @@ gcc --version
 
 #/bal/linux-stable/
 ls -lh  vmlinux
-# -rwxr-xr-x   15M   vmlinux
-file   vmlinux
-# vmlinux: ELF 32-bit LSB  executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=175d32c27dddf299ef711c291a7dd0e8c9626832, not stripped
+# -rwxr-xr-x   22M  vmlinux
 
+file   vmlinux
+# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
 
 ls -lh arch/x86/boot/bzImage 
-# -rw-r--r--  5.1M   arch/x86/boot/bzImage
+# -rw-r--r--   7.5M   arch/x86/boot/bzImage
+
 file arch/x86/boot/bzImage 
-# arch/x86/boot/bzImage: x86 boot sector
+# arch/x86/boot/bzImage: Linux kernel x86 boot executable bzImage, version 5.0.0 (root@u16) #1 SMP Thu Apr 25 11:06:09 UTC 2024, RO-rootFS, swap_dev 0x7, Normal VGA
+
 
 ```
-注意:
 
-linux-4.14-y编译后,  任何地方都没有文件vmlinux  
-
-但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
- 
 
 ##### busybox作为initramfs
 
