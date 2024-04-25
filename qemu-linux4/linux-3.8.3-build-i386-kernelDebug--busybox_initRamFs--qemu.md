@@ -125,6 +125,9 @@ bash  /app/cmd-wrap/script/cmd_setup.sh
 
 qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/script/rebuild-v5.0.0--disable-tcg-interpreter.sh)
 
+- ```*-linux-user``` : 用户态模拟，  系统调用转发给物理宿主机操作系统. 因此不支持执行内核
+- ```*-softmmu```    ：全系统模拟 
+
 
 
 ```shell
