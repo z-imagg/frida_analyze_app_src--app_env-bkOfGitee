@@ -104,7 +104,8 @@ docker exec -it u22  bash
 
 ```shell
 apt-get update 
-apt-get install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3 build-essential python3-venv
+apt-get install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3 build-essential python3-venv python3-pip
+pip install ninja
 ```
 
 ```shell
