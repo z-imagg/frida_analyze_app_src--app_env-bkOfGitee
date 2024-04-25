@@ -25,6 +25,7 @@ source  /app/wiki/computer/bash_completion/bash_completion-gitproxy.md.sh
 git config --global http.proxy socks5://westgw:7890 ; 
 git config --global https.proxy socks5://westgw:7890  ; 
 git clone -b v5.0.0 --recurse-submodules https://github.com/qemu/qemu.git  /app/qemu/;    
+git --git-dir=/app/qemu/.git/ submodule    update --recursive --init;
 git config --global --unset http.proxy ; 
 git config --global --unset https.proxy
 
