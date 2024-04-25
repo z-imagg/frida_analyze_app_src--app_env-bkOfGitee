@@ -1,4 +1,6 @@
 
+##### 编译linux-3.8.3
+
 基本依赖安装
 ```shell
 apt update
@@ -56,6 +58,21 @@ linux-4.14-y编译后,  任何地方都没有文件vmlinux
 但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
 
 
+##### busybox制作
+
+```shell
+wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
+chmod +x busybox-i686
+
+# 执行 cpio_gzip 以 生成 initRamFS
+initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
+RT=initramfs && \
+( rm -frv $RT &&   mkdir $RT && \
+mkdir -pv $RT/{bin,sbin,etc,proc,sys,dev} && \
+cp busybox-i686 init $RT/ &&  cd $RT  && \
+# 创建 initrd
+{ find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  )
+```
 ____
 
 以下是失败的尝试
