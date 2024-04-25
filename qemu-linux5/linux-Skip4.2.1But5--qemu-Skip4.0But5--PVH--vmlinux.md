@@ -51,7 +51,7 @@ apt install -y libssl-dev
 apt install -y bc
 
 #工具
-apt install -y git file
+apt install -y git file cpio wget 
 
 gcc --version
 # gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
