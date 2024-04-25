@@ -1,10 +1,14 @@
 目标: qemu加载vmlinux
 
-结果：qemu启动vmlinux 卡在'Booting from ROM...'， 
+结果：（只验证了qemu-v8.2.2+linux-5.11, 本文所用版本未验证）
+    - x86_64的qemu 正常启动 x86_64的启用PVH的vmlinux 
+    - i386或x86_x64的qemu 无法启动 i386的启用PVH的vmlinux,  卡在'Booting from ROM...'， 
 
-收获：虽然启动卡住了， 但 至少说明 vmlinux中的PVH是被qemu-5认可的
+
+
 
 参考:  
+- https://blog.cyyself.name/setup-linux-kernel-debug-environment/  （主要）
 - https://stefano-garzarella.github.io/posts/2019-08-23-qemu-linux-kernel-pvh/
 - https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
 
@@ -169,18 +173,18 @@ bash /app/cmd-wrap/script/remove_interceptor.sh
 
 ##### qemu启动vmlinux(卡在'Booting from ROM...')
 
-
+若用x86_64的qemu 并 配合 x86_64的vmlinux, 则qemu正常启动linux内核
 ```shell
-/app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386     -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/vmlinux    -vga none -display none      -serial mon:stdio 
+ /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64     -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/vmlinux     -initrd /bal/linux-stable/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
+
 ```
 
+若用 i386或x86_x64 的qemu 并 配合 i386的vmlinux ，  ```/app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386 -kernel  /bal/linux-stable/vmlinux  ```， 则qemu启动linux内核失败并卡住 如下：
 ```
 SeaBIOS (version rel-1.13.0-0-gf21b5a4aeb02-prebuilt.qemu.org)
 iPXE (http://ipxe.org) 00:02.0 C000 PCI2.10 PnP PMM+07F907B0+07EF07B0 C000
 Booting from ROM..  #卡在这里， 实际是 屏幕在不断闪烁
 ```
 
-
-虽然启动卡住了， 但 至少说明 vmlinux中的PVH是被qemu-5认可的
 
 
