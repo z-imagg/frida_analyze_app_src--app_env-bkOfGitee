@@ -84,10 +84,7 @@ ls -lh $initrdF
 [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
 
 
-加cmd-wrap删除```-Wall```以避免以下错误
-```
-/app/qemu/block/vpc.c:360:51: error: array subscript 'VHDDynDiskHeader {aka struct vhd_dyndisk_header}[0]' is partly outside array bounds of 'uint8_t[512]' {aka 'unsigned char[512]'} [-Werror=array-bounds]
-```
+
 
 ##### ubuntu22下编译qemu-v5.0.0
 ```shell
@@ -107,6 +104,11 @@ pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
 #  qemu 5.0.0 、 6.2.0  需要的依赖，  qemu v8.2.2 不需要
 apt install -y libpixman-1-dev  libpixman-1-0  
 
+```
+
+加cmd-wrap删除```-Wall```以避免以下错误
+```
+/app/qemu/block/vpc.c:360:51: error: array subscript 'VHDDynDiskHeader {aka struct vhd_dyndisk_header}[0]' is partly outside array bounds of 'uint8_t[512]' {aka 'unsigned char[512]'} [-Werror=array-bounds]
 ```
 
 ```shell
