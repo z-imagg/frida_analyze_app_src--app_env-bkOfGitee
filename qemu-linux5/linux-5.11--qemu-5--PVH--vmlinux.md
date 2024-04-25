@@ -208,3 +208,15 @@ static inline tcg_target_ulong cpu_tb_exec(CPUState *cpu, TranslationBlock *itb)
 
 
  这里期望了很久，也没看到```lookup_symbol(itb->pc)```的取值 [cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md#cpu-execccpu_tb_execqemu_log_mask_and_addr)
+
+
+ 但是,  还是有很多行```lookup_symbol(itb->pc)```取值为空串 ，  即 很多行的地址 不对应  vmlinux中的函数符号
+
+ ```shell
+ grep  "Trace " qemu.log | head -n 5
+# Trace 0: 0x7d4918000100 [00000000ffff0000/00000000fffffff0/0x40] 
+# Trace 0: 0x7d4918000240 [00000000000f0000/00000000000fe05b/0x40] 
+# Trace 0: 0x7d4918000400 [00000000000f0000/00000000000fe066/0x40] 
+# Trace 0: 0x7d4918000540 [00000000000f0000/00000000000fe06a/0x48] 
+# Trace 0: 0x7d4918000680 [00000000000f0000/00000000000fe070/0x40]
+ ```
