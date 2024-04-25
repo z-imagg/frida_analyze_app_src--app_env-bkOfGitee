@@ -1,26 +1,30 @@
 目标: qemu加载vmlinux
 
-结果：（只验证了qemu-v8.2.2+linux-5.11, 本文所用版本未验证）
+结果：
     - x86_64的qemu 正常启动 x86_64的启用PVH的vmlinux 
     - i386或x86_x64的qemu 无法启动 i386的启用PVH的vmlinux,  卡在'Booting from ROM...'， 
 
-
+已验证正常启动的版本组合:
+    - qemu-v8.2.2+linux-5.11
+    - qemu-v5.0.0+linux-5.11
+    
 
 
 参考:  
-- https://blog.cyyself.name/setup-linux-kernel-debug-environment/  （主要）
-- https://stefano-garzarella.github.io/posts/2019-08-23-qemu-linux-kernel-pvh/
-- https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
+1. https://blog.cyyself.name/setup-linux-kernel-debug-environment/  （主要，其用的linux-5.11）
+2. https://stefano-garzarella.github.io/posts/2019-08-23-qemu-linux-kernel-pvh/
+3. https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
 
 实现条件: 
 - qemu >= 4.0 . 放弃4.0而用5.0, 因为4.0编译总是报错 ```config-temp/qemu-conf.c:2:10: fatal error: qnio/qnio_api.h: No such file or director```
-- linux >=4.21, 开启CONFIG_PVH=y  . 找不到4.21, 用其下一个版本5.0,  
+- linux >=4.21, 开启CONFIG_PVH=y  . 找不到4.21, 其下一个版本为5.0,   这里用根据参考1 选用linux-5.11
 
 ##### 编译linux-5.0
 linux-4.21找不到，其下一个版本是linux-5.0   
 
 linux-5.0, 2019年3月3日发布， 最佳匹配时刻估计是ubuntu 16.04
 
+linux-5.11, 大约2021年2月14日， 是本文选用版本
 
 
 1. 编译linux内核步骤
@@ -36,7 +40,7 @@ menuconfig时， 尝试手工启用 内核调试、PVM
 
 
 
-2. ubuntu 16.04 正常编译 linux-5.0:
+2. ubuntu 16.04 正常编译 linux-5.11:
 ```shell
 docker pull ubuntu:16.04
 docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
@@ -198,12 +202,13 @@ Booting from ROM..  #卡在这里， 实际是 屏幕在不断闪烁
 
 
 ```shell
-grep -E  "^Trace .+\] .+$" qemu.log | head -n 5  
-# Trace 0: 0x7e5a3817fe40 [0000000000000000/ffffffff810006c0/0xc090] early_setup_idt
-# Trace 0: 0x7e5a38180a80 [0000000000000000/ffffffff82d2647a/0xc290] x86_64_start_kernel
-# Trace 0: 0x7e5a38180c40 [0000000000000000/ffffffff82d26490/0xc290] x86_64_start_kernel
-# Trace 0: 0x7e5a38180ec0 [0000000000000000/ffffffff82d2615a/0xc290] reset_early_page_tables
-# Trace 0: 0x7e5a381810c0 [0000000000000000/ffffffff82d26175/0xc290] reset_early_page_tables
+grep -E  "^Trace .+\] .+$" qemu.log | head -n 5
+# Trace 0: 0x7d491817fe40 [0000000000000000/ffffffff810006c0/0xc090] early_setup_idt
+# Trace 0: 0x7d4918180a80 [0000000000000000/ffffffff82d2647a/0xc290] x86_64_start_kernel
+# Trace 0: 0x7d4918180c40 [0000000000000000/ffffffff82d26490/0xc290] x86_64_start_kernel
+# Trace 0: 0x7d4918180ec0 [0000000000000000/ffffffff82d2615a/0xc290] reset_early_page_tables
+# Trace 0: 0x7d49181810c0 [0000000000000000/ffffffff82d26175/0xc290] reset_early_page_tables
+
 ```
 行末尾的函数名 比如 early_setup_idt, 正是 [qemu.git/v5.0.0/accel/tcg/cpu-exec.c](https://gitee.com/imagg/qemu--qemu/blob/v5.0.0/accel/tcg/cpu-exec.c) 中的cpu_tb_exec 函数中的 ```lookup_symbol(itb->pc)```的取值
 
