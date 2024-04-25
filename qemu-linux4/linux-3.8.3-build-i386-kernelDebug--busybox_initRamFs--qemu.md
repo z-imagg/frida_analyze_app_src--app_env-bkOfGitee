@@ -85,7 +85,7 @@ ls -lh $initrdF
 
 ##### ubuntu22下编译qemu-v5.0.0
 ```shell
-docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -itd ubuntu:22.04
+docker run --privileged=true --volume /app/qemu/:/app/qemu/ --volume /app/cmd-wrap/:/app/cmd-wrap/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -itd ubuntu:22.04
 docker exec -it u22  bash
 
 ```
