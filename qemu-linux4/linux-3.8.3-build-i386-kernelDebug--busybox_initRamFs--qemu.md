@@ -56,20 +56,7 @@ file arch/x86/boot/bzImage
 linux-4.14-y编译后,  任何地方都没有文件vmlinux  
 
 但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
-
-
-```shell
-function dk_cp_u14_to_u22() {
-local tmpF=/tmp/$(basename $F)
-docker cp u14:$F $tmpF
-docker cp $tmpF frida_anlz_ap:$F
-#frida_anlz_ap是ubuntu22.04
-}
-
-F=/bal/linux-stable/arch/x86/boot/bzImage; dk_cp_u14_to_u22 
-F=/bal/linux-stable/vmlinux; dk_cp_u14_to_u22 
-
-```
+ 
 
 ##### busybox作为initramfs
 
