@@ -26,6 +26,8 @@ ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
 
 1. ubuntu 22.04下报错:
 ```shell
+#0. 编译linux内核步骤
+
 #include/linux/compiler-gcc.h:100:1: fatal error: linux/compiler-gcc11.h: No such file or directory
 ```
 
@@ -35,7 +37,10 @@ ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
 ```shell
 docker pull ubuntu:16.04
 docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
+docker exec -it u14  bash
 
+
+#0. 编译linux内核步骤
 #include/linux/compiler-gcc.h:100:30: fatal error: linux/compiler-gcc5.h: No such file or directory
 
 
@@ -46,6 +51,7 @@ docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --n
 ```shell
 docker pull ubuntu:14.04
 docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u14 --hostname u14 -itd ubuntu:14.04
+docker exec -it u14  bash
 
-
+#0. 编译linux内核步骤
 ```
