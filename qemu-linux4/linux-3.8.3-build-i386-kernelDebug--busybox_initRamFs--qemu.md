@@ -111,8 +111,8 @@ apt install -y libpixman-1-dev  libpixman-1-0
 /app/qemu/block/vpc.c:360:51: error: array subscript 'VHDDynDiskHeader {aka struct vhd_dyndisk_header}[0]' is partly outside array bounds of 'uint8_t[512]' {aka 'unsigned char[512]'} [-Werror=array-bounds]
 ```
 
+qemu编译步骤
 ```shell
-#编译步骤
 buildDir="/app/qemu/build-v5.0.0" && \
 rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 #  以下三行为编译步骤
