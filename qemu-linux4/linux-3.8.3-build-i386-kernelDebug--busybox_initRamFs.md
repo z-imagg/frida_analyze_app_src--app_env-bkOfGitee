@@ -75,7 +75,7 @@ cp busybox-i686 init $RT/ &&  cd $RT  && \
 ```
 ____
 
-以下是失败的尝试
+##### 以下是失败的尝试
 
 
 ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
