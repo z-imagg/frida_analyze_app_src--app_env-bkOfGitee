@@ -59,4 +59,17 @@ gcc --version
 # gcc (Ubuntu 4.8.4-2ubuntu1~14.04.4) 4.8.4
 
 #0. 编译linux内核步骤
+
+#/bal/linux-stable/
+ls -lh  vmlinux
+# -rwxr-xr-x   15M   vmlinux
+file   vmlinux
+# vmlinux: ELF 32-bit LSB  executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=175d32c27dddf299ef711c291a7dd0e8c9626832, not stripped
+
+
 ```
+注意:
+
+linux-4.14-y编译后,  任何地方都没有文件vmlinux  
+
+但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
