@@ -35,6 +35,8 @@ apt install -y build-essential flex bison  libncurses5-dev
 #libncurses5-dev被menuconfig需要
 #flex bison 被linux-5.0需要,  但linux-4.14-y不需要
 apt install -y git
+ 
+apt install -y libssl-dev
 
 gcc --version
 # gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
