@@ -99,10 +99,11 @@ ls -lh $initrdF
 ##### qemu启动linux+busybox
 
 ```shell
-/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -d exec,int,cpu -D qemu.log  -nographic  -append "console=ttyS0"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
-
-
+/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -d exec -D qemu.log  -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
 ```
+依旧找不到bzImage中的调试符号：
+[cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md#cpu-execccpu_tb_execqemu_log_mask_and_addr) 中的 ```lookup_symbol(itb->pc)``` 值为 空字符串 即 没找到函数符号 
+
 ##### 失败记录
 
 
