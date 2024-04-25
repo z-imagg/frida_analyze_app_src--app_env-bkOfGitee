@@ -104,8 +104,15 @@ docker exec -it u22  bash
 
 ```shell
 apt-get update 
-apt-get install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3 build-essential python3-venv python3-pip
-pip install ninja
+
+
+#安装依赖
+apt install -y build-essential python3-venv python3-pip  ninja-build pkg-config libglib2.0-dev
+pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
+
+#  qemu 6.2.0  需要的依赖，  qemu v8.2.2 不需要
+# sudo apt install libpixman-1-dev  libpixman-1-0  
+
 ```
 
 ```shell
