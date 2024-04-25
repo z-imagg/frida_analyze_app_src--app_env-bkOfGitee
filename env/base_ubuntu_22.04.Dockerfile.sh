@@ -10,7 +10,7 @@
 SUDO="sudo" ; { [[ $(whoami) == root ]] && SUDO="" ;} && \
 $SUDO apt-get update && \
 $SUDO apt-get install -y  sudo && \
-sudo apt-get install -y axel wget curl  net-tools git  iputils-ping python3 python3-urllib3 && \
+sudo apt-get install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3 && \
 true ;} \
 || false #dk# '''
 
