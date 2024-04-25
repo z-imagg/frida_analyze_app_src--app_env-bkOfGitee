@@ -138,6 +138,21 @@ make -j4
 bash /app/cmd-wrap/script/remove_interceptor.sh
 ```
 
+qemu中竟然没有load_symbols,为何？ 难道是inline了？不像
+```shell
+readelf --symbols /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64  | grep load_symbols
+```
+
+而 disas.c:/lookup_symbol 就是去查询 全局变量 disas.c:/syminfos 的
+
+linux-user/elfload.c:/load_symbols 填充全局变量  disas.c:/syminfos
+
+qemu中竟然没有load_symbols, 因此 全局变量 disas.c:/syminfos 为 空 
+
+
+
+
+
 ##### qemu启动linux+busybox
 
 ```shell
