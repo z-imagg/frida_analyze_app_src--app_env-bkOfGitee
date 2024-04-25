@@ -66,8 +66,8 @@ docker cp $tmpF frida_anlz_ap:$F
 #frida_anlz_ap是ubuntu22.04
 }
 
-dk_cp_u14_to_u22 /bal/linux-stable/arch/x86/boot/bzImage
-dk_cp_u14_to_u22 /bal/linux-stable/vmlinux
+F=/bal/linux-stable/arch/x86/boot/bzImage; dk_cp_u14_to_u22 
+F=/bal/linux-stable/vmlinux; dk_cp_u14_to_u22 
 
 ```
 
