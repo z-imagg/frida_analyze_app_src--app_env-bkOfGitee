@@ -10,9 +10,11 @@ make ARCH=i386 CC=gcc -j 6  V=1
 #若去掉 menuconfig 不会弹出修改配置菜单 
 
 
-#linux-5.0 的 menuconfig:
+#linux-5.0 的 menuconfig: 
 # 试图启用调试
 #   General --> Configure standard kernel features(expert users) --> Include all symbols in kallsyms
 #   kernel hacking --> Kernel debugging
 # 启用PVH:
 #   Processor type and features --> Linux guest support  --> Support for running PVH guests
+
+#menuconfig 生成的配置保存在文件.config中,  mrproper && clean 会删除 .config文件
