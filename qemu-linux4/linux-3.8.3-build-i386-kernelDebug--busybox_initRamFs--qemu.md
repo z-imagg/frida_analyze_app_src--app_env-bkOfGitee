@@ -138,6 +138,10 @@ qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter.sh](http://giteaz:300
 - ```*-softmmu```    ：全系统模拟 
 
 
+```shell
+#时间倒排查找出错的编译命令
+ls -lht /tmp/*errorCode* | more
+```
 
 ```shell
 bash /app/cmd-wrap/script/remove_interceptor.sh
