@@ -12,6 +12,7 @@ make ARCH=i386 CC=gcc -j 6  V=1
 
 #linux-5.0 的 menuconfig: 
 # 试图启用调试
+#   kernel hacking --> Compile-time checks and compiler options
 #   General --> Configure standard kernel features(expert users) --> Include all symbols in kallsyms
 #   kernel hacking --> Kernel debugging
 # 启用PVH:
