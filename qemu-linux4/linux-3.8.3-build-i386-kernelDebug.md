@@ -10,9 +10,10 @@ apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential
 make mrproper
 make clean
 make ARCH=i386 CC=gcc defconfig
-make ARCH=i386 CC=gcc menuconfig #这一步，启动内核调试
+make ARCH=i386 CC=gcc menuconfig
 make ARCH=i386 CC=gcc -j 6  V=1
 ```
+menuconfig时，手工启用内核调试
 
 启用内核调试 ，这个参考对吗？   https://www.kerneltravel.net/blog/2021/debug_kernel_szp/
 
