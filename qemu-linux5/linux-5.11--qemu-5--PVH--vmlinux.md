@@ -91,34 +91,14 @@ file arch/x86/boot/bzImage
 ```
 
 
-##### busybox作为initramfs
+##### 以busybox制作initramfs
 
 ```shell
 echo "10.0.4.9 giteaz westgw" | tee -a /etc/hosts
 ```
 
-```shell
-Hm=/bal/linux-stable/initRamFsHome/
-mkdir $Hm && cd $Hm
+以busybox制作initramfs, [initRamFs_create.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/initRamFs_create.sh)
 
-wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
-chmod +x busybox-i686
-
-wget http://giteaz:3000/bal/bal/raw/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init
-chmod +x init
-
-# 执行 cpio_gzip 以 生成 initRamFS
-initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
-RT=initramfs && \
-( rm -frv $RT &&   mkdir $RT && \
-mkdir -pv $RT/{bin,sbin,etc,proc,sys,dev} && \
-cp busybox-i686 init $RT/ &&  cd $RT  && \
-# 创建 initrd
-{ find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  ) && \
-ls -lh $initrdF
-```
-[init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
-[eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
 
 
 
