@@ -173,10 +173,10 @@ show architecture
 #The target architecture is set to "auto" (currently "i386").
 target remote :1234
 # Remote debugging using :1234
-b start_kernel
+break start_kernel
 continue
 #Breakpoint 1, 0xc1952627 in start_kernel ()
-bt
+backtrace
 #0  0xc1952627 in start_kernel ()
 #1  0xc19522a2 in i386_start_kernel ()
 #2  0x00000000 in ?? ()
