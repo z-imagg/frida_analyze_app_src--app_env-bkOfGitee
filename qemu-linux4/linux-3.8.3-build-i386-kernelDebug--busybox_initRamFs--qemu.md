@@ -123,6 +123,15 @@ source /app/cmd-wrap/script/env_prepare.sh
 bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
+```shell
+cd /app/qemu/
+
+#省去不断的添加信任目录 :  git config --global --add safe.directory xxx
+#  信任任何目录:
+git config --global --add safe.directory "*"
+
+```
+
 qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/script/rebuild-v5.0.0--disable-tcg-interpreter.sh)
 
 - ```*-linux-user``` : 用户态模拟，  系统调用转发给物理宿主机操作系统. 因此不支持执行内核
