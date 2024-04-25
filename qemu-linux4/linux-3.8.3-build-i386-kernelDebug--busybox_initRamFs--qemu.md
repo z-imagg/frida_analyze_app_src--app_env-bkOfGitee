@@ -61,7 +61,8 @@ linux-4.14-y编译后,  任何地方都没有文件vmlinux
 ##### busybox作为initramfs
 
 ```shell
-cd /bal/linux-stable
+Hm=/bal/linux-stable/initRamFsHome/
+mkdir $Hm && cd $Hm
 
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
