@@ -30,7 +30,7 @@ cd /bal/linux-stable/include/linux/; ls compiler-gcc*
 3. ubuntu 14.04 正常编译 linux-3.8.3:
 ```shell
 docker pull ubuntu:14.04
-docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u14 --hostname u14 -itd ubuntu:14.04
+docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u14 --hostname u14 -itd ubuntu:14.04
 docker exec -it u14  bash
 
 gcc --version
