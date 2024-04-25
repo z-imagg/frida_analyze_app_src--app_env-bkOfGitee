@@ -73,9 +73,9 @@ cp busybox-i686 init $RT/ &&  cd $RT  && \
 # 创建 initrd
 { find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  )
 ```
-____
 
-##### 以下是失败的尝试
+
+##### 失败记录
 
 
 ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
