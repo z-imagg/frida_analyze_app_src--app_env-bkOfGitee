@@ -104,6 +104,44 @@ ls -lh $initrdF
 依旧找不到bzImage中的调试符号：
 [cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md#cpu-execccpu_tb_execqemu_log_mask_and_addr) 中的 ```lookup_symbol(itb->pc)``` 值为 空字符串 即 没找到函数符号 
 
+##### gdb调试 qemu启动linux+busybox
+
+1. qemu启动linux+busybox 后 等待gdb连接
+```shell
+/app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386 -gdb tcp::1234 -S  -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/arch/x86/boot/bzImage -initrd /bal/bldLinux4RunOnBochs/initramfs-busybox-i686.cpio.tar.gz
+
+#等待gdb连接
+
+# /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386 --help
+#-S     freeze CPU at startup (use 'c' to start execution)
+```
+
+2. gdb连接 qemu
+```shell
+cd /bal/linux-stable
+gdb vmlinux
+
+# Reading symbols from vmlinux...
+# (No debugging symbols found in vmlinux)  #注意这里说没有调试符号，那说明，编译linux时调试符号没加对
+
+```
+
+```shell
+show architecture
+#The target architecture is set to "auto" (currently "i386").
+target remote :1234
+# Remote debugging using :1234
+b start_kernel
+continue
+#Breakpoint 1, 0xc1952627 in start_kernel ()
+bt
+#0  0xc1952627 in start_kernel ()
+#1  0xc19522a2 in i386_start_kernel ()
+#2  0x00000000 in ?? ()
+
+```
+
+
 ##### 失败记录
 
 
