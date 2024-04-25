@@ -58,7 +58,7 @@ linux-4.14-y编译后,  任何地方都没有文件vmlinux
 但linux-3.8.3编译后， 在源码根目录```/bal/linux-stable/```有elf文件vmlinux
 
 
-##### busybox制作
+##### busybox作为initramfs
 
 ```shell
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
