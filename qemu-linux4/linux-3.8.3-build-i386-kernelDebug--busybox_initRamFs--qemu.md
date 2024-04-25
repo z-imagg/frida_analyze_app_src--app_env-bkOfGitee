@@ -123,15 +123,8 @@ source /app/cmd-wrap/script/env_prepare.sh
 bash  /app/cmd-wrap/script/cmd_setup.sh
 ```
 
-qemu编译步骤
-```shell
-buildDir="/app/qemu/build-v5.0.0" && \
-rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
-#  以下三行为编译步骤
-../configure --target-list=i386-linux-user,i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-debug-tcg  && \ 
-make -j4
-# make install
-```
+qemu编译步骤, [rebuild-v5.0.0--disable-tcg-interpreter.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu/script/rebuild-v5.0.0--disable-tcg-interpreter.sh)
+
 
 
 ```shell
