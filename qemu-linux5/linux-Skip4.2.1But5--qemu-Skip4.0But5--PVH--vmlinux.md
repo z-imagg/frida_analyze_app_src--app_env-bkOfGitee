@@ -187,6 +187,12 @@ readelf --symbols /app/qemu/build-v5.0.0/i386-linux-user/qemu-i386  | grep load_
 依旧找不到bzImage中的调试符号：
 [cpu-exec.c/cpu_tb_exec/qemu_log_mask_and_addr](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux4/qemu_log-exec_int_cpu.md#cpu-execccpu_tb_execqemu_log_mask_and_addr) 中的 ```lookup_symbol(itb->pc)``` 值为 空字符串 即 没找到函数符号 
 
+
+```shell
+/app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64 -machine q35,accel=kvm    -nographic  -append "console=ttyS0 nokaslr"  -kernel  /bal/linux-stable/vmlinux -initrd /bal/linux-stable/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
+```
+
+
 ##### gdb调试 qemu启动linux+busybox
 
 1. qemu启动linux+busybox 后 等待gdb连接
@@ -224,31 +230,3 @@ backtrace
 
 ```
 
-
-##### 失败记录
-
-
-ubuntu版本历史 ，  https://en.wikipedia.org/wiki/Ubuntu_version_history
-
-1. ubuntu 22.04编译linux-3.8.3报错:
-```shell
-#0. 编译linux内核步骤
-
-#include/linux/compiler-gcc.h:100:1: fatal error: linux/compiler-gcc11.h: No such file or directory
-```
-
-
-
-2. ubuntu 16.04编译linux-3.8.3报错:
-```shell
-docker pull ubuntu:16.04
-docker run --privileged=true --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
-docker exec -it u14  bash
-
-
-#0. 编译linux内核步骤
-#include/linux/compiler-gcc.h:100:30: fatal error: linux/compiler-gcc5.h: No such file or directory
-
-
-
-```
