@@ -60,7 +60,7 @@ linux-4.14-y编译后,  任何地方都没有文件vmlinux
 
 ```shell
 function dk_cp_u14_to_u22() {
-local tmpF=/tmp/$F
+local tmpF=/tmp/$(basename $F)
 docker cp u14:$F $tmpF
 docker cp $tmpF frida_anlz_ap:$F
 #frida_anlz_ap是ubuntu22.04
