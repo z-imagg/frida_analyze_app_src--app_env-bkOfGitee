@@ -78,6 +78,10 @@ file arch/x86/boot/bzImage
 ##### busybox作为initramfs
 
 ```shell
+echo "10.0.4.9 giteaz westgw" | tee -a /etc/hosts
+```
+
+```shell
 Hm=/bal/linux-stable/initRamFsHome/
 mkdir $Hm && cd $Hm
 
