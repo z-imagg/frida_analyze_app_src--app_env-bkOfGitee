@@ -11,5 +11,8 @@ make ARCH=i386 CC=gcc -j 6  V=1
 
 
 #linux-5.0 的 menuconfig:
-#General --> Configure standard kernel features(expert users) --> Include all symbols in kallsyms
-#kernel hacking --> Kernel debugging
+# 试图启用调试
+#   General --> Configure standard kernel features(expert users) --> Include all symbols in kallsyms
+#   kernel hacking --> Kernel debugging
+# 启用PVH:
+#   Processor type and features --> Linux guest support  --> Support for running PVH guests
