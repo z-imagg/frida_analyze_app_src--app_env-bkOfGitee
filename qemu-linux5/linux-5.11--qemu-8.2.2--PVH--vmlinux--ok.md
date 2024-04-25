@@ -7,5 +7,4 @@
 http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux-Skip4.2.1But5--qemu-Skip4.0But5--PVH--vmlinux--failed_as_stuck.md
 
 
-
-http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_x86_64__build.sh
+[linux_build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_build.sh)  --->  [linux_x86_64__build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_x86_64__build.sh)
