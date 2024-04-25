@@ -2,7 +2,8 @@
 基本依赖安装
 ```shell
 apt update
-apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential
+apt-get install -y axel wget curl  net-tools git  iputils-ping build-essential libncurses5-dev
+#libncurses5-dev被menuconfig需要
 ```
 
 0. 编译linux内核步骤
