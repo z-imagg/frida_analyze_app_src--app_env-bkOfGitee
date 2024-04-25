@@ -1,3 +1,12 @@
+目标: qemu加载vmlinux
+
+参考:  
+- https://stefano-garzarella.github.io/posts/2019-08-23-qemu-linux-kernel-pvh/
+- https://superuser.com/questions/1451568/booting-an-uncompressed-vmlinux-kernel-in-qemu-instead-of-bzimage
+
+实现条件: 
+- qemu >=0 4.0
+- linux >=4.21, 开启CONFIG_PVH=y  . 找不到4.21, 用其下一个版本5.0,  
 
 ##### 编译linux-5.0
 linux-4.21找不到，其下一个版本是linux-5.0   
