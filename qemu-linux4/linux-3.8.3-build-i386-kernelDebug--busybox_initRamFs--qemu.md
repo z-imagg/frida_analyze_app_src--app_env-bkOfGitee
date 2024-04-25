@@ -88,8 +88,11 @@ ls -lh $initrdF
 
 ##### ubuntu22下编译qemu-v5.0.0
 ```shell
-docker run --privileged=true --volume /app/qemu/:/app/qemu/    --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -itd frida_anlz_ap:0.1_prv
+docker run --privileged=true --volume /app/qemu/:/app/qemu/    --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -it frida_anlz_ap:0.1_prv
 #frida_anlz_ap:0.1_prv 是定制的 ubuntu:22.04
+#不要-d ，等其执行完
+exit
+docker start u22
 docker exec -it u22  bash
 
 ```
