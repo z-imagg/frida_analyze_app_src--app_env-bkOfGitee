@@ -1,2 +1,4 @@
 
 linux5/ubuntu1604_lnx5bld.Dockerfile
+
+linux5/.fuse_hidden*
