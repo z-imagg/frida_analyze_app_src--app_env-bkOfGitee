@@ -1,8 +1,6 @@
-#解决报错
-apt install -y libelf-dev 
 
 #编译步骤
-cd /bal/linux-stable/ && \
+cd /fridaAnlzAp/app/linux/ && \
 make mrproper && \
 make clean && \
 make ARCH=x86_64 CC=gcc defconfig && \
