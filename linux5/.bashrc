@@ -1,6 +1,6 @@
-enterEnvMsg="welcome ubuntu16.04 Linux5 Build env"
-TipMsg="menuconfig or nconfig , please see :"
 
-echo $enterEnvMsg && \
+#使用手册文本
+source /fridaAnlzAp/app_qemu/app_bld/linux5/manual_txt.sh
 
-echo -n $TipMsg
+# 显示 使用手册文本
+echo -e "$manual_txt"

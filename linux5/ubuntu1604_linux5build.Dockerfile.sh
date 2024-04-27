@@ -7,6 +7,7 @@
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
 #dk# COPY /app/bash-simplify/local_domain_set.sh /app/bash-simplify/local_domain_set.sh
+#dk# COPY /fridaAnlzAp/app_qemu/app_bld/linux5/.bashrc ~/
 
 #dk# RUN bash -c ''' \
 { \
