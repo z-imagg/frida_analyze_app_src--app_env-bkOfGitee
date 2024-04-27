@@ -34,5 +34,7 @@ volMap=""
 $hostHasLnxRp && volMap="$volMap --volume $hostLnxRpD:$dkLnxRpD"
 # 若初次启动时，则 克隆项目代码 并 退出
 docker run -e isDkInstInit='true' $volMap  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer
-# 退出后， 若docker实例已停止 则 再次启动、并进入bash
-docker ps --filter "name=$dkInstName" || { docker start --attach $dkInstName && docker exec -it $dkInstName  /usr/bin/bash ;}
+# 退出后， 若docker实例已停止 则 再次启动docker_entry.sh
+docker ps --filter "name=$dkInstName" | grep $dkInstName || { docker start --attach  --interactive $dkInstName    ;}
+
+echo "进入docker实例${dkInstName}的bash终端:'docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash'"
