@@ -1,8 +1,9 @@
 目标: qemu加载vmlinux
 
 结果：
-    - x86_64的qemu 正常启动 x86_64的启用PVH的vmlinux 
-    - i386或x86_x64的qemu 无法启动 i386的启用PVH的vmlinux,  卡在'Booting from ROM...'， 
+- x86_64的qemu 正常启动 x86_64的启用PVH的vmlinux 
+
+- i386或x86_x64的qemu 无法启动 i386的启用PVH的vmlinux,  卡在'Booting from ROM...'， 
 
 已验证正常启动的版本组合:
     - qemu-v8.2.2+linux-5.11
@@ -32,7 +33,7 @@ linux-5.11, 大约2021年2月14日， 是本文选用版本
 
 用[~~linux_i386__build.sh~~](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_i386__build.sh) 会导致 qemu启动vmlinux 卡在'Booting from ROM...'，,
 
-用[linux_x86_64__build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/linux_x86_64__build.sh)则qemu正常启动
+用[linux_x86_64__build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh)则qemu正常启动
 
 
 menuconfig时， 尝试手工启用 内核调试、PVM
@@ -40,70 +41,46 @@ menuconfig时， 尝试手工启用 内核调试、PVM
 
 
 
-2. ubuntu 16.04 正常编译 linux-5.11:
+##### 1. ubuntu 16.04 正常编译 linux-5.11
+
+###### docker实例创建
 ```shell
 docker pull ubuntu:16.04
-docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/bal/linux-stable/  --name u16 --hostname u16 -itd ubuntu:16.04
+docker run --privileged=true --volume /app/qemu/:/app/qemu/  --volume /bal/linux-stable/:/app/linux/  --name u16 --hostname u16 -itd ubuntu:16.04
 docker exec -it u16  bash
 
 ```
 
+###### 依赖安装
+依赖安装, [ubuntu1604_linux5build.Dockerfile.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/ubuntu1604_linux5build.Dockerfile.sh)
+
 ```shell
-apt update
-apt install -y build-essential  
+bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/ubuntu1604_linux5build.Dockerfile.sh
+```
 
-#libncurses5-dev被menuconfig需要
-apt install -y libncurses5-dev
 
-#flex bison 被linux-5.0需要,  但linux-4.14-y不需要
-#解决报错: 找不到 flex
-apt install -y flex
-#解决报错: 找不到 bison
-apt install -y bison
+###### 编译linux内核步骤（单纯手工nconfig脚本）
+编译linux内核步骤（单纯手工nconfig脚本）, [linux_x86_64__build.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/tag/manual/nconfig/linux_x86_64__build.sh/linux5/linux_x86_64__build.sh)
 
-#解决报错: 找不到 ssl/bio.h
-apt install -y libssl-dev
-#解决报错: 找不到bc
-apt install -y bc
+```shell
+curl http://giteaz:3000/frida_analyze_app_src/app_bld/src/tag/manual/nconfig/linux_x86_64__build.sh/linux5/linux_x86_64__build.sh | bash
+```
 
-#工具
-apt install -y git file cpio wget 
 
-gcc --version
-# gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
+##### 2. 以busybox制作initramfs
 
-#0. 编译linux内核步骤
+以busybox制作initramfs, [initRamFs_create.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/initRamFs_create.sh)
 
-#/bal/linux-stable/
-ls -lh  vmlinux
-# -rwxr-xr-x   22M  vmlinux
 
-file   vmlinux
-# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
 
-ls -lh arch/x86/boot/bzImage 
-# -rw-r--r--   7.5M   arch/x86/boot/bzImage
+```shell
 
-file arch/x86/boot/bzImage 
-# arch/x86/boot/bzImage: Linux kernel x86 boot executable bzImage, version 5.0.0 (root@u16) #1 SMP Thu Apr 25 11:06:09 UTC 2024, RO-rootFS, swap_dev 0x7, Normal VGA
-
+bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/initRamFs_create.sh
 
 ```
 
 
-##### 以busybox制作initramfs
-
-```shell
-echo "10.0.4.9 giteaz westgw" | tee -a /etc/hosts
-```
-
-以busybox制作initramfs, [initRamFs_create.sh](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/qemu-linux5/initRamFs_create.sh)
-
-
-
-
-
-##### ubuntu22下编译qemu-v5.0.0
+##### 3. ubuntu22下编译qemu-v5.0.0
 ```shell
 docker run --privileged=true --volume /app/qemu/:/app/qemu/    --volume /bal/linux-stable/:/bal/linux-stable/  --name u22  --hostname u22  -it frida_anlz_ap:0.1_prv
 #frida_anlz_ap:0.1_prv 是定制的 ubuntu:22.04
