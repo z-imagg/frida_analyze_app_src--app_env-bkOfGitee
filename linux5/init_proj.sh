@@ -13,7 +13,11 @@ set -e
 
 source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_ignore_filemode.sh)
 source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
+source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/local_domain_set.sh)
+
 # #region 项目
+
+local_domain_set
 
 #   #region 项目代码拉取
 
