@@ -1,6 +1,6 @@
 
 #编译步骤
-cd /fridaAnlzAp/app/linux/ && \
+cd /app/linux/ && \
 make mrproper && \
 make clean && \
 make ARCH=x86_64 CC=gcc defconfig && \

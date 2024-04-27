@@ -18,12 +18,23 @@ source /bal/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
 
 #构建基础镜像 
-#  转换 ase_ubuntu_16.04.Dockerfile.sh ---> ase_ubuntu_16.04.Dockerfile  、 删除 、 构建docker镜像
-convert_sh_to_Dockerfile__rmInst__rmImage    ubuntu1604_lnx5bld 0.1  ;  docker build --progress=plain --no-cache  -f "ubuntu1604_lnx5bld.Dockerfile" -t ubuntu1604_lnx5bld:0.1 "/" 
+#  转换 ubuntu1604_linux5build.Dockerfile.sh ---> ubuntu1604_linux5build.Dockerfile  、 删除 、 构建docker镜像
+dkInstName="ubuntu1604_linux5build"
+dkInstVer="0.1"
+convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
 
-
+# 宿主机是否有linux仓库
+hostLnxRpD=/bal/linux-stable
+hostHasLnxRp=false ; [[ -f $hostLnxRpD/.git/config ]] && hostHasLnxRp=true
+# docker实例中linux仓库路径
+dkLnxRpD="/app/linux"
+# docker实例的volume映射
+volMap=""
+# 若 宿主机有linux仓库， 则 docker实例映射该目录
+$hostHasLnxRp && volMap="$volMap --volume $hostLnxRpD:$dkLnxRpD"
 # 若初次启动时，则 克隆项目代码 并 退出
-docker run --privileged=true  --name ubuntu1604_lnx5bld --hostname ubuntu1604_lnx5bld -it ubuntu1604_lnx5bld:0.1
-# 退出后，再次启动
-docker start ubuntu1604_lnx5bld
-docker exec -it ubuntu1604_lnx5bld  /usr/bin/bash
+docker run -e isDkInstInit='true' $volMap  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer
+# 退出后， 若docker实例已停止 则 再次启动docker_entry.sh
+docker ps --filter "name=$dkInstName" | grep $dkInstName || { docker start --attach  --interactive $dkInstName    ;}
+
+echo "进入docker实例${dkInstName}的bash终端:'docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash'"

@@ -1,4 +1,4 @@
-#!/usr/bin/bash -x
+#!/usr/bin/bash +x
 
 #【描述】  
 #【依赖】   
@@ -9,11 +9,25 @@
 set -e
 
 
-#docker实例运行的时候，才克隆项目代码，方便docker image上传到dockerhub ，同时也不泄漏项目源码
-# 若初次启动时，则 克隆项目代码 并 退出
-[[ -f /fridaAnlzAp/app/linux/.git/config ]] || { bash +x /fridaAnlzAp/app_qemu/app_bld/linux5/init_proj.sh && exit 0 ;}
+#docker实例初始化
+function dkInstInit() {
 
-# 若非初次启动，则启动bash
-cd /fridaAnlzAp/app/linux/ && /usr/bin/bash
+#若设置本地域名失败，则退出代码27
+( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
+
+#docker实例运行的时候，才克隆项目代码，方便docker image上传到dockerhub ，同时也不泄漏项目源码
+#  克隆项目代码
+bash +x /fridaAnlzAp/app_qemu/app_bld/linux5/init_proj.sh
+
+}
+
+LnxVer="v5.11"
+dkLnxRpD="/app/linux"
+
+# 若docker实例初次运行时，则 进行初始化
+$isDkInstInit && dkInstInit
+
+# 进入bash
+/usr/bin/bash
 
 
