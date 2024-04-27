@@ -24,7 +24,6 @@ source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/
 
 #本项目  代码拉取
 #  删除 构建Dockerfile时 用的目录 /fridaAnlzAp/prj_env/env
-mv /fridaAnlzAp /tmp_fridaAnlzAp ; mkdir -p /fridaAnlzAp/
 LnxVer="v5.11"
 # docker实例中linux仓库路径
 dkLnxRpD="/app/linux"
@@ -39,7 +38,7 @@ git_switch_to_remote_tag $dkLnxRpD v5.11
 
 #docker首次运行，初始化完毕后 显示相关目录
 # 存在的路径
-echo "告知存在的路径" ; ls /   /app /tmp_fridaAnlzAp/ /fridaAnlzAp/      /app/linux/.git/config    
+echo "告知存在的路径" ; ls /   /app /tmp_fridaAnlzAp/ /fridaAnlzAp/      /app/linux/.git/config   || true
 # 不存在的路径
 echo "告知不存在路径,非错误" ; ls /app/bash-simplify/.git  /tmp_fridaAnlzAp/prj_env/.git /tmp_fridaAnlzAp/app_qemu/.git || true
 
