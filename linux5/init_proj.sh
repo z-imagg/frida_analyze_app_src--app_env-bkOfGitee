@@ -26,7 +26,7 @@ dkLnxRpD="/app/linux"
 # docker实例中是否有linux仓库
 dkHasLnxRp=false ; [[ -f $dkLnxRpD/.git/config ]] && dkHasLnxRp=true
 # 若 docker实例中无linux仓库， 则 克隆该仓库
-dkHasLnxRp || git clone -b $LnxVer https://mirrors.ustc.edu.cn/linux.git  $dkLnxRpD
+$dkHasLnxRp || git clone -b $LnxVer https://mirrors.ustc.edu.cn/linux.git  $dkLnxRpD
 #git项目忽略文件权限变动
 ( cd $dkLnxRpD ; git_ignore_filemode ;)
 # 若当前提交 上 无 标签v5.11 , 则 切换到 标签v5.11 

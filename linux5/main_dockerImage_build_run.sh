@@ -29,7 +29,7 @@ dkLnxRpD="/app/linux"
 # docker实例的volume映射
 volMap=""
 # 若 宿主机有linux仓库， 则 docker实例映射该目录
-$hostHasLnxRp && volMap="$volMap --volume $hostHasLnxRp:$dkLnxRpD"
+$hostHasLnxRp && volMap="$volMap --volume $hostLnxRpD:$dkLnxRpD"
 # 若初次启动时，则 克隆项目代码 并 退出
 docker run  $volMap  --name ubuntu1604_lnx5bld --hostname ubuntu1604_lnx5bld -it ubuntu1604_lnx5bld:0.1
 # 退出后，再次启动
