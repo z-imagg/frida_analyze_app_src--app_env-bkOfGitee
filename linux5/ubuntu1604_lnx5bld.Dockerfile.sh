@@ -23,7 +23,7 @@ apt-get install -y bc && \
 ##解决报错
 apt-get install -y libelf-dev  && \
 #工具
-apt-get install -y git file cpio wget  && \
+apt-get install -y git file cpio wget curl && \
 # gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
 gcc --version  && \
 true ;} \
