@@ -39,9 +39,9 @@ git_switch_to_remote_tag $dkLnxRpD v5.11
 
 #docker首次运行，初始化完毕后 显示相关目录
 # 存在的路径
-ls /   /app /tmp_fridaAnlzAp/ /fridaAnlzAp/      /app/linux/.git/config    
+echo "告知存在的路径" ; ls /   /app /tmp_fridaAnlzAp/ /fridaAnlzAp/      /app/linux/.git/config    
 # 不存在的路径
-echo "只是告知这些路径不存在,非错误" ; ls /app/bash-simplify/.git  /tmp_fridaAnlzAp/prj_env/.git /tmp_fridaAnlzAp/app_qemu/.git || true
+echo "告知不存在路径,非错误" ; ls /app/bash-simplify/.git  /tmp_fridaAnlzAp/prj_env/.git /tmp_fridaAnlzAp/app_qemu/.git || true
 
 #   #endregion
 
