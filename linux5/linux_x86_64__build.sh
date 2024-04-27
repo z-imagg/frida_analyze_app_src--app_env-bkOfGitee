@@ -6,6 +6,9 @@
 #【备注】   
 #【运行环境】 
 
+#此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
+set -e
+
 msg_tip="""
 无预设配置文件.config , 
 需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh
@@ -30,6 +33,19 @@ make clean && \
 $NoMyCfg  && read -p "$msg_tip" &&  ( make ARCH=x86_64 CC=gcc defconfig && cp -v $objCfgF $dfltCfgF && make ARCH=x86_64 CC=gcc nconfig && cp -v $objCfgF $myCfgF ;) ; \
 true ;} && \
 make ARCH=x86_64 CC=gcc -j 6  V=1
+
+ls -lh  vmlinux
+# -rwxr-xr-x   22M  vmlinux
+
+file   vmlinux
+# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
+
+ls -lh arch/x86/boot/bzImage 
+# -rw-r--r--   7.5M   arch/x86/boot/bzImage
+
+file arch/x86/boot/bzImage 
+
+#####以下是文档
 
 #nconfig 和 menuconfig 都是 文本界面, 但 nconfig更好操作一些
 
