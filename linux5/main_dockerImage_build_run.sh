@@ -23,7 +23,8 @@ source /bal/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 dkInstName="ubuntu1604_linux5build"
 dkInstVer="0.1"
 
-msg_tip="""使用说明\n
+msg_tip="""使用说明
+
 来自: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/main_dockerImage_build_run.sh
 
 1. 进入 docker实例 ${dkInstName} 的bash终端: 
