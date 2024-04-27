@@ -1,4 +1,4 @@
-Hm=/bal/linux-stable/initRamFsHome/
+Hm=/app/linux/initRamFsHome/
 mkdir $Hm && cd $Hm
 
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
