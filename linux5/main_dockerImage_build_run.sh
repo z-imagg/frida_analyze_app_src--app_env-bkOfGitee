@@ -26,7 +26,7 @@ dkInstVer="0.1"
 msg_tip="""使用说明\n
 进入 docker实例 ${dkInstName} 的bash终端: 'docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash'
 docker实例 ${dkInstName} 的bash终端下编译linux: 'bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/linux_x86_64__build.sh'
-menuconfig配置修改,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh
+menuconfig配置人工修改,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh
 """
 
 convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
