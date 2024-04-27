@@ -37,4 +37,9 @@ docker run -e isDkInstInit='true' $volMap  --name $dkInstName --hostname $dkInst
 # 退出后， 若docker实例已停止 则 再次启动docker_entry.sh
 docker ps --filter "name=$dkInstName" | grep $dkInstName || { docker start --attach  --interactive $dkInstName    ;}
 
-echo "进入docker实例${dkInstName}的bash终端:'docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash'"
+msg="""\n
+进入docker实例${dkInstName}的bash终端: 'docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash' \n
+docker实例${dkInstName}的bash终端下编译linux: 'bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/linux_x86_64__build.sh' \n
+menuconfig配置修改,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh \n
+"""
+echo -n "$msg"

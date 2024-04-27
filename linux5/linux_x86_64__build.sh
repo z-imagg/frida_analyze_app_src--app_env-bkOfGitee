@@ -1,5 +1,11 @@
+#!/usr/bin/bash
 
-#编译步骤
+#【描述】  linux-5.11编译步骤
+#【依赖】   
+#【术语】 
+#【备注】   
+#【运行环境】 
+
 cd /app/linux/ && \
 make mrproper && \
 make clean && \
