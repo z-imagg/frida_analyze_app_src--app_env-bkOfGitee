@@ -22,7 +22,7 @@ source /bal/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 convert_sh_to_Dockerfile__rmInst__rmImage    ubuntu1604_lnx5bld 0.1  ;  docker build --progress=plain --no-cache  -f "ubuntu1604_lnx5bld.Dockerfile" -t ubuntu1604_lnx5bld:0.1 "/" 
 
 # 宿主机是否有linux仓库
-hostLnxRpD=/bal/linux-stable
+hostLnxRpD=/app/linux-stable
 hostHasLnxRp=false ; [[ -f $hostLnxRpD/.git/config ]] && hostHasLnxRp=true
 # docker实例中linux仓库路径
 dkLnxRpD="/app/linux"
