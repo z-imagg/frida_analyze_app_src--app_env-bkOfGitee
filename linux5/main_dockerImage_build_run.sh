@@ -31,7 +31,7 @@ volMap=""
 # 若 宿主机有linux仓库， 则 docker实例映射该目录
 $hostHasLnxRp && volMap="$volMap --volume $hostLnxRpD:$dkLnxRpD"
 # 若初次启动时，则 克隆项目代码 并 退出
-docker run  $volMap  --name ubuntu1604_lnx5bld --hostname ubuntu1604_lnx5bld -it ubuntu1604_lnx5bld:0.1
+docker run -e isDkInstInit='true' $volMap  --name ubuntu1604_lnx5bld --hostname ubuntu1604_lnx5bld -it ubuntu1604_lnx5bld:0.1
 # 退出后，再次启动
-docker start ubuntu1604_lnx5bld
-docker exec -it ubuntu1604_lnx5bld  /usr/bin/bash
+# docker start ubuntu1604_lnx5bld
+echo "enter work bash: 'docker exec -it ubuntu1604_lnx5bld  /usr/bin/bash'"
