@@ -8,6 +8,9 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+#若设置本地域名失败，则退出代码27
+( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
+
 source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
 
 LnxVer="v5.11"

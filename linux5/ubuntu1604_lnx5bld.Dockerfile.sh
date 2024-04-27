@@ -6,6 +6,7 @@
 #dk# WORKDIR /
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
+#dk# COPY /app/bash-simplify/local_domain_set.sh /app/bash-simplify/local_domain_set.sh
 
 #dk# RUN bash -c ''' \
 { \
