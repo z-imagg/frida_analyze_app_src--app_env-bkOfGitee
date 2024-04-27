@@ -37,8 +37,11 @@ $dkHasLnxRp || git clone -b $LnxVer https://mirrors.ustc.edu.cn/linux.git  $dkLn
 # 若当前提交 上 无 标签v5.11 , 则 切换到 标签v5.11 
 git_switch_to_remote_tag $dkLnxRpD v5.11
 
-
-ls -lh /
+#docker首次运行，初始化完毕后 显示相关目录
+# 存在的路径
+ls /   /app /tmp_fridaAnlzAp/ /fridaAnlzAp/      /app/linux/.git/config    
+# 不存在的路径
+ls /app/bash-simplify/.git  /tmp_fridaAnlzAp/prj_env/.git /tmp_fridaAnlzAp/app_qemu/.git || true
 
 #   #endregion
 
