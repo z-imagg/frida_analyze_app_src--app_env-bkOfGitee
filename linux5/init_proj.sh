@@ -11,6 +11,8 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+source  <(curl --silent http://g:3000/bal/bash-simplify/raw/branch/release/git_ignore_filemode.sh)
+
 # #region 项目
 
 #   #region 项目代码拉取
