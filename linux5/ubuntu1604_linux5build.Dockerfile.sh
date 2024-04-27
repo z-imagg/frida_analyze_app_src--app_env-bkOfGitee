@@ -2,7 +2,7 @@
 #【术语】 #dk# == #docker# == 仅docker有,  #sh# == #bash# == 仅bash有, #dksh# == #docker_shell# == docker有、bash有 
 #【备注】 在bash中 冒号':' 表示 空指令
 
-#dk# FROM ubuntu:22.04 as base
+#dk# FROM ubuntu:16.04 as base
 #dk# WORKDIR /
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
