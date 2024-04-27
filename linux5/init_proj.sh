@@ -12,7 +12,7 @@
 set -e
 
 source  <(curl --silent http://g:3000/bal/bash-simplify/raw/branch/release/git_ignore_filemode.sh)
-
+source  <(curl --silent http://g:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
 # #region 项目
 
 #   #region 项目代码拉取
@@ -20,9 +20,18 @@ source  <(curl --silent http://g:3000/bal/bash-simplify/raw/branch/release/git_i
 #本项目  代码拉取
 #  删除 构建Dockerfile时 用的目录 /fridaAnlzAp/prj_env/env
 mv /fridaAnlzAp /tmp_fridaAnlzAp ; mkdir -p /fridaAnlzAp/
-git clone -b v5.11 https://mirrors.ustc.edu.cn/linux.git  /fridaAnlzAp/app/linux/
+LnxVer="v5.11"
+# docker实例中linux仓库路径
+dkLnxRpD="/app/linux"
+# docker实例中是否有linux仓库
+dkHasLnxRp=false ; [[ -f $dkLnxRpD/.git/config ]] && dkHasLnxRp=true
+# 若 docker实例中无linux仓库， 则 克隆该仓库
+dkHasLnxRp || git clone -b $LnxVer https://mirrors.ustc.edu.cn/linux.git  $dkLnxRpD
 #git项目忽略文件权限变动
-( cd /fridaAnlzAp/app/linux/ ; git_ignore_filemode ;)
+( cd $dkLnxRpD ; git_ignore_filemode ;)
+# 若当前提交 上 无 标签v5.11 , 则 切换到 标签v5.11 
+git_switch_to_remote_tag $dkLnxRpD v5.11
+
 
 ls -lh /
 

@@ -25,7 +25,7 @@ convert_sh_to_Dockerfile__rmInst__rmImage    ubuntu1604_lnx5bld 0.1  ;  docker b
 hostLnxRpD=/bal/linux-stable
 hostHasLnxRp=false ; [[ -f $hostLnxRpD/.git/config ]] && hostHasLnxRp=true
 # docker实例中linux仓库路径
-dkLnxRpD="/fridaAnlzAp/app/linux"
+dkLnxRpD="/app/linux"
 # docker实例的volume映射
 volMap=""
 # 若 宿主机有linux仓库， 则 docker实例映射该目录
