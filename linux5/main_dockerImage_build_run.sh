@@ -17,7 +17,7 @@ source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 
 #去此脚本所在目录
-source /bal/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
+source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
 #构建基础镜像 
 #  转换 ubuntu1604_linux5build.Dockerfile.sh ---> ubuntu1604_linux5build.Dockerfile  、 删除 、 构建docker镜像
