@@ -21,7 +21,7 @@ ls -lh $initrdF
 }
 
 #如果已有编译产物，则显示产物 并 正常退出(退出代码0)
-[[-f $initrdF ]] && print_initrdF && exit 0
+[[ -f $initrdF ]] && print_initrdF && exit 0
 
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
