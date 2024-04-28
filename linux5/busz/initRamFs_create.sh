@@ -14,6 +14,15 @@ set -e
 Hm=/app/linux/initRamFsHome/
 mkdir $Hm && cd $Hm
 
+initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
+
+function print_initrdF() {
+ls -lh $initrdF
+}
+
+#如果已有编译产物，则显示产物 并 正常退出(退出代码0)
+[[-f $initrdF ]] && print_initrdF && exit 0
+
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
 
@@ -21,14 +30,13 @@ wget http://giteaz:3000/bal/bal/raw/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4
 chmod +x init
 
 # 执行 cpio_gzip 以 生成 initRamFS
-initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
 RT=initramfs && \
 ( rm -frv $RT &&   mkdir $RT && \
 mkdir -pv $RT/{bin,sbin,etc,proc,sys,dev} && \
 cp busybox-i686 init $RT/ &&  cd $RT  && \
 # 创建 initrd
 { find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  ) && \
-ls -lh $initrdF
+print_initrdF
 
 
 # [init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
