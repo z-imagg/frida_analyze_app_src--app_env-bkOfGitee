@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash +x
 
 #ubuntu16.04 bash路径为 /bin/bash,  当错写为 '#!/usr/bin/bash' 会导致报错信息不友好 :
 #   exec /fridaAnlzAp/app_qemu/app_bld/linux5/docker_entry.sh: no such file or directory
@@ -22,7 +22,7 @@ function dkInstInit() {
 
 #docker实例运行的时候，才克隆项目代码，方便docker image上传到dockerhub ，同时也不泄漏项目源码
 #  克隆项目代码
-bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/init_proj.sh
+bash +x /fridaAnlzAp/app_qemu/app_bld/linux5/init_proj.sh
 
 }
 
