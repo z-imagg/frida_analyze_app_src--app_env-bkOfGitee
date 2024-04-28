@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #【描述】  使用手册文本
 #【依赖】   
