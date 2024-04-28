@@ -11,7 +11,7 @@ set -e
 
 msg_tip="""
 无预设配置文件.config , 
-需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh
+需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/busz/linux_x86_64__build.sh
 按回车继续:
 """
 

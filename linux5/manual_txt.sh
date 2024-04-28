@@ -19,13 +19,13 @@ manual_txt="""使用说明
   docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
 
 1.2. 编译linux:
-  bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/linux_x86_64__build.sh
+  bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/busz/linux_x86_64__build.sh
 
 1.3. menuconfig配置人工修改,参考此文注释部分: 
-  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/linux_x86_64__build.sh
+  http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/busz/linux_x86_64__build.sh
 
 1.4. 以busybox制作initramfs:
-  bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/initRamFs_create.sh
+  bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/busz/initRamFs_create.sh
 
 2. qemu编译:
   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/qemu/main_dockerImage_build_run.sh
