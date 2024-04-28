@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #【描述】  以busybox制作initramfs
 #【依赖】   
