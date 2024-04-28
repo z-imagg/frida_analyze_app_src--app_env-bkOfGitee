@@ -10,14 +10,14 @@ source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 
 manual_txt="""使用说明
   
-来自:   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/app_bld/linux5/manual_txt.sh
+来自:   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/manual_txt.sh
 
 1. linux5编译
   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/qemu/main_dockerImage_build_run.sh
 
 1.1. 进入 docker实例 ${dkInstName} 的bash终端: 
   exit #退出此时的docker实例终端
-  docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash
+  docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
 
 1.2. 编译linux:
   bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/linux_x86_64__build.sh
