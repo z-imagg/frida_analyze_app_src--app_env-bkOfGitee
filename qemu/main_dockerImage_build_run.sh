@@ -28,16 +28,15 @@ convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker b
 # docker实例的volume映射
 volMap=""
 
-# docker实例中linux仓库路径 repoDir
-dkRpD="/app/qemu"
+# docker实例中qemu仓库  ; #宿主机的git仓库
+qemu_dkRpD="/app/qemu";  qemu_hostRpD="/app/qemu"
+#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
+{ git__chkDir__get__repoDir__arg_gitDir "$qemu_hostRpD" || return $? ;} && volMap="$volMap --volume $qemu_hostRpD:$qemu_dkRpD"
 
-#宿主机的git仓库
-hostRpD=/app/qemu
-#若 该目录不是git仓库， 则返回错误
-#  git 检查仓库目录 、 获取仓库目录 、 获取git目录参数 , 返回变量为 repoDir 、 arg_gitDir
-git__chkDir__get__repoDir__arg_gitDir "$hostRpD" || return $?
-#否则  docker实例映射该目录
-volMap="$volMap --volume $hostRpD:$dkRpD"
+# docker实例中cmd-wrap仓库  ; #宿主机的git仓库
+cmdWrap_dkRpD="/app/cmd-wrap";  cmdWrap_hostRpD="/app/cmd-wrap"
+#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
+{ git__chkDir__get__repoDir__arg_gitDir "$cmdWrap_hostRpD" || return $? ;} && volMap="$volMap --volume $cmdWrap_hostRpD:$cmdWrap_dkRpD"
 
 #若初次启动时，则 克隆项目代码 并 退出
 docker run -e isDkInstInit='true' $volMap  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer

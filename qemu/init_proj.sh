@@ -18,13 +18,23 @@ source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/
 source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_clone_branchOrTag_toDir.sh)
 
+#克隆仓库qemu
+qemu_dkRpD="/app/qemu"
+qemu_Ver="v5.0.0"
+#  克隆 qeum仓库 目的标签 到 给定目录
+git_clone_branchOrTag_toDir https://github.com/qemu/qemu.git $qemu_Ver $qemu_dkRpD
+# 切换到 目的标签
+git_switch_to_remote_tag $qemu_dkRpD $qemu_Ver
 
-dkRpD="/app/qemu"
-Ver="v5.0.0"
-#  克隆 https://github.com/qemu/qemu.git 的标签 v5.0.0 到 本地目录 /app/qemu/ 
-git_clone_branchOrTag_toDir https://github.com/qemu/qemu.git $Ver $dkRpD
-# 若当前提交 上 无 标签v5.11 , 则 切换到 标签v5.11 
-git_switch_to_remote_tag $dkRpD $Ver
+#克隆仓库cmd-wrap
+cmdWrap_dkRpD="/app/cmd-wrap"
+cmdWrap_Ver="tag_release"
+#  克隆 cmdWrap仓库 目的标签 到 给定目录
+git_clone_branchOrTag_toDir http://giteaz:3000/bal/cmd-wrap.git $cmdWrap_Ver $cmdWrap_dkRpD
+# 切换到 目的标签
+git_switch_to_remote_tag $cmdWrap_dkRpD $cmdWrap_Ver
+# cmd-wrap环境初始化
+source "$cmdWrap_dkRpD/script/env_prepare.sh"
 
 
 #docker首次运行，初始化完毕后 显示相关目录
