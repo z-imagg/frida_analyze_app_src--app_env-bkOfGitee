@@ -15,8 +15,7 @@ manual_txt="""使用说明
   来自:   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/linux5/manual_txt.sh
 
 1.1. 进入 docker实例 ${dkInstName} 的bash终端: 
-  exit #退出此时的docker实例终端
-  docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
+  docker exec -it $dkInstName  /bin/bash
 
 1.2. 编译linux:
   bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/busz/linux_x86_64__build.sh
