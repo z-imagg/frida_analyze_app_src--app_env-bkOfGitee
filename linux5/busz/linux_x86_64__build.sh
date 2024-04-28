@@ -10,6 +10,22 @@
 set -e
 
 
+outF1=/app/linux/vmlinux
+outF2=/app/linux/arch/x86/boot/bzImage
+
+#编译产物展示 函数
+function printLinuxKernel() {
+ls -lh  $outF1
+# -rwxr-xr-x   22M  vmlinux
+file   $outF1
+# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
+ls -lh $outF2
+# -rw-r--r--   7.5M   arch/x86/boot/bzImage
+file $outF2
+}
+
+#如果已有编译产物，则显示产物 并 正常退出(退出代码0)
+[[ -f $outF1 ]] && [[ -f $outF2 ]] && printLinuxKernel && exit 0
 
 #调用nconfig手工配置获得.config， 或者用现成的.config
 function getConfig() {
@@ -44,21 +60,6 @@ getConfig && \
 make ARCH=x86_64 CC=gcc -j 6  V=1
 
 
-#编译产物展示
-function printLinuxKernel() {
-cd /app/linux/ 
-
-ls -lh  vmlinux
-# -rwxr-xr-x   22M  vmlinux
-
-file   vmlinux
-# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
-
-ls -lh arch/x86/boot/bzImage 
-# -rw-r--r--   7.5M   arch/x86/boot/bzImage
-
-file arch/x86/boot/bzImage 
-}
 
 #编译产物展示
 printLinuxKernel
