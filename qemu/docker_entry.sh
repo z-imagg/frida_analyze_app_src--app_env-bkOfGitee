@@ -1,4 +1,4 @@
-#!/bin/bash +x
+#!/bin/bash -x
 
 #【描述】  
 #【依赖】   
@@ -17,7 +17,7 @@ function dkInstInit() {
 
 #docker实例运行的时候，才克隆项目代码，方便docker image上传到dockerhub ，同时也不泄漏项目源码
 #  克隆项目代码
-bash +x /fridaAnlzAp/app_qemu/app_bld/qemu/init_proj.sh
+bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/init_proj.sh
 
 }
 
