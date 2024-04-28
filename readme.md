@@ -17,3 +17,19 @@ ls -lh arch/x86/boot/bzImage
 file arch/x86/boot/bzImage
 # arch/x86/boot/bzImage: Linux kernel x86 boot executable bzImage, version 5.11.0 (root@ubuntu2204_linux5build) #1 SMP Sun Apr 28 06:52:15 UTC 2024, RO-rootFS, swap_dev 0X9, Normal VGA
 ```
+
+
+
+nconfig不启用调试信息 编译产物vmlinux尺寸有62MB，  禁止   ```  kernel hacking --> Compile-time checks and compiler options --> Compile the kernel with debug info```
+
+```shell
+ls -lh vmlinux
+# -rwxrwxrwx   62M 2024年4月28日 vmlinux
+file vmlinux
+# vmlinux: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=16adc21e29565d579b663f3936763a06cbade68a, not stripped
+ls -lh arch/x86/boot/bzImage
+# -rwxrwxrwx   9.5M 2024年4月28日 arch/x86/boot/bzImage
+file arch/x86/boot/bzImage
+# arch/x86/boot/bzImage: Linux kernel x86 boot executable bzImage, version 5.11.0 (root@ubuntu2204_linux5build) #1 SMP Sun Apr 28 07:08:58 UTC 2024, RO-rootFS, swap_dev 0X9, Normal VGA
+
+```
