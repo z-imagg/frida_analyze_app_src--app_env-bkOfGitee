@@ -3,31 +3,17 @@
 - app_bld == application build == 应用程序构建 == 应用程序编译
 - env == docker env | real env == docker环境 或 真机环境
 
-#### 应用程序编译步骤
-为了防止混乱，而 将 散落在各子项目中的 应用程序编译步骤 汇集 到此处
 
-env目录内的脚本   用于  构建fridaAnlzAp环境
 
-其余目录或文件 都是 应用程序编译步骤
- 
-#### toc
+nconfig启用调试信息 编译产物vmlinux尺寸有629MB,   启用 ```  kernel hacking --> Compile-time checks and compiler options --> Compile the kernel with debug info```
 
-[./env/.bashrc](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./env/.bashrc)
-
-[./env/readme.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./env/readme.md)
-
-[./qemu/drop__linux-0.11.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./qemu/drop__linux-0.11.md)
-
-[./qemu/linux4.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./qemu/linux4.md)
-
-[./qemu/readme.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./qemu/readme.md)
-
-[./readme.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./readme.md)
-
-[./testdisk.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./testdisk.md)
-
-[./torch/torch-v0.3.0-build.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./torch/torch-v0.3.0-build.md)
-
-[./torch/torch-v1.0.0-build.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./torch/torch-v1.0.0-build.md)
-
-[./torch/torch-v1.3.1-build.md](http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/main/./torch/torch-v1.3.1-build.md)
+```shell
+ls -lh vmlinux
+# -rwxrwxrwx   629M 2024年4月28日  vmlinux
+file vmlinux
+# vmlinux: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=5889f078cdb9add1f631b183d5d4c8e268f596fc, with debug_info, not stripped
+ls -lh arch/x86/boot/bzImage
+# -rwxrwxrwx   9.5M 2024年4月28日 arch/x86/boot/bzImage
+file arch/x86/boot/bzImage
+# arch/x86/boot/bzImage: Linux kernel x86 boot executable bzImage, version 5.11.0 (root@ubuntu2204_linux5build) #1 SMP Sun Apr 28 06:52:15 UTC 2024, RO-rootFS, swap_dev 0X9, Normal VGA
+```
