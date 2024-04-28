@@ -7,7 +7,7 @@
 #【运行环境】 
 
 #安装 编译命令拦截器
-bash  /app/cmd-wrap/script/cmd_setup.sh
+source  /app/cmd-wrap/script/cmd_setup.sh
 
 #编译步骤
 buildDir="/app/qemu/build-v5.0.0" && \

@@ -34,7 +34,7 @@ git_clone_branchOrTag_toDir http://giteaz:3000/bal/cmd-wrap.git $cmdWrap_Ver $cm
 # 切换到 目的标签
 git_switch_to_remote_tag $cmdWrap_dkRpD $cmdWrap_Ver
 # cmd-wrap环境初始化
-source "$cmdWrap_dkRpD/script/env_prepare.sh"
+bash "$cmdWrap_dkRpD/script/env_prepare.sh"
 
 
 #docker首次运行，初始化完毕后 显示相关目录
