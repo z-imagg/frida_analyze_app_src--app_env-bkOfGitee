@@ -15,7 +15,7 @@ manual_txt="""使用说明
   http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/qemu/main_dockerImage_build_run.sh
 
 2.1. 进入 docker实例 ${dkInstName} 的bash终端: 
-  exit; docker start  $dkInstName ; docker exec -it $dkInstName  /usr/bin/bash
+  exit; docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
 
 2.2. 编译qemu5.0.0:
   bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/rebuild-qemu-v5.0.0--disable-tcg-interpreter--disable-tcg.sh

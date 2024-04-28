@@ -1,4 +1,4 @@
- #!/usr/bin/bash
+ #!/bin/bash
 
 #【描述】  linux-5.11编译步骤
 #【依赖】   

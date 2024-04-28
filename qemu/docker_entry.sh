@@ -1,4 +1,4 @@
-#!/usr/bin/bash +x
+#!/bin/bash +x
 
 #【描述】  
 #【依赖】   
@@ -29,6 +29,6 @@ $isDkInstInit && dkInstInit
 
 # 进入bash
 #  调用.bashrc
-/usr/bin/bash --rcfile /root/.bashrc
+/bin/bash --rcfile /root/.bashrc
 
 
