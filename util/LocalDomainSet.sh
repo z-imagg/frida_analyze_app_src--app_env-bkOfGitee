@@ -14,3 +14,5 @@ function LocalDomainSet() {
 
 }
 
+#本地域名总是要设置的
+LocalDomainSet

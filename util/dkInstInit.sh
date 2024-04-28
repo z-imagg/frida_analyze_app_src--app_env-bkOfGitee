@@ -8,14 +8,13 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+#本地域名总是要设置的
 source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEq1.sh)
 
 #docker实例初始化
 function dkInstInit() {
 
-#本地域名总是要设置的
-LocalDomainSet
 
 #断言参数个数为1个
 argCntEq1 $* || return $?
