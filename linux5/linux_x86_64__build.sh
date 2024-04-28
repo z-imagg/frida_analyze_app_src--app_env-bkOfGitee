@@ -62,3 +62,13 @@ file arch/x86/boot/bzImage
 #   General  --> Include all symbols in kallsyms
 
 #nconfig 生成的配置保存在文件.config中,  mrproper && clean 会删除 .config文件
+
+
+#ubuntu 16.04.07 下编译linux-5.11报错 'GLIBC_2.33 、 GLIBC_2.34 not found'
+# cat /etc/issue
+# Ubuntu 16.04.7 LTS \n \l
+
+# gcc -Wp,-MD,/app/linux/tools/objtool/.fixdep.o.d -Wp,-MT,/app/linux/tools/objtool/fixdep.o -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89   -D"BUILD_STR(s)=#s"   -c -o /app/linux/tools/objtool/fixdep.o fixdep.c
+# /app/linux/tools/objtool//fixdep: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by /app/linux/tools/objtool//fixdep)
+# /app/linux/tools/objtool//fixdep: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by /app/linux/tools/objtool//fixdep)
+# /app/linux/tools/build/Makefile.build:96: recipe for target '/app/linux/tools/objtool/fixdep.o' failed
