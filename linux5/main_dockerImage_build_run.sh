@@ -8,6 +8,9 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+#去此脚本所在目录
+source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
+
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 
@@ -16,12 +19,13 @@ source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 
 source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 
-#去此脚本所在目录
-source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
 #构建基础镜像 
 #  转换 ubuntu1604_linux5build.Dockerfile.sh ---> ubuntu1604_linux5build.Dockerfile  、 删除 、 构建docker镜像
-convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
+set -x
+convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;
+set +x
+  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
 
 # 宿主机是否有linux仓库
 hostLnxRpD=/bal/linux-stable
