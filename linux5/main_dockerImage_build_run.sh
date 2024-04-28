@@ -34,8 +34,5 @@ dkVolMap=""
 dkVolMap__if_hostGitDir "/bal/linux-stable" "/app/linux"
 
 # 若初次启动时，则 克隆项目代码 并 退出
-#  最终调用 init_proj.sh
-docker run -e isDkInstInit='true' $dkVolMap  --name $dkInstName --hostname $dkInstName    --tty  $dkInstName:$dkInstVer &&  \
-docker start  $dkInstName &&  \
-#  最终调用 .bashrc
-docker exec -it $dkInstName  /bin/bash
+#  最终调用 init_proj.sh , 再以.bashrc启动bash
+docker run -e isDkInstInit='true' $dkVolMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
