@@ -12,6 +12,7 @@ set -e
 ( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
 
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git__chkDir__get__repoDir__arg_gitDir.sh)
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEq2.sh)
 
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
@@ -25,18 +26,30 @@ source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 #  转换 ubuntu2204_qemu500build.Dockerfile.sh ---> ubuntu2204_qemu500build.Dockerfile  、 删除 、 构建docker镜像
 convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
 
+
+#产生docker volume映射 :  若存在 宿主机git仓库目录  则映射为 docker实例仓库目录
+# 修改变量 dk_vol_map
+function dk_vol_map__if_hostGitDir() {
+argCntEq2 || return $?
+# 宿主机的git仓库  ; #docker实例中qemu仓库
+local hostRepoDir=$1 ; local dkRepoDir=$2
+#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
+{ git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" || return $? ;} && dk_vol_map="$dk_vol_map --volume $hostRepoDir:$dkRepoDir"
+#更改全局变量 dk_vol_map
+}
+
 # docker实例的volume映射
-volMap=""
+dk_vol_map=""
 
 # docker实例中qemu仓库  ; #宿主机的git仓库
 qemu_dkRpD="/app/qemu";  qemu_hostRpD="/app/qemu"
-#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
-{ git__chkDir__get__repoDir__arg_gitDir "$qemu_hostRpD" || return $? ;} && volMap="$volMap --volume $qemu_hostRpD:$qemu_dkRpD"
+#若宿主机有git仓库，则映射到docker实例中. 修改变量 dk_vol_map
+dk_volume_map__if_hostGitDir $qemu_hostRpD $qemu_dkRpD
 
 # docker实例中cmd-wrap仓库  ; #宿主机的git仓库
 cmdWrap_dkRpD="/app/cmd-wrap";  cmdWrap_hostRpD="/app/cmd-wrap"
-#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
-{ git__chkDir__get__repoDir__arg_gitDir "$cmdWrap_hostRpD" || return $? ;} && volMap="$volMap --volume $cmdWrap_hostRpD:$cmdWrap_dkRpD"
+#若宿主机有git仓库，则映射到docker实例中. 修改变量 dk_vol_map
+dk_volume_map__if_hostGitDir $qemu_hostRpD $qemu_dkRpD
 
 #若初次启动时，则 克隆项目代码 并 退出
-docker run -e isDkInstInit='true' $volMap  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer
+docker run -e isDkInstInit='true' $dk_vol_map  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer
