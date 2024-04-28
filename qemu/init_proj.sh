@@ -11,28 +11,14 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-#若设置本地域名失败，则退出代码27
-( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
+source /fridaAnlzAp/app_qemu/app_bld/util/git_Clone_SwitchTag.sh
 
-source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_ignore_filemode.sh)
-source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_clone_branchOrTag_toDir.sh)
+#克隆仓库qemu版本v5.0.0
+git_Clone_SwitchTag "https://github.com/qemu/qemu.git"  "v5.0.0"  "/app/qemu"
 
-#克隆仓库qemu
-qemu_dkRpD="/app/qemu"
-qemu_Ver="v5.0.0"
-#  克隆 qeum仓库 目的标签 到 给定目录
-git_clone_branchOrTag_toDir https://github.com/qemu/qemu.git $qemu_Ver $qemu_dkRpD
-# 切换到 目的标签
-git_switch_to_remote_tag $qemu_dkRpD $qemu_Ver
+#克隆仓库cmd-wrap版本tag_release
+git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
 
-#克隆仓库cmd-wrap
-cmdWrap_dkRpD="/app/cmd-wrap"
-cmdWrap_Ver="tag_release"
-#  克隆 cmdWrap仓库 目的标签 到 给定目录
-git_clone_branchOrTag_toDir http://giteaz:3000/bal/cmd-wrap.git $cmdWrap_Ver $cmdWrap_dkRpD
-# 切换到 目的标签
-git_switch_to_remote_tag $cmdWrap_dkRpD $cmdWrap_Ver
 # cmd-wrap环境初始化
 bash "$cmdWrap_dkRpD/script/env_prepare.sh"
 
