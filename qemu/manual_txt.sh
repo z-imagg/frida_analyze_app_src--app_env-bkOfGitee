@@ -20,7 +20,8 @@ manual_txt="""使用说明
   来自: http://giteaz:3000/frida_analyze_app_src/app_bld/src/branch/app/qemu/qemu/manual_txt.sh
 
 2.1. 进入 docker实例 ${dkInstName} 的bash终端: 
-  exit; docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
+  exit #退出此时的docker实例终端
+  docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
 
 2.2. 编译qemu5.0.0:
   bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/busz/rebuild-qemu-v5.0.0--disable-tcg-interpreter--disable-tcg.sh

@@ -6,11 +6,23 @@
 #【备注】   
 #【运行环境】 
 
+buildDir="/app/qemu/build-v5.0.0"
+outF1="$buildDir/i386-softmmu/qemu-system-i386"
+outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
+
+#展示编译产物 函数
+function printOutF() {
+ls -lh $outF1 && file $outF1
+ls -lh $outF2 && file $outF2
+}
+
+#如果已有编译产物，则显示产物 并 正常退出(退出代码0)
+[[ -f $outF1 ]] && [[ -f $outF2 ]] && printOutF && exit 0
+
 #安装 编译命令拦截器
 source  /app/cmd-wrap/script/cmd_setup.sh
 
 #编译步骤
-buildDir="/app/qemu/build-v5.0.0" && \
 rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 #  以下三行为编译步骤
 ../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --disable-tcg && \ 
@@ -18,10 +30,7 @@ make -j4
 # make install
 
 #展示编译产物
-outF1="$buildDir/i386-softmmu/qemu-system-i386"
-outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
-ls -lh $outF1 && file $outF1
-ls -lh $outF2 && file $outF2
+printOutF
 
 #卸载 编译命令拦截器
 bash /app/cmd-wrap/script/remove_interceptor.sh
