@@ -11,7 +11,7 @@ set -e
 #若设置本地域名失败，则退出代码27
 ( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/dkVolMap__if_hostGitDir.sh)
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__if_hostGitDir.sh
 
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
@@ -28,15 +28,13 @@ convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker b
 # docker实例的volume映射
 dkVolMap=""
 
-# docker实例中qemu仓库  ; #宿主机的git仓库
-qemu_dkRpD="/app/qemu";  qemu_hostRpD="/app/qemu"
 #若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
-dkVolMap__if_hostGitDir $qemu_hostRpD $qemu_dkRpD
+#                        宿主机的git仓库   docker实例中cmd-wrap仓库
+dkVolMap__if_hostGitDir "/app/qemu" "/app/qemu"
 
-# docker实例中cmd-wrap仓库  ; #宿主机的git仓库
-cmdWrap_dkRpD="/app/cmd-wrap";  cmdWrap_hostRpD="/app/cmd-wrap"
 #若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
-dkVolMap__if_hostGitDir $qemu_hostRpD $qemu_dkRpD
+#                        宿主机的git仓库   docker实例中cmd-wrap仓库
+dkVolMap__if_hostGitDir "/app/cmd-wrap" "/app/cmd-wrap"
 
 #若初次启动时，则 克隆项目代码 并 退出
 docker run -e isDkInstInit='true' $dkVolMap  --name $dkInstName --hostname $dkInstName -it $dkInstName:$dkInstVer
