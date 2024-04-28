@@ -17,6 +17,7 @@ mkdir $Hm && cd $Hm
 initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
 
 function print_initrdF() {
+echo "展示initrdF"
 ls -lh $initrdF
 }
 

@@ -15,6 +15,7 @@ outF2=/app/linux/arch/x86/boot/bzImage
 
 #编译产物展示 函数
 function printLinuxKernel() {
+echo "展示linux内核编译产物"
 ls -lh  $outF1
 # -rwxr-xr-x   22M  vmlinux
 file   $outF1
