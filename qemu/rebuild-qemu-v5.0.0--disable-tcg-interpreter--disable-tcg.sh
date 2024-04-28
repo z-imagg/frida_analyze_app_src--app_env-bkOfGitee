@@ -17,6 +17,11 @@ rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 make -j4
 # make install
 
+#展示编译产物
+outF1="$buildDir/i386-softmmu/qemu-system-i386"
+outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
+ls -lh $outF1 && file $outF1
+ls -lh $outF2 && file $outF2
 
 #卸载 编译命令拦截器
 bash /app/cmd-wrap/script/remove_interceptor.sh
