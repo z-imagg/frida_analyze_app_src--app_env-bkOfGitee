@@ -1,6 +1,6 @@
 #!/bin/bash +x
 
-#ubuntu16.04 bash路径为 /bin/bash,  当错写为 '#!/usr/bin/bash' 会导致报错信息不友好 :
+#ubuntu22.04 bash路径为 /bin/bash,  当错写为 '#!/usr/bin/bash' 会导致报错信息不友好 :
 #   exec /fridaAnlzAp/app_qemu/app_bld/linux5/docker_entry.sh: no such file or directory
 #      不是没有 docker_entry.sh ,  而是 docker_entry.sh 中写的 解释器 '#!/usr/bin/bash' 不存在
 

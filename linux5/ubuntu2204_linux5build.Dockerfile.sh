@@ -2,7 +2,7 @@
 #【术语】 #dk# == #docker# == 仅docker有,  #sh# == #bash# == 仅bash有, #dksh# == #docker_shell# == docker有、bash有 
 #【备注】 在bash中 冒号':' 表示 空指令
 
-#dk# FROM ubuntu:16.04 as base
+#dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
@@ -29,7 +29,7 @@ apt-get $ArgAptGet install bc 1>/dev/null && \
 apt-get $ArgAptGet install libelf-dev  1>/dev/null && \
 #工具
 apt-get $ArgAptGet install git file cpio wget curl 1>/dev/null && \
-# gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
+# gcc (Ubuntu 5.4.0-6ubuntu1~22.04.12) 5.4.0 20160609
 gcc --version ;) && \
 true ;} \
 || false #dk# '''
@@ -37,7 +37,7 @@ true ;} \
 
 #dk# LABEL maintainer="prgrmz07 <prgrmz07@163.com>"
 #dk# LABEL version="0.1"
-#dk# LABEL description="ubuntu16.04 linux5 编译环境 docker "
+#dk# LABEL description="ubuntu22.04 linux5 编译环境 docker "
 
 
 
