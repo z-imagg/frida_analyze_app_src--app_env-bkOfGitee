@@ -26,6 +26,6 @@ manual_txt="""使用说明
   bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/rebuild-qemu-v5.0.0--disable-tcg-interpreter--disable-tcg.sh
 
 3.3. qemu启动vmlinux:
-  bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/qemu_boot_vmlinux.sh
+  bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/qemu_boot_vmlinux.sh
 """
 

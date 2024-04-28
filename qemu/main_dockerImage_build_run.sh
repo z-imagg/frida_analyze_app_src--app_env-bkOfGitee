@@ -14,7 +14,7 @@ set -e
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git__chkDir__get__repoDir__arg_gitDir.sh)
 
 #定义 docker镜像、实例 的 名称、版本号
-source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
+source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
 
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
 # docker system prune -a
@@ -22,7 +22,7 @@ source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 
 #构建基础镜像 
-#  转换 ubuntu1604_linux5build.Dockerfile.sh ---> ubuntu1604_linux5build.Dockerfile  、 删除 、 构建docker镜像
+#  转换 ubuntu2204_qemu500build.Dockerfile.sh ---> ubuntu2204_qemu500build.Dockerfile  、 删除 、 构建docker镜像
 convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
 
 # docker实例的volume映射
