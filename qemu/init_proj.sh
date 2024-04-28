@@ -20,7 +20,7 @@ git_Clone_SwitchTag "https://github.com/qemu/qemu.git"  "v5.0.0"  "/app/qemu"
 git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
 
 # cmd-wrap环境初始化
-bash "$cmdWrap_dkRpD/script/env_prepare.sh"
+bash "/app/cmd-wrap/script/env_prepare.sh"
 
 
 #docker首次运行，初始化完毕后 显示相关目录
