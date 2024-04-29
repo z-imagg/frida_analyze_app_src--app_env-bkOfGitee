@@ -12,6 +12,7 @@ set -e
 ( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__if_hostGitDir.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
 
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
@@ -26,7 +27,7 @@ source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker build --progress=plain --no-cache  -f "$dkInstName.Dockerfile" -t $dkInstName:$dkInstVer "/" 
 
 # docker实例的volume映射
-dkVolMap=""
+dkVolMap="${dkVolMap_gain}"
 
 #若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
 #                        宿主机的git仓库   docker实例中cmd-wrap仓库
