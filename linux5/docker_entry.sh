@@ -16,6 +16,8 @@ set -e
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkEntry.sh
 
+declare -r PrjHm="/fridaAnlzAp/app_qemu/app_bld/linux5"
+
 #docker实例初始化
-dkEntry "/fridaAnlzAp/app_qemu/app_bld/linux5/init_proj.sh"
+dkEntry "$PrjHm/init_proj.sh" "$PrjHm/busz_run.sh" "$PrjHm/manual_txt.sh"
 
