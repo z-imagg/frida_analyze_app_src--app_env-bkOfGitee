@@ -19,3 +19,18 @@ cd /gain/
 
 $qemuSysX86F  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kernel  ./app/linux/vmlinux     -initrd ./app/linux/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
 
+#展示qemu日志中linux4内核vmlinux中的函数符号名
+ls -lh  $(pwd)/qemu.log
+#qemu源码中cpu-exec.c 的 'lookup_symbol(itb->pc)'  拿到linux4的vmlinux函数符号
+#  不为空的
+mkfifo pipe__sym_ok
+grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok
+head -n 5 < pipe__sym_ok
+wc -l < pipe__sym_ok
+rm pipe__sym_ok
+#  为空的
+mkfifo pipe__sym_null
+grep  "Trace " qemu.log > pipe__sym_null
+head -n 5 < pipe__sym_null
+wc -l < pipe__sym_null
+rm pipe__sym_null
