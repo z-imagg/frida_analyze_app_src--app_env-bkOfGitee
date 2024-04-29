@@ -10,14 +10,14 @@ set -e
 
 #本地域名总是要设置的
 source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEq2.sh)
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEqN.sh)
 
 #docker实例初始化
 function dkEntry() {
 
 
-#断言参数个数为2个
-argCntEq2 $* || return $?
+#断言参数个数为3个
+echo 3 | argCntEqN $* || return $?
 
 local initProjF=$1
 local buszRunF=$2
