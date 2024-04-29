@@ -13,11 +13,13 @@ source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/a
 #产生docker volume映射 :  若存在 宿主机git仓库目录  则映射为 docker实例仓库目录
 # 修改变量 dkVolMap
 function dkVolMap__if_hostGitDir() {
+local OK_exitCode=0
+
 argCntEq2 $* || return $?
 # 宿主机的git仓库  ; #docker实例中qemu仓库
 local hostRepoDir=$1 ; local dkRepoDir=$2
-#  若该目录不是合法git仓库， 则 返回错误。                                    否则  docker实例映射该目录
-{ git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" || return $? ;} && dkVolMap="$dkVolMap --volume $hostRepoDir:$dkRepoDir"
+#  若该目录不是合法git仓库， 则 直接正常返回。                                         否则  docker实例映射该目录
+{ git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" || return $OK_exitCode ;} && dkVolMap="$dkVolMap --volume $hostRepoDir:$dkRepoDir"
 #更改全局变量 dkVolMap
 }
 
