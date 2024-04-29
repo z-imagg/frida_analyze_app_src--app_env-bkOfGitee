@@ -38,7 +38,7 @@ dkVolMap__if_hostGitDir "/app/cmd-wrap" "/app/cmd-wrap"
 
 #若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
 #                        宿主机的git仓库   docker实例中cmd-wrap仓库
-dkVolMap__if_hostGitDir "/bal/linux-stable" "/app/linux"
+dkVolMap__if_hostGitDir "/app/linux" "/app/linux"
 
 #若初次启动时，则 克隆项目代码 并 退出
 docker run -e isDkInstInit='true' $dkVolMap  --name $dkInstName --hostname $dkInstName --interactive  --tty $dkInstName:$dkInstVer
