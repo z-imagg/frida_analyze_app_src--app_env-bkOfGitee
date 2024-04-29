@@ -11,6 +11,7 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+source /fridaAnlzAp/app_qemu/app_bld/util/gitproxy_Clone_SwitchTag.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/git_Clone_SwitchTag.sh
 
 #克隆仓库qemu版本v5.0.0
