@@ -12,7 +12,10 @@ qemuSysX86F=/app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 [[ -f $qemuSysX86F ]] && pidof "qemu-system-x86_64" && echo "booted! $qemuSysX86F" && exit 0
 
 
-cd /app/
+#若docker下,写:
+cd /gain/
+#若宿主机下,写:
+# cd /
 
-$qemuSysX86F  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kernel  /app/linux/vmlinux     -initrd /app/linux/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
+$qemuSysX86F  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kernel  ./app/linux/vmlinux     -initrd ./app/linux/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
 
