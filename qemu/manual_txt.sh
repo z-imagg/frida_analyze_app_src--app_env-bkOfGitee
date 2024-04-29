@@ -30,3 +30,6 @@ manual_txt="""使用说明
   bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/busz/qemu_boot_vmlinux.sh
 """
 
+
+# 显示 使用手册文本
+echo -e "$manual_txt"
