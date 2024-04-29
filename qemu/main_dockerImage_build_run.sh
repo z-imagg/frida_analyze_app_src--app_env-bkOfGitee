@@ -45,4 +45,4 @@ dkVolMap__if_hostGitDir "/app/cmd-wrap" "/app/cmd-wrap"
 dkVolMap__if_hostGitDir "/app/linux" "/app/linux"
 
 #若初次启动时，则 克隆项目代码 并 退出
-docker run -e isDkInstInit='true' -e isDkBuszRun='true' $dkVolMap  --name $dkInstName --hostname $dkInstName --interactive  --tty $dkInstName:$dkInstVer
+docker run --privileged=true -e isDkInstInit='true' -e isDkBuszRun='true' $dkVolMap  --name $dkInstName --hostname $dkInstName --interactive  --tty $dkInstName:$dkInstVer
