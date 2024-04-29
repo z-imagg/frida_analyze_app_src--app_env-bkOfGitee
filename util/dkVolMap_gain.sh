@@ -10,13 +10,13 @@ set -e
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/mkMyDirBySudo.sh)
 
 #产物目录 对应宿主机目录
-host_gainDir="/gain"
+gainD_host="/gain"
 #产物目录 对应docker实例目录
-dk_gainDir="/gain"
+gainD_dk="/gain"
 
 #产物目录 docker volume映射
-dkVolMap_gain="--volume $host_gainDir:$dk_gainDir"
+dkVolMap_gain="--volume $gainD_host:$gainD_dk"
 
 #若宿主机 产物目录 创建
-mkMyDirBySudo $host_gainDir
+mkMyDirBySudo $gainD_host
 
