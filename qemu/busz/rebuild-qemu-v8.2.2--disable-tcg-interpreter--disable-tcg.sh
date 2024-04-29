@@ -11,7 +11,7 @@ source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/c
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
 
 
-buildDir="/app/qemu/build-v5.0.0"
+buildDir="/app/qemu/build-v8.2.2"
 outF1="$buildDir/i386-softmmu/qemu-system-i386"
 outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
 
@@ -51,11 +51,11 @@ bash /app/cmd-wrap/script/remove_interceptor.sh
 
 
 ##编译产物记录
-# + ls -lh /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386
-# -rwxr-xr-x  46M 2024年4月28日 /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386
-# + file /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386
-# /app/qemu/build-v5.0.0/i386-softmmu/qemu-system-i386: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=826f8b9fd3f750bab31aea2a750eee1a25c65d97, for GNU/Linux 3.2.0, with debug_info, not stripped
-# + ls -lh /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64
-# -rwxr-xr-x  46M 2024年4月28日 /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64
-# + file /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64
-# /app/qemu/build-v5.0.0/x86_64-softmmu/qemu-system-x86_64: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=190dddb2a607efc3424e64f511c2df9e681afa13, for GNU/Linux 3.2.0, with debug_info, not stripped
+# + ls -lh /app/qemu/build-v8.2.2/i386-softmmu/qemu-system-i386
+# -rwxr-xr-x  46M 2024年4月28日 /app/qemu/build-v8.2.2/i386-softmmu/qemu-system-i386
+# + file /app/qemu/build-v8.2.2/i386-softmmu/qemu-system-i386
+# /app/qemu/build-v8.2.2/i386-softmmu/qemu-system-i386: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=826f8b9fd3f750bab31aea2a750eee1a25c65d97, for GNU/Linux 3.2.0, with debug_info, not stripped
+# + ls -lh /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
+# -rwxr-xr-x  46M 2024年4月28日 /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
+# + file /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
+# /app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=190dddb2a607efc3424e64f511c2df9e681afa13, for GNU/Linux 3.2.0, with debug_info, not stripped

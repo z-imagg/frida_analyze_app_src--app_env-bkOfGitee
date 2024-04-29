@@ -14,8 +14,8 @@ set -e
 source /fridaAnlzAp/app_qemu/app_bld/util/gitproxy_Clone_SwitchTag.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/git_Clone_SwitchTag.sh
 
-#克隆仓库qemu版本v5.0.0
-gitproxy_Clone_SwitchTag "https://github.com/qemu/qemu.git"  "v5.0.0"  "/app/qemu"
+#克隆仓库qemu版本v8.2.2
+gitproxy_Clone_SwitchTag "https://github.com/qemu/qemu.git"  "v8.2.2"  "/app/qemu"
 
 #克隆仓库cmd-wrap版本tag_release
 git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
