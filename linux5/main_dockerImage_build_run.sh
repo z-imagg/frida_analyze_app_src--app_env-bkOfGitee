@@ -35,5 +35,5 @@ dkVolMap="${dkVolMap_gain}"
 dkVolMap__if_hostGitDir "/app/linux" "/app/linux"
 
 # 若初次启动时，则 克隆项目代码 并 退出
-#  最终调用 init_proj.sh , 再以.bashrc启动bash
+#  最终调用 init_proj.sh , 再以busz_run.sh启动bash
 docker run -e isDkInstInit='true' -e isDkBuszRun='true' $dkVolMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
