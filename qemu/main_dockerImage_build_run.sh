@@ -14,6 +14,9 @@ set -e
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__if_hostGitDir.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
 
+#若宿主机 产物目录 创建
+mk_gainD_host
+
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
 

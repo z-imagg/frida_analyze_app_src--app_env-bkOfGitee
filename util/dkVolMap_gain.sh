@@ -17,6 +17,8 @@ gainD_dk="/gain"
 #产物目录 docker volume映射
 dkVolMap_gain="--volume $gainD_host:$gainD_dk"
 
+function mk_gainD_host() {
 #若宿主机 产物目录 创建
 mkMyDirBySudo $gainD_host
+}
 
