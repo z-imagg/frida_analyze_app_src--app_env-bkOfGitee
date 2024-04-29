@@ -77,8 +77,8 @@ printLinuxKernel
 # 启用PVH:
 #   Processor type and features --> Linux guest support  --> Support for running PVH guests
 # 试图启用调试
+#   General  --> Include all symbols in kallsyms
 #   kernel hacking --> Compile-time checks and compiler options --> Compile the kernel with debug info
 #   kernel hacking --> Kernel debugging (默认已启用)
-#   General  --> Include all symbols in kallsyms
 
 #nconfig 生成的配置保存在文件.config中,  mrproper && clean 会删除 .config文件
