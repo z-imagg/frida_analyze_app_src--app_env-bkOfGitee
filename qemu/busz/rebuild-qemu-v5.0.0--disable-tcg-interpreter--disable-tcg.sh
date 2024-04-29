@@ -6,6 +6,11 @@
 #【备注】   
 #【运行环境】 
 
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
+# 引入全局变量 gainD_dk
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+
+
 buildDir="/app/qemu/build-v5.0.0"
 outF1="$buildDir/i386-softmmu/qemu-system-i386"
 outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
@@ -28,7 +33,9 @@ rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 ../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --disable-tcg && \ 
 make -j4
 # make install
-
+# 收集产物
+cpFPathToDir  $outF1 $gainD_dk/ && \
+cpFPathToDir  $outF2 $gainD_dk/ && \
 #展示编译产物
 printOutF
 
