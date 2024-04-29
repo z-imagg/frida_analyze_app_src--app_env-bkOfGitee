@@ -10,7 +10,7 @@ set -e
 
 
 source /fridaAnlzAp/app_qemu/app_bld/util/git_Clone_SwitchTag.sh
-
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/gitproxy.sh)
 
 #以westgw代理执行 git_Clone_SwitchTag
 function gitproxy_Clone_SwitchTag() {
