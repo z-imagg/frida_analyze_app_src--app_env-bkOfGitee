@@ -9,7 +9,9 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
+# 引入全局变量 gainD_dk
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
 
 Hm=/app/linux/initRamFsHome/
 initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
@@ -38,6 +40,8 @@ mkdir -pv $RT/{bin,sbin,etc,proc,sys,dev} && \
 cp busybox-i686 init $RT/ &&  cd $RT  && \
 # 创建 initrd
 { find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  ) && \
+# 收集产物
+cpFPathToDir  $initrdF $gainD_dk/ && \
 print_initrdF
 
 

@@ -10,6 +10,11 @@
 set -e
 
 
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
+# 引入全局变量 gainD_dk
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+
+
 outF1=/app/linux/vmlinux
 outF2=/app/linux/arch/x86/boot/bzImage
 
@@ -58,7 +63,10 @@ cd /app/linux/ && \
 make mrproper && \
 make clean && \
 getConfig && \
-make ARCH=x86_64 CC=gcc -j 6  V=1
+make ARCH=x86_64 CC=gcc -j 6  V=1 && \
+# 收集产物
+cpFPathToDir  $outF1 $gainD_dk/ && \
+cpFPathToDir  $outF2 $gainD_dk/ && \
 
 
 
