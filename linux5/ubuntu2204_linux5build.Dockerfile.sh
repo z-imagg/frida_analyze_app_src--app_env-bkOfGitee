@@ -28,7 +28,7 @@ apt-get $ArgAptGet install bc 1>/dev/null && \
 ##解决报错
 apt-get $ArgAptGet install libelf-dev  1>/dev/null && \
 #工具
-apt-get $ArgAptGet install git file cpio wget curl sudo 1>/dev/null && \
+apt-get $ArgAptGet install git file cpio wget curl rsync sudo 1>/dev/null && \
 # gcc (Ubuntu 5.4.0-6ubuntu1~22.04.12) 5.4.0 20160609
 gcc --version ;) && \
 true ;} \
