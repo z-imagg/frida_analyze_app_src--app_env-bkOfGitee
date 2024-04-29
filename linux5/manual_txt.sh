@@ -34,3 +34,6 @@ manual_txt="""使用说明
 
 """
 
+
+# 显示 使用手册文本
+echo -e "$manual_txt"
