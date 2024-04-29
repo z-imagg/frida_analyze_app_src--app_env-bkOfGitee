@@ -25,7 +25,7 @@ ls -lh $outF2 && file $outF2
 [[ -f $outF1 ]] && [[ -f $outF2 ]] && printOutF && exit 0
 
 #安装 编译命令拦截器
-source  /app/cmd-wrap/script/cmd_setup.sh
+source  /app/cmd-wrap/script/cmd_setup.sh || true
 
 #编译步骤
 rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
