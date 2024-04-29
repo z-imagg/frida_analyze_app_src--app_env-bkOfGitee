@@ -12,9 +12,7 @@ set -e
 
 
 Hm=/app/linux/initRamFsHome/
-mkdir $Hm && cd $Hm
-
-initrdF=$(pwd)/initramfs-busybox-i686.cpio.tar.gz
+initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
 
 function print_initrdF() {
 echo "展示initrdF"
@@ -23,6 +21,9 @@ ls -lh $initrdF
 
 #如果已有编译产物，则显示产物 并 正常退出(退出代码0)
 [[ -f $initrdF ]] && print_initrdF && exit 0
+
+#正文开始
+mkdir $Hm && cd $Hm
 
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
