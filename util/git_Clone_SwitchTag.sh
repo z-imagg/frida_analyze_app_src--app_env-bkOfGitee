@@ -10,7 +10,7 @@ set -e
 
 
 source  <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_switch_to_remote_tag.sh)
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_clone_branchOrTag_toDir.sh)
+source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_clone_Tag_toDir.sh)
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEqN.sh)
 
 #克隆仓库、子模块更新、git忽略文件权限变动，切换到远程标签
@@ -27,7 +27,7 @@ local repoDir=$3
 
 #  克隆 qeum仓库 目的标签 到 给定目录
 #     若本地目录已经该仓库，因可能不在该标签，因此 接下来需要 切换标签
-git_clone_branchOrTag_toDir $repoUrl $Ver $repoDir
+git_clone_Tag_toDir $repoUrl $Ver $repoDir
 # 切换到 目的标签
 git_switch_to_remote_tag $repoDir $Ver
 
