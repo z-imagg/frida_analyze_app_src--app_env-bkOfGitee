@@ -10,7 +10,7 @@ source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/g
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEq2.sh)
 
 
-#若主机目录为git仓库，则映射该目录到docker实例
+#若主机目录为git仓库，则映射该目录到docker实例; 否则，不映射。始终返回成功
 # 修改变量 dkVolMap
 function dkVolMap_if_HDir_Git() {
 local OK_exitCode=0
@@ -30,6 +30,8 @@ $hostDirIsGitReop && dkVolMap="$_dkVolMap" &&  return $OK_exitCode
 #否则，                     则   正常返回
 $hostDirNotGitReop && return $OK_exitCode
 
+
+#dkVolMap="..." 是 更改全局变量
 }
 
 #使用举例

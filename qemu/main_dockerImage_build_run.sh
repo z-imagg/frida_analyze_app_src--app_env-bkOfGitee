@@ -13,6 +13,7 @@ set -e
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_Git.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__asstHstGitD.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
@@ -33,16 +34,16 @@ convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker b
 # docker实例的volume映射
 dkVolMap="${dkVolMap_gain}"
 
-#若主机目录不存在或为空或为git仓库，则映射该目录到docker实例. 修改变量 dkVolMap
+#若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例。始终返回成功. 修改变量 dkVolMap
 #                                  宿主机的git仓库   docker实例中git仓库
 dkVolMap_if_HDir_No_or_Empty_or_Git "/app/qemu" "/app/qemu"
 
-#若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
+#若主机目录为git仓库，则映射该目录到docker实例; 否则，不映射。始终返回成功. 修改变量 dkVolMap
 #                        宿主机的git仓库   docker实例中cmd-wrap仓库
 dkVolMap_if_HDir_Git "/app/cmd-wrap" "/app/cmd-wrap"
 # dkVolMap_if_HDir_Git "/app/bash-simplify" "/app/bash-simplify"
 
-#若宿主机无linux仓库，即无linux编译产物，则返回错误。 否则，映射到docker实例中. 修改变量 dkVolMap
+#断言主机目录为git仓库 并 映射该目录到docker实例. 修改变量 dkVolMap
 #                        宿主机的git仓库   docker实例中cmd-wrap仓库
 dkVolMap__asstHstGitD "/app/linux" "/app/linux"
 

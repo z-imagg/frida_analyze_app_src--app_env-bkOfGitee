@@ -11,7 +11,7 @@ source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/a
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/mkMyDirBySudo.sh)
 # mkMyDirBySudo /myDir1
 
-#若主机目录不存在或为空或为git仓库，则映射该目录到docker实例
+#若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例。始终返回成功
 # 修改变量 dkVolMap
 function dkVolMap_if_HDir_No_or_Empty_or_Git() {
 local OK_exitCode=0
@@ -30,8 +30,10 @@ local noHostDir=( ! $hasHostDir )
 # 主机目录 是否 为空目录
 local emptyHostDir=false; [[ $(ls -1 $hostRepoDir|wc -l) == 0 ]]  && emptyHostDir=true;
 
-#若主机目录 不存在或为空目录 ，        则      新建该目录               并   映射该目录到docker实例  并    正常返回
-( $noHostDir || $emptyHostDir )   && { mkMyDirBySudo $hostRepoDir && dkVolMap="$_dkVolMap" && return $OK_exitCode ;}
+#若主机目录 不存在 ，则 新建该目录                  并   映射该目录到docker实例  并  正常返回
+$noHostDir     && { mkMyDirBySudo $hostRepoDir && dkVolMap="$_dkVolMap" && return $OK_exitCode ;}
+#若主机目录  为空目录 ，则  映射该目录到docker实例 并    正常返回
+$emptyHostDir   && {  dkVolMap="$_dkVolMap" && return $OK_exitCode ;}
 
 # 主机目录 是否 为合法git仓库
 local hostDirIsGitReop=false; git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" && hostDirIsGitReop=true;
@@ -42,6 +44,8 @@ local hostDirNotGitReop=( ! $hostDirIsGitReop )
 $hostDirIsGitReop && dkVolMap="$_dkVolMap" &&  return $OK_exitCode
 #否则，                     则   正常返回
 $hostDirNotGitReop && return $OK_exitCode
+
+#dkVolMap="..." 是 更改全局变量
 }
 
 #使用举例

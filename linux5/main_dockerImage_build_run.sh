@@ -11,7 +11,7 @@ set -e
 #去此脚本所在目录
 source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__if_hostGitDir.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
@@ -33,7 +33,7 @@ convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker b
 # docker实例的volume映射
 dkVolMap="${dkVolMap_gain}"
 
-#若主机目录不存在或为空或为git仓库，则映射该目录到docker实例. 修改变量 dkVolMap
+#若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例. 修改变量 dkVolMap
 #                                  宿主机的git仓库   docker实例中git仓库
 dkVolMap_if_HDir_No_or_Empty_or_Git "/app/linux" "/app/linux"
 
