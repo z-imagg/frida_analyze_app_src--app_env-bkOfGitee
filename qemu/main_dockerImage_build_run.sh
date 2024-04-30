@@ -27,9 +27,6 @@ mk_gainD_host
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
 
-#当长久build docker镜像后，需要清理docker占用的磁盘空间
-# docker system prune -a
-
 source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImage.sh
 
 #构建基础镜像 
@@ -54,3 +51,6 @@ dkVolMap__asstHstGitD "/app/linux" "/app/linux"
 
 #若初次启动时，则 克隆项目代码 并 退出
 docker run --privileged=true -e isDkInstInit='true' -e isDkBuszRun='true' $dkVolMap  --name $dkInstName --hostname $dkInstName --interactive  --tty $dkInstName:$dkInstVer
+
+#当长久build docker镜像后，需要清理docker占用的磁盘空间
+docker system prune --force  # --all  
