@@ -6,6 +6,11 @@
 #【备注】   
 #【运行环境】 
 
+#本地域名总是要设置的
+source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+#导入_importBSFn.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh

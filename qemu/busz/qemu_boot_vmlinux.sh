@@ -6,6 +6,11 @@
 #【备注】   
 #【运行环境】 
 
+#本地域名总是要设置的
+source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+#导入_importBSFn.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+
 qemuSysX86F=/app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
 #如果已启动，则提示 并 正常退出(退出代码0)
