@@ -13,8 +13,8 @@ source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
 
-#若设置本地域名失败，则退出代码27
-( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
+#docker免sudo
+_importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_Git.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
