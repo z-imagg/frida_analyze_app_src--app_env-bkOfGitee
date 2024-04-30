@@ -33,9 +33,9 @@ convert_sh_to_Dockerfile__rmInst__rmImage    $dkInstName $dkInstVer  ;  docker b
 # docker实例的volume映射
 dkVolMap="${dkVolMap_gain}"
 
-#若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
-#                        宿主机的git仓库   docker实例中cmd-wrap仓库
-dkVolMap__if_hostGitDir "/app/linux" "/app/linux"
+#若主机目录不存在或为空或为git仓库，则映射该目录到docker实例. 修改变量 dkVolMap
+#                                  宿主机的git仓库   docker实例中git仓库
+dkVolMap_if_HDir_No_or_Empty_or_Git "/app/linux" "/app/linux"
 
 # 若初次启动时，则 克隆项目代码 并 退出
 #  最终调用 init_proj.sh , 再以busz_run.sh启动bash
