@@ -7,9 +7,9 @@
 #【运行环境】 
 
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
 
 qemuSysX86F=/app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
