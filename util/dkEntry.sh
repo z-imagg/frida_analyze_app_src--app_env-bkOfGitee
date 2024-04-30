@@ -9,9 +9,9 @@
 set -e
 
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+source /fridaAnlzAp/app_qemu/dk_util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+source /fridaAnlzAp/app_qemu/dk_util/Load__importBSFn.sh
 
 _importBSFn "argCntEqN.sh"
 

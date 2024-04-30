@@ -14,7 +14,7 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-source /fridaAnlzAp/app_qemu/app_bld/util/dkEntry.sh
+source /fridaAnlzAp/app_qemu/dk_util/dkEntry.sh
 
 declare -r PrjHm="/fridaAnlzAp/app_qemu/app_bld/linux5"
 

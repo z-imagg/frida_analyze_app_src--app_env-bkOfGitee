@@ -5,6 +5,7 @@
 #dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
+#dk# COPY /fridaAnlzAp/app_qemu/dk_util /fridaAnlzAp/app_qemu/dk_util
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
 #dk# COPY /app/bash-simplify/local_domain_set.sh /app/bash-simplify/local_domain_set.sh
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld/linux5/busz_run.sh /root/busz_run.sh
@@ -15,9 +16,9 @@
 #安装系统依赖包
 bash -x /fridaAnlzAp/app_qemu/app_bld/linux5/depent/sys.sh && \
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh && \
+source /fridaAnlzAp/app_qemu/dk_util/LocalDomainSet.sh && \
 #导入_importBSFn.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh && \
+source /fridaAnlzAp/app_qemu/dk_util/Load__importBSFn.sh && \
 true ;} \
 || false #dk# '''
 

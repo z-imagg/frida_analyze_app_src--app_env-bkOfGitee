@@ -9,17 +9,17 @@
 set -e
 
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+source /fridaAnlzAp/app_qemu/dk_util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+source /fridaAnlzAp/app_qemu/dk_util/Load__importBSFn.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_Git.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__asstHstGitD.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
+source /fridaAnlzAp/app_qemu/dk_util/dkVolMap_if_HDir_Git.sh
+source /fridaAnlzAp/app_qemu/dk_util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
+source /fridaAnlzAp/app_qemu/dk_util/dkVolMap__asstHstGitD.sh
+source /fridaAnlzAp/app_qemu/dk_util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host
