@@ -8,6 +8,7 @@
 
 _importBSFn "git__chkDir__get__repoDir__arg_gitDir.sh"
 _importBSFn "argCntEq2.sh"
+_importBSFn "bool_not.sh"
 
 
 #若主机目录为git仓库，则映射该目录到docker实例; 否则，不映射。始终返回成功
@@ -23,7 +24,7 @@ local hostRepoDir=$1 ; local dkRepoDir=$2
 # 主机目录 是否 为合法git仓库
 local hostDirIsGitReop=false; git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" && hostDirIsGitReop=true;
 # 主机目录 是否 不为合法git仓库
-local hostDirNotGitReop=( ! $hostDirIsGitReop )
+local hostDirNotGitReop; bool_not $hostDirIsGitReop "hostDirNotGitReop"
 
 #若 主机目录 是 合法git仓库 ， 则  映射该目录到docker实例  并    正常返回
 $hostDirIsGitReop && dkVolMap="$_dkVolMap" &&  return $OK_exitCode

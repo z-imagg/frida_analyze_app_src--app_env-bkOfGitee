@@ -9,7 +9,8 @@
 _importBSFn "git__chkDir__get__repoDir__arg_gitDir.sh"
 _importBSFn "argCntEq2.sh"
 _importBSFn "mkMyDirBySudo.sh"
-# mkMyDirBySudo /myDir1
+#bool取反
+_importBSFn "bool_not.sh"
 
 #若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例。始终返回成功
 # 修改变量 dkVolMap
@@ -26,7 +27,8 @@ local _dkVolMap="$dkVolMap --volume $hostRepoDir:$dkRepoDir"
 # 主机目录 是否 存在
 local hasHostDir=false; [[ -e $hostRepoDir ]] && hasHostDir=true;
 # 主机目录 是否 不存在
-local noHostDir=( ! $hasHostDir )
+local noHostDir; bool_not $hasHostDir "noHostDir"
+
 # 主机目录 是否 为空目录
 local emptyHostDir=false; [[ $(ls -1 $hostRepoDir|wc -l) == 0 ]]  && emptyHostDir=true;
 
@@ -38,7 +40,7 @@ $emptyHostDir   && {  dkVolMap="$_dkVolMap" && return $OK_exitCode ;}
 # 主机目录 是否 为合法git仓库
 local hostDirIsGitReop=false; git__chkDir__get__repoDir__arg_gitDir "$hostRepoDir" && hostDirIsGitReop=true;
 # 主机目录 是否 不为合法git仓库
-local hostDirNotGitReop=( ! $hostDirIsGitReop )
+local hostDirNotGitReop; bool_not $hostDirIsGitReop "hostDirNotGitReop"
 
 #若 主机目录 是 合法git仓库 ， 则  映射该目录到docker实例  并    正常返回
 $hostDirIsGitReop && dkVolMap="$_dkVolMap" &&  return $OK_exitCode
