@@ -6,7 +6,7 @@
 #【备注】   
 #【运行环境】 
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
+_importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 

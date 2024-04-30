@@ -11,7 +11,7 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_Clone_SwitchTag.sh)
+_importBSFn "git_Clone_SwitchTag.sh"
 
 #克隆仓库linux版本v5.11
 git_Clone_SwitchTag "https://mirrors.ustc.edu.cn/linux.git"  "v5.11"  "/app/linux"

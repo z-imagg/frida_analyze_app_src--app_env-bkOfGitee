@@ -6,8 +6,8 @@
 #【备注】   
 
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git__chkDir__get__repoDir__arg_gitDir.sh)
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEq2.sh)
+_importBSFn "git__chkDir__get__repoDir__arg_gitDir.sh"
+_importBSFn "argCntEq2.sh"
 
 
 #若主机目录为git仓库，则映射该目录到docker实例; 否则，不映射。始终返回成功
@@ -35,7 +35,7 @@ $hostDirNotGitReop && return $OK_exitCode
 }
 
 #使用举例
-# source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/dkVolMap_if_HDir_Git.sh)
+# _importBSFn "dkVolMap_if_HDir_Git.sh"
 #若宿主机有git仓库，则映射到docker实例中. 修改变量 dkVolMap
 #                        宿主机的git仓库   docker实例中cmd-wrap仓库
 # dkVolMap_if_HDir_Git "/app/qemu" "/root/qemu"

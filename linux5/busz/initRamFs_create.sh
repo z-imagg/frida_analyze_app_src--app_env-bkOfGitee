@@ -9,7 +9,7 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
+_importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 

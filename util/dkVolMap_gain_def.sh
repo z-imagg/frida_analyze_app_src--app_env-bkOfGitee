@@ -7,7 +7,7 @@
 
 set -e
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/mkMyDirBySudo.sh)
+_importBSFn "mkMyDirBySudo.sh"
 
 #产物目录 对应宿主机目录
 gainD_host="/gain"

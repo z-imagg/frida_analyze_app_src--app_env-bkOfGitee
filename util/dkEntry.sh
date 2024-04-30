@@ -10,7 +10,7 @@ set -e
 
 #本地域名总是要设置的
 source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/argCntEqN.sh)
+_importBSFn "argCntEqN.sh"
 
 #docker实例初始化
 function dkEntry() {

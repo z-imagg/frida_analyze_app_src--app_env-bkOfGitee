@@ -8,8 +8,8 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/mkMyDirBySudo.sh)
-source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/git_Clone_SwitchTag.sh)
+_importBSFn "mkMyDirBySudo.sh"
+_importBSFn "git_Clone_SwitchTag.sh"
 
 #docker实例初始化
 function git_clone_host_depends() {
