@@ -20,7 +20,7 @@ local bashSimply="/app/bash-simplify"
 [[ -d $AppHm ]] || mkMyDirBySudo $AppHm
 
 #克隆仓库的给定标签到本地目录 或 切换本地仓库到给定标签
-git_Clone_SwitchTag http://giteaz:3000/bal/bash-simplify.git "tag/release" "$bashSimply"
+git_Clone_SwitchTag http://giteaz:3000/bal/bash-simplify.git "tag_release" "$bashSimply"
 
 }
 
