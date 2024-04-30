@@ -8,6 +8,11 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+#本地域名总是要设置的
+source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+#导入_importBSFn.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+
 #若设置本地域名失败，则退出代码27
 ( source  /app/bash-simplify/local_domain_set.sh && local_domain_set ;) || exit 27
 

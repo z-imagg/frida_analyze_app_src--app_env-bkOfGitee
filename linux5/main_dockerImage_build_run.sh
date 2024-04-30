@@ -8,6 +8,12 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+
+#本地域名总是要设置的
+source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh
+#导入_importBSFn.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh
+
 #克隆宿主机中需要的依赖仓库
 source /fridaAnlzAp/app_qemu/app_bld/util/git_clone_host_depends.sh && git_clone_host_depends
 
