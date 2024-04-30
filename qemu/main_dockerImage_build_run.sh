@@ -8,6 +8,9 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
+#当长久build docker镜像后，需要清理docker占用的磁盘空间
+docker system prune --force  # --all  
+
 #本地域名总是要设置的
 source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
 #导入_importBSFn.sh
@@ -51,6 +54,3 @@ dkVolMap__asstHstGitD "/app/linux" "/app/linux"
 
 #若初次启动时，则 克隆项目代码 并 退出
 docker run --privileged=true -e isDkInstInit='true' -e isDkBuszRun='true' $dkVolMap  --name $dkInstName --hostname $dkInstName --interactive  --tty $dkInstName:$dkInstVer
-
-#当长久build docker镜像后，需要清理docker占用的磁盘空间
-docker system prune --force  # --all  
