@@ -2,7 +2,7 @@
 
 #【描述】  定义 docker产物目录
 #【依赖】   
-#【术语】  gain == 产物,  dk == docker, Vol == Volume
+#【术语】  gain == 产物,  dk == docker, Vol == Volume, def == define == 定义
 #【备注】   
 
 set -e

@@ -8,7 +8,7 @@
 
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
 # 引入全局变量 gainD_dk
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 
 buildDir="/app/qemu/build-v8.2.2"

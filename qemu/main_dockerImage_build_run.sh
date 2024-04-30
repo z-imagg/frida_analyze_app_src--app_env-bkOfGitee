@@ -13,7 +13,7 @@ set -e
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_Git.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host

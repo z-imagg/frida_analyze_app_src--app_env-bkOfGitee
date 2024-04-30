@@ -12,7 +12,7 @@ set -e
 source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
 source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap__if_hostGitDir.sh
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host

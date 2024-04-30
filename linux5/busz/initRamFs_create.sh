@@ -11,7 +11,7 @@ set -e
 
 source <(curl --silent http://giteaz:3000/bal/bash-simplify/raw/branch/release/cpFPathToDir.sh)
 # 引入全局变量 gainD_dk
-source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/dkVolMap_gain_def.sh
 
 Hm=/app/linux/initRamFsHome/
 initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
