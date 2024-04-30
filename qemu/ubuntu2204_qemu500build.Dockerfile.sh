@@ -8,20 +8,16 @@
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
 #dk# COPY /app/bash-simplify/local_domain_set.sh /app/bash-simplify/local_domain_set.sh
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld/qemu/busz_run.sh /root/busz_run.sh
+#dk# COPY /fridaAnlzAp/app_qemu/app_bld/qemu/depent /fridaAnlzAp/app_qemu/app_bld/qemu/depent
 
 #dk# RUN bash -c ''' \
 { \
-ArgAptGet="-qq   -y" && \
-# 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
-( set -x && \
-apt-get $ArgAptGet update && \
-apt-get $ArgAptGet install  build-essential python3-venv python3-pip  ninja-build pkg-config libglib2.0-dev 1>/dev/null && \
-##  qemu 5.0.0 、 6.2.0  需要的依赖，  qemu v8.2.2 不需要
-apt-get $ArgAptGet install libpixman-1-dev  libpixman-1-0   1>/dev/null && \
-apt-get $ArgAptGet install git curl file rsync sudo  1>/dev/null && \
-pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple && \
-#解决报错: 找不到 ssl/bio.h
-gcc --version ;) && \
+#本地域名总是要设置的
+source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh && \
+#导入_importBSFn.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh && \
+#安装系统依赖包
+bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/depent/sys.sh && \
 true ;} \
 || false #dk# '''
 
