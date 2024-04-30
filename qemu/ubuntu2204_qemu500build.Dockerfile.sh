@@ -12,12 +12,12 @@
 
 #dk# RUN bash -c ''' \
 { \
+#安装系统依赖包
+bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/depent/sys.sh && \
 #本地域名总是要设置的
 source /fridaAnlzAp/app_qemu/app_bld/util/LocalDomainSet.sh && \
 #导入_importBSFn.sh
 source /fridaAnlzAp/app_qemu/app_bld/util/Load__importBSFn.sh && \
-#安装系统依赖包
-bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/depent/sys.sh && \
 true ;} \
 || false #dk# '''
 
