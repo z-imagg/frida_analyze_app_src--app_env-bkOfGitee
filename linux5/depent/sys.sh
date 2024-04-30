@@ -9,9 +9,9 @@
 ArgAptGet="-qq   -y" && \
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
 ( set -x && \
-SUDO="sudo" ; { [[ $(whoami) == root ]] && SUDO="" ;} && \
-$SUDO apt-get $ArgAptGet update && \
-$SUDO apt-get $ArgAptGet install -y  sudo && \
+SUDO="sudo" ; { [[ $(id --name --user) == root ]] && SUDO="" ;} && \
+$SUDO apt-get $ArgAptGet update  1>/dev/null && \
+$SUDO apt-get $ArgAptGet install -y  sudo  1>/dev/null && \
 sudo apt-get $ArgAptGet install  build-essential 1>/dev/null && \
 #libncurses5-dev被menuconfig需要
 sudo apt-get $ArgAptGet install libncurses5-dev 1>/dev/null && \
