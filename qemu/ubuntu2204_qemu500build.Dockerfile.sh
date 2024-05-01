@@ -7,8 +7,7 @@
 #dk# COPY /fridaAnlzAp/app_qemu/prj_env/util /fridaAnlzAp/app_qemu/prj_env/util
 #dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
-#dk# COPY /app/bash-simplify/_importBSFn.sh /app/bash-simplify/_importBSFn.sh
-#dk# COPY /app/bash-simplify/local_domain_set.sh /app/bash-simplify/local_domain_set.sh
+#dk# COPY /app/bash-simplify  /app/bash-simplify
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld/qemu/busz_run.sh /root/busz_run.sh
 #dk# COPY /fridaAnlzAp/app_qemu/app_bld/qemu/depent /fridaAnlzAp/app_qemu/app_bld/qemu/depent
 
