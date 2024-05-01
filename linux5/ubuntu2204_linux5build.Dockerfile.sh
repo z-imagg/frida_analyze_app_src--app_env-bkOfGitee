@@ -24,4 +24,4 @@ true ;} \
 
 
 
-#dk# ENTRYPOINT [ "/fridaAnlzAp/app_qemu/app_bld/linux5/docker_entry.sh" ]
+#dk# ENTRYPOINT ["/bin/bash", "/fridaAnlzAp/app_qemu/app_bld/linux5/docker_entry.sh" ]
