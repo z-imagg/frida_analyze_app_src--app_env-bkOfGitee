@@ -12,9 +12,9 @@ set -e
 docker system prune --force  # --all  
 
 #本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
+source /fridaAnlzAp/app_qemu/prj_env/util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+source /fridaAnlzAp/app_qemu/prj_env/util/Load__importBSFn.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
