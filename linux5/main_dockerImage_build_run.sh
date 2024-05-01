@@ -29,10 +29,8 @@ source /fridaAnlzAp/prj_env/util/dkVolMap_gain_def.sh
 #若宿主机 产物目录 创建
 mk_gainD_host
 
-# sudo mkdir /hostRoot
-# sudo chown z.z /hostRoot
-# ln -s  /fridaAnlzAp /hostRoot/fridaAnlzAp
-# ln -s  /app /hostRoot/app
+#重建 供给docker build用的根目录
+source /fridaAnlzAp/app_qemu/prj_env/env/hostRootReCreate4DkBuild.sh
 
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
