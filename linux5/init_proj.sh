@@ -11,14 +11,8 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-#判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
-_importBSFn "isInDocker.sh" && isInDocker
-#  删除 构建Dockerfile时 用的目录 /fridaAnlzAp/prj_env/env
-$isInDocker && ( mv /fridaAnlzAp /tmp_fridaAnlzAp ; mkdir -p /fridaAnlzAp/ ; \
-mv app/bash-simplify /tmp_bash-simplify ;)
-
 #基本需求: 域名设置、克隆基本仓库
-source /tmp_fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
+source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
 
