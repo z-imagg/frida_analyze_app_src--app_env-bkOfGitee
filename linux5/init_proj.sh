@@ -12,7 +12,7 @@
 set -e
 
 #基本需求: 域名设置、克隆基本仓库
-bash -x /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
+source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
 
