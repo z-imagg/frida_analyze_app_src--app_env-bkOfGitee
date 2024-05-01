@@ -4,12 +4,9 @@
 
 #dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
-#dk# COPY /fridaAnlzAp/app_qemu/prj_env/util /fridaAnlzAp/app_qemu/prj_env/util
-#dk# COPY /fridaAnlzAp/prj_env/env /fridaAnlzAp/prj_env/env
-#dk# COPY /fridaAnlzAp/app_qemu/app_bld /fridaAnlzAp/app_qemu/app_bld
+#dk# COPY /fridaAnlzAp/app_qemu /fridaAnlzAp/app_qemu
+#dk# COPY /fridaAnlzAp/prj_env /fridaAnlzAp/prj_env
 #dk# COPY /app/bash-simplify  /app/bash-simplify
-#dk# COPY /fridaAnlzAp/app_qemu/app_bld/linux5/busz_run.sh /root/busz_run.sh
-#dk# COPY /fridaAnlzAp/app_qemu/app_bld/linux5/depent /fridaAnlzAp/app_qemu/app_bld/linux5/depent
 
 #dk# RUN bash -c ''' \
 { \
