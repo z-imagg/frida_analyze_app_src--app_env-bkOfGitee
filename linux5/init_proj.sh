@@ -11,10 +11,8 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-#本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+#基本需求: 域名设置、克隆基本仓库
+bash -x /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
 

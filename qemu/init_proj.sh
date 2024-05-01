@@ -11,19 +11,15 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e
 
-#本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+#基本需求: 域名设置、克隆基本仓库
+bash -x /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
+
 
 _importBSFn "gitproxy_Clone_SwitchTag.sh"
 _importBSFn "git_Clone_SwitchTag.sh"
 
 #克隆仓库qemu版本v8.2.2
 gitproxy_Clone_SwitchTag "https://github.com/qemu/qemu.git"  "v8.2.2"  "/app/qemu"
-
-#克隆仓库cmd-wrap版本tag_release
-git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
 
 # cmd-wrap环境初始化
 bash "/app/cmd-wrap/script/env_prepare.sh"

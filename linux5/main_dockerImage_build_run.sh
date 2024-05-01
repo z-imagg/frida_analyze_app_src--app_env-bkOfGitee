@@ -11,10 +11,8 @@ set -e
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
 docker system prune --force  # --all  
 
-#本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/prj_env/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source /fridaAnlzAp/app_qemu/prj_env/util/Load__importBSFn.sh
+#基本需求: 域名设置、克隆基本仓库
+bash -x /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
