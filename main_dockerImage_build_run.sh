@@ -16,7 +16,7 @@ get_pdir && source $pdir/pre_init.sh || exit 70
 # exit 0
 
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
-docker system prune --force  # --all  
+# docker system prune --force  # --all  
 
 #基本需求: 域名设置、克隆基本仓库
 source $pdir/util/basic_require.sh
