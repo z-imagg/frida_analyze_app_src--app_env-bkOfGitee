@@ -11,7 +11,7 @@
 #dk# RUN bash -c ''' \
 { \
 #安装系统依赖包
-bash -x /fridaAnlzAp/app_bld/linux5/depent/sys.sh && \
+bash -x $pdir/linux5/depent/sys.sh && \
 #基本需求: 域名设置、克隆基本仓库
 source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh && \
 true ;} \
@@ -24,4 +24,4 @@ true ;} \
 
 
 
-#dk# ENTRYPOINT ["/bin/bash", "/fridaAnlzAp/app_bld/linux5/docker_entry.sh" ]
+#dk# ENTRYPOINT ["/bin/bash", "$pdir/linux5/docker_entry.sh" ]

@@ -62,4 +62,4 @@ bash
 }
 
 # 使用举例
-# dkEntry "/fridaAnlzAp/app_bld/qemu/init_proj.sh"
+# dkEntry "$pdir/qemu/init_proj.sh"

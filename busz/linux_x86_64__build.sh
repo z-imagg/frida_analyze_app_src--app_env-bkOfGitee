@@ -46,8 +46,8 @@ local msg_tip="""
 按回车继续:
 """
 
-local dfltCfgF="/fridaAnlzAp/app_bld/linux5/.config.default"
-local myCfgF="/fridaAnlzAp/app_bld/linux5/.config.pvh__debug"
+local dfltCfgF="$pdir/linux5/.config.default"
+local myCfgF="$pdir/linux5/.config.pvh__debug"
 local objCfgF="/app/linux/.config"
 #是否有预设配置文件 .config.pvh__debug
 local HasMyCfg=false; [[ -f $myCfgF ]] && HasMyCfg=true
