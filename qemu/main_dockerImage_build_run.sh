@@ -15,7 +15,7 @@ docker system prune --force  # --all
 source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
 
 #重建 供给docker build用的根目录
-source /fridaAnlzAp/prj_env/env/hostRootReCreate4DkBuild.sh
+source /fridaAnlzAp/prj_env/util/hostRootReCreate4DkBuild.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
