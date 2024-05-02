@@ -48,3 +48,21 @@ wc -l  f__sym_null
 #命令管道举例
 # mkfifo p1; { ls | head -n 3 > p1 & } ; pid=$!; echo "pid=$pid";  cat p1; wait $pid ; rm p1
 #            (                       )  # 上一行{}换成()也是一样效果的
+
+
+#部分结果记录
+# head -n 5 f__sym_ok
+# Trace 0: 0x78cd82cb8ac0 [00000000/ffffffff810006c0/0000c090/ff020000] early_setup_idt
+# Trace 0: 0x78cd82cb98c0 [00000000/ffffffff82d39472/0000c290/ff020000] x86_64_start_kernel
+# Trace 0: 0x78cd82cb9ac0 [00000000/ffffffff82d39488/0000c290/ff020000] x86_64_start_kernel
+# Trace 0: 0x78cd82cb9c80 [00000000/ffffffff82d3948f/0000c290/ff020000] x86_64_start_kernel
+# Trace 0: 0x78cd82cb9e80 [00000000/ffffffff82d3915a/0000c290/ff020000] reset_early_page_tables
+# wc -l f__sym_ok # 35907263 
+# head -n 5 f__sym_null
+# Trace 0: 0x78cd82aef100 [ffff0000/00000000fffffff0/00000040/ff020000] 
+# Trace 0: 0x78cd82aef240 [000f0000/00000000000fe05b/00000040/ff020000] 
+# Trace 0: 0x78cd82aef440 [000f0000/00000000000fe066/00000040/ff020000] 
+# Trace 0: 0x78cd82aef580 [000f0000/00000000000fe06a/00000048/ff020000] 
+# Trace 0: 0x78cd82aef6c0 [000f0000/00000000000fe070/00000040/ff020000] 
+# wc -l f__sym_null # 36725239 
+
