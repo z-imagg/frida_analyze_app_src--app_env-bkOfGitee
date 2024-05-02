@@ -35,7 +35,7 @@ mkdir $Hm && cd $Hm
 wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
 chmod +x busybox-i686
 
-wget http://giteaz:3000/bal/bal/raw/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init
+wget http://giteaz:3000/bal/bal/raw/tag/tag__fridaAnlzAp_app_qemu-linux4/bldLinux4RunOnBochs/init
 chmod +x init
 
 # 执行 cpio_gzip 以 生成 initRamFS
@@ -50,5 +50,5 @@ cpFPathToDir  $initrdF $gainD_dk/ && \
 print_initrdF
 
 
-# [init](http://giteaz:3000/bal/bal/src/branch/fridaAnlzAp/app/qemu-linux4/bldLinux4RunOnBochs/init),
+# [init](http://giteaz:3000/bal/bal/raw/tag/tag__fridaAnlzAp_app_qemu-linux4/bldLinux4RunOnBochs/init),
 # [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)
