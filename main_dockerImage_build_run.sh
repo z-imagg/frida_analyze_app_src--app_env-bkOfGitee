@@ -33,7 +33,7 @@ mk_gainD_host
 source $pdir/util/hostRootReCreate4DkBuild.sh
 
 #定义 docker镜像、实例 的 名称、版本号
-source $pdir/linux5/docker_instance.sh
+source $pdir/docker_instance.sh
 
 source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
