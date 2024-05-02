@@ -21,6 +21,9 @@ local F_parseCallerN="$bash_simplify/parseCallerN.sh"
 [[ -f $F__importBSFn ]] || exit 63
 [[ -f $F_parseCallerN ]] || exit 64
 
+source $F__importBSFn
+source $F_parseCallerN
+
 #返回变量 _lnNum 、 _func 、 _file
 parseCallerN 0 || exit 65
 }
