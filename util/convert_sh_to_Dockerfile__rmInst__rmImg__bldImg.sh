@@ -31,7 +31,7 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
     [[ -f $shF ]] || { echo $errTxt_NoShFile && exit $exitCode_errNoShFile ;}
 
     #执行sh转Dockerfile :  x.Dockerfile.sh  --->  x.Dockerfile
-    sed -e "s/#dk# //g"  -e  "s/#dk# '''//g"    $shF | tee $dockerF 1>/dev/null
+    sed -e "s/#dk# //g"  -e  "s/#dk# '''//g" -e "s/\$pdir/$pdir/g"     $shF | tee $dockerF 1>/dev/null
 
     #打印提示消息
     echo "converted: $shF ---> $dockerF . pwd=$(pwd)"
@@ -51,5 +51,5 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
 
     #构建镜像
     #  在.Dockfile的RUN脚本中使用的本地域名
-    docker build --build-arg pdir="$pdir" --add-host=giteaz:10.0.4.9 --add-host=westgw:10.0.4.9  --progress=plain --no-cache    -f "$dockerF"    -t "$tag"     "/hostTop" 
+    docker build  --add-host=giteaz:10.0.4.9 --add-host=westgw:10.0.4.9  --progress=plain --no-cache    -f "$dockerF"    -t "$tag"     "/hostTop" 
 }
