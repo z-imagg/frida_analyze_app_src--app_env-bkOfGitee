@@ -35,7 +35,7 @@ source /fridaAnlzAp/app_qemu/prj_env/util/hostRootReCreate4DkBuild.sh
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 
-source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
+source /fridaAnlzAp/prj_env/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
 
 #构建基础镜像 

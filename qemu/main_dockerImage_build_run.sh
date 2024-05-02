@@ -31,7 +31,7 @@ mk_gainD_host
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
 
-source /fridaAnlzAp/prj_env/env/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
+source /fridaAnlzAp/prj_env/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
 #构建基础镜像 
 #  转换 ubuntu2204_linux5build.Dockerfile.sh ---> ubuntu2204_linux5build.Dockerfile ，停止、删除  实例 ， 删除、构建 镜像
