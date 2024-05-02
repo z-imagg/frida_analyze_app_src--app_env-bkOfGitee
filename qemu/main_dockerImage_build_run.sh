@@ -12,18 +12,18 @@ set -e
 docker system prune --force  # --all  
 
 #基本需求: 域名设置、克隆基本仓库
-source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
+source /fridaAnlzAp/app_qemu/app_bld/util/basic_require.sh
 
 #重建 供给docker build用的根目录
-source /fridaAnlzAp/prj_env/util/hostRootReCreate4DkBuild.sh
+source /fridaAnlzAp/app_bld/util/hostRootReCreate4DkBuild.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
-source /fridaAnlzAp/prj_env/util/dkVolMap_if_HDir_Git.sh
-source /fridaAnlzAp/prj_env/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source /fridaAnlzAp/prj_env/util/dkVolMap__asstHstGitD.sh
-source /fridaAnlzAp/prj_env/util/dkVolMap_gain_def.sh
+source /fridaAnlzAp/app_bld/util/dkVolMap_if_HDir_Git.sh
+source /fridaAnlzAp/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
+source /fridaAnlzAp/app_bld/util/dkVolMap__asstHstGitD.sh
+source /fridaAnlzAp/app_bld/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host
@@ -31,7 +31,7 @@ mk_gainD_host
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
 
-source /fridaAnlzAp/prj_env/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
+source /fridaAnlzAp/app_bld/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
 #构建基础镜像 
 #  转换 ubuntu2204_linux5build.Dockerfile.sh ---> ubuntu2204_linux5build.Dockerfile ，停止、删除  实例 ， 删除、构建 镜像

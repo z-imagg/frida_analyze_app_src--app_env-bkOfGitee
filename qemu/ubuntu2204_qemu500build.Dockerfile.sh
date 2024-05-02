@@ -13,7 +13,7 @@
 #安装系统依赖包
 bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/depent/sys.sh && \
 #基本需求: 域名设置、克隆基本仓库
-source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh && \
+source /fridaAnlzAp/app_qemu/app_bld/util/basic_require.sh && \
 true ;} \
 || false #dk# '''
 
