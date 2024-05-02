@@ -32,13 +32,8 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
 
     #执行sh转Dockerfile :  x.Dockerfile.sh  --->  x.Dockerfile
     cp -v $shF $dockerF
-    # 替换1
     python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF '$pdir'         "$pdir"
-    # 替换2
-    python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF "#dk# '''"      ""
-    # 替换3 
     python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF "#dk# "         ""
-    #   替换2 先于 替换3 ，因为3是2的子串
 
     #打印提示消息
     echo "converted: $shF ---> $dockerF . pwd=$(pwd)"
