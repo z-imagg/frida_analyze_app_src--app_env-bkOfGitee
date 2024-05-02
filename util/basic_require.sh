@@ -14,11 +14,11 @@ _importBSFn "git_Clone_SwitchTag.sh"
 #判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
 _importBSFn "isInDocker.sh" && isInDocker
 #  删除 构建Dockerfile时 用的目录  
-$inDocker && ( mv /app/app_bld /app/tmp_app_bld ;  \
+$inDocker && ( mv /app/app_env /app/tmp_app_env ;  \
 mv /app/bash-simplify /app/tmp_bash-simplify ;)
 
 #克隆仓库app_qemu版本tag_release
-git_Clone_SwitchTag "http://giteaz:3000/frida_analyze_app_src/app_qemu.git"  "tag_release"  "/app/app_bld"
+git_Clone_SwitchTag "http://giteaz:3000/frida_analyze_app_src/app_qemu.git"  "tag_release"  "/app/app_env"
 #克隆仓库cmd-wrap版本tag_release
 git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
 #克隆仓库bash-simplify版本tag_release

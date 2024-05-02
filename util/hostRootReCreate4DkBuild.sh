@@ -15,7 +15,7 @@ mkMyDirBySudo $HostRoot
 mkMyDirBySudo $_app 
 # ln -s , ln -d 都被'docker build'拒绝 
 #  rsync --progress
-rsync  --quiet --fsync --recursive  $r_app/app_bld $_app/
+rsync  --quiet --fsync --recursive  $r_app/app_env $_app/
 rsync  --quiet --fsync --recursive  $r_app/bash-simplify $_app/
 }
 

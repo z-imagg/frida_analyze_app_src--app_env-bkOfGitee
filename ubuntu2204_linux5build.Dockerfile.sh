@@ -4,7 +4,7 @@
 
 #dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
-#dk# COPY ./hostRoot/app/app_bld /app/app_bld
+#dk# COPY ./hostRoot/app/app_env /app/app_env
 #dk# COPY ./hostRoot/app/bash-simplify  /app/bash-simplify
 
 #dk# RUN bash -c ''' \
