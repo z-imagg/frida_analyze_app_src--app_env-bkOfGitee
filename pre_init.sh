@@ -10,12 +10,13 @@ set -e
 
 function pre_init() {
 
-local BS_hm="/app/bash-simplify/"
-local BS_gitD="BS_hm/.git"
-local F__importBSFn="/app/bash-simplify/_importBSFn.sh"
-local F_parseCallerN="/app/bash-simplify/parseCallerN.sh"
+#返回变量 bash_simplify
+bash_simplify="/app/bash-simplify/"
+local BS_gitD="$bash_simplify/.git"
+local F__importBSFn="$bash_simplify/_importBSFn.sh"
+local F_parseCallerN="$bash_simplify/parseCallerN.sh"
 
-[[ -d $BS_hm ]] || exit 61
+[[ -d $bash_simplify ]] || exit 61
 [[ -d $BS_gitD ]] || exit 62
 [[ -f $F__importBSFn ]] || exit 63
 [[ -f $F_parseCallerN ]] || exit 64
@@ -26,5 +27,9 @@ parseCallerN 0 || exit 65
 
 pre_init
 
+#返回变量 pdir
 pdir=$(dirname $_file)
 cd $pdir
+
+
+#此脚本的全部返回变量 bash_simplify 、 _lnNum 、 _func 、 _file 、  pdir
