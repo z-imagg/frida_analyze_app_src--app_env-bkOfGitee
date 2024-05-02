@@ -18,13 +18,13 @@ source /fridaAnlzAp/app_qemu/app_bld/util/basic_require.sh
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
 #克隆宿主机中需要的依赖仓库
-source /fridaAnlzAp/app_bld/util/git_clone_host_depends.sh && git_clone_host_depends
+source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 
 #去此脚本所在目录
 source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
-source /fridaAnlzAp/app_bld/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source /fridaAnlzAp/app_bld/util/dkVolMap_gain_def.sh
+source $pdir/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
+source $pdir/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host
@@ -35,7 +35,7 @@ source /fridaAnlzAp/app_qemu/app_bld/util/hostRootReCreate4DkBuild.sh
 #定义 docker镜像、实例 的 名称、版本号
 source /fridaAnlzAp/app_qemu/app_bld/linux5/docker_instance.sh
 
-source /fridaAnlzAp/app_bld/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
+source $pdir/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
 
 #构建基础镜像 
