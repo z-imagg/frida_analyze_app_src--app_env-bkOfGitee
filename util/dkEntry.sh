@@ -9,9 +9,9 @@
 set -e
 
 #本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
+source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+source $pdir/util/Load__importBSFn.sh
 
 _importBSFn "argCntEqN.sh"
 

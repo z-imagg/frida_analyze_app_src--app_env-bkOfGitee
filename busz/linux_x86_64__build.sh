@@ -10,14 +10,14 @@
 set -e
 
 #本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
+source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+source $pdir/util/Load__importBSFn.sh
 
 
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
-source /fridaAnlzAp/prj_env/util/dkVolMap_gain_def.sh
+source $pdir/util/dkVolMap_gain_def.sh
 
 
 outF1=/app/linux/vmlinux

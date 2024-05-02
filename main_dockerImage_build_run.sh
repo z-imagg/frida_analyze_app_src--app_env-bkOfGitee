@@ -18,13 +18,13 @@ source $pdir/util/basic_require.sh
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
 #克隆宿主机中需要的依赖仓库
-source /fridaAnlzAp/prj_env/util/git_clone_host_depends.sh && git_clone_host_depends
+source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 
 #去此脚本所在目录
 source /app/bash-simplify/cdCurScriptDir.sh && cdCurScriptDir
 
-source /fridaAnlzAp/prj_env/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source /fridaAnlzAp/prj_env/util/dkVolMap_gain_def.sh
+source $pdir/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
+source $pdir/util/dkVolMap_gain_def.sh
 
 #若宿主机 产物目录 创建
 mk_gainD_host

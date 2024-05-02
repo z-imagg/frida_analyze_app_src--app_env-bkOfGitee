@@ -27,4 +27,4 @@ git_Clone_SwitchTag http://giteaz:3000/frida_analyze_app_src/prj_env.git "tag_re
 }
 
 # 使用举例
-# source /fridaAnlzAp/prj_env/util/git_clone_host_depends.sh && git_clone_host_depends
+# source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
