@@ -7,9 +7,8 @@
 
 #get_pdir 参考 http://giteaz:3000/bal/bash-simplify/src/branch/release/parseCallerN.sh
 function get_pdir() {
-local abs_file=$(readlink -f $(echo $(caller 0) | cut -d' ' -f3) )
 #'$(caller 0)' == '12 main /app/app_env/main_dockerImage_build_run.sh'
-pdir=$(dirname $abs_file)
+pdir=$(dirname $(readlink -f $(echo $(caller 0) | cut -d' ' -f3) ) )
 }
 
 #进入目录 当前目录, 变量pdir为当前目录绝对路径
