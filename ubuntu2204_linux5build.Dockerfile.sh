@@ -10,7 +10,6 @@
 #dk# RUN bash -c ''' \
 { \
 #安装系统依赖包
-pdir=$(dirname $(readlink -f $(echo $(caller 0) | cut -d' ' -f3) ) ) && \
 bash -x $pdir/depent/sys.sh && \
 #基本需求: 域名设置、克隆基本仓库
 source $pdir/util/basic_require.sh && \

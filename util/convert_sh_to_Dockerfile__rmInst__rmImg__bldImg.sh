@@ -51,5 +51,5 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
 
     #构建镜像
     #  在.Dockfile的RUN脚本中使用的本地域名
-    docker build --add-host=giteaz:10.0.4.9 --add-host=westgw:10.0.4.9  --progress=plain --no-cache    -f "$dockerF"    -t "$tag"     "/hostTop" 
+    docker build -e pdir="$pdir" --add-host=giteaz:10.0.4.9 --add-host=westgw:10.0.4.9  --progress=plain --no-cache    -f "$dockerF"    -t "$tag"     "/hostTop" 
 }
