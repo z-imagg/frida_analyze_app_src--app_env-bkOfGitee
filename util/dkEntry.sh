@@ -43,7 +43,7 @@ local do_buszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;
 #若此次应该执行$initProjF或$buszRunF, 则应source此两脚本
 ( $do_initProjF ||  $do_buszRunF ;) && { \
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/prj_env/util/LocalDomainSet.sh ; \
+source $pdir/util/LocalDomainSet.sh ; \
 #导入_importBSFn.sh
 source /app/bash-simplify/_importBSFn.sh ;}
 

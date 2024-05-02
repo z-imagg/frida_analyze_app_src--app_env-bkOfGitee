@@ -6,7 +6,7 @@
 #【备注】   
 
 #本地域名总是要设置的
-source /fridaAnlzAp/app_qemu/prj_env/util/LocalDomainSet.sh
+source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source /app/bash-simplify/_importBSFn.sh
 _importBSFn "git_Clone_SwitchTag.sh"

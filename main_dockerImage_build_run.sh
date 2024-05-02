@@ -12,7 +12,7 @@ set -e
 docker system prune --force  # --all  
 
 #基本需求: 域名设置、克隆基本仓库
-source /fridaAnlzAp/app_qemu/prj_env/util/basic_require.sh
+source $pdir/util/basic_require.sh
 
 #docker免sudo
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
