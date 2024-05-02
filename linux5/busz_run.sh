@@ -1,6 +1,4 @@
 
 #执行业务脚本
 # 业务脚本具有幂等性
-bash  /fridaAnlzAp/app_qemu/app_bld/linux5/busz/linux_x86_64__build.sh
-bash  /fridaAnlzAp/app_qemu/app_bld/linux5/busz/initRamFs_create.sh
-
+find /fridaAnlzAp/app_qemu/app_bld/linux5/busz/ -type  | xargs -I% bash -x %
