@@ -5,8 +5,9 @@
 #【术语】 
 #【备注】   
 
-#此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
-set -e
+
+#进入目录 当前目录, 变量pdir为当前目录绝对路径
+source ./pre_init.sh || exit 70
 
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
 docker system prune --force  # --all  
