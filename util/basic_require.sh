@@ -17,8 +17,8 @@ _importBSFn "isInDocker.sh" && isInDocker
 $inDocker && ( mv /app/app_env /app/tmp_app_env ;  \
 mv /app/bash-simplify /app/tmp_bash-simplify ;)
 
-#克隆仓库app_qemu版本tag_release
-git_Clone_SwitchTag "http://giteaz:3000/frida_analyze_app_src/app_qemu.git"  "tag_release"  "/app/app_env"
+#克隆仓库app_env版本tag_release
+git_Clone_SwitchTag "http://giteaz:3000/frida_analyze_app_src/app_env.git"  "tag_release"  "/app/app_env"
 #克隆仓库cmd-wrap版本tag_release
 git_Clone_SwitchTag "http://giteaz:3000/bal/cmd-wrap.git"  "tag_release"  "/app/cmd-wrap"
 #克隆仓库bash-simplify版本tag_release
