@@ -22,8 +22,8 @@ function dkEntry() {
 #断言参数个数为3个
 echo 3 | argCntEqN $* || return $?
 
-local initProjF=$1
-local buszRunF=$2
+local InitProjF=$1
+local BuszRunF=$2
 local manualTxtF=$3
 
 #'true'为true, 其余都为false
@@ -32,16 +32,16 @@ local _isDkInitProj=false; [[ "X$isDkInitProj" == "Xtrue" ]] && _isDkInitProj=tr
 #  isDkBuszRun == docker实例运行业务脚本标记
 local _isDkBuszRun=false; [[ "X$isDkBuszRun" == "Xtrue" ]] && _isDkBuszRun=true
 
-local flagDone_DkInitProj=/flagDone_DkInitProj
+local flagDone_InitProj=/flagDone_InitProj
 local flagDone_DkBuszRun=/flagDone_DkBuszRun
 
-#此次是否应该执行$initProjF:     从未执行$initProjF           且    调用者要求执行$initProjF
-local do_initProjF=false; ( [[ ! -f $flagDone_DkInitProj ]] &&  $_isDkInitProj ;) && do_initProjF=true
-#此次是否应该执行$buszRunF:     从未执行$buszRunF             且    调用者要求执行$buszRunF
-local do_buszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;) && do_buszRunF=true
+#此次是否应该执行$InitProjF:     从未执行$InitProjF           且    调用者要求执行$InitProjF
+local do_InitProjF=false; ( [[ ! -f $flagDone_InitProj ]] &&  $_isDkInitProj ;) && do_InitProjF=true
+#此次是否应该执行$BuszRunF:     从未执行$BuszRunF             且    调用者要求执行$BuszRunF
+local do_BuszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;) && do_BuszRunF=true
 
-#若此次应该执行$initProjF或$buszRunF, 则应source此两脚本
-( $do_initProjF ||  $do_buszRunF ;) && { \
+#若此次应该执行$InitProjF或$BuszRunF, 则应source此两脚本
+( $do_InitProjF ||  $do_BuszRunF ;) && { \
 #本地域名总是要设置的
 source $pdir/util/LocalDomainSet.sh ; \
 #导入_importBSFn.sh
@@ -49,10 +49,10 @@ source /app/bash-simplify/_importBSFn.sh ;}
 
 # 若docker实例初次运行时，则 进行初始化
 ( \
-#若此次应该执行$initProjF 则执行之       并 设置标记表示 已执行$initProjF
-{ $do_initProjF && bash -x $initProjF && touch $flagDone_DkInitProj ;} ; \
-#若此次应该执行$buszRunF  则执行之       并 设置标记表示 已执行$buszRunF
-{ $do_buszRunF  &&  bash -x $buszRunF && touch $flagDone_DkBuszRun ;} ; \
+#若此次应该执行$InitProjF 则执行之       并 设置标记表示 已执行$InitProjF
+{ $do_InitProjF && bash -x $InitProjF && touch $flagDone_InitProj ;} ; \
+#若此次应该执行$BuszRunF  则执行之       并 设置标记表示 已执行$BuszRunF
+{ $do_BuszRunF  &&  bash -x $BuszRunF && touch $flagDone_DkBuszRun ;} ; \
 true ;) && \
 # 显示 使用手册文本
 bash $manualTxtF && \
