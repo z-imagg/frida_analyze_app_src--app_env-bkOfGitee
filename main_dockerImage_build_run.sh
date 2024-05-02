@@ -5,14 +5,10 @@
 #【术语】 
 #【备注】   
 
+#get_pdir 参考 http://giteaz:3000/bal/bash-simplify/src/branch/release/parseCallerN.sh
 function get_pdir() {
-local txt=$(caller 0)
-#txt='12 main /app/app_env/main_dockerImage_build_run.sh'
-local str_arr=(${txt})
-local lnNum=${str_arr[0]}
-local func=${str_arr[1]}
-local file=${str_arr[2]}
-local abs_file=$(readlink -f $file)
+local abs_file=$(readlink -f $(echo $(caller 0) | cut -d' ' -f3) )
+#'$(caller 0)' == '12 main /app/app_env/main_dockerImage_build_run.sh'
 pdir=$(dirname $abs_file)
 }
 
