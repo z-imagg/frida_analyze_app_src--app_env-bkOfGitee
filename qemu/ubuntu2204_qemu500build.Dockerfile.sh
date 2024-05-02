@@ -4,9 +4,9 @@
 
 #dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
-#dk# COPY /fridaAnlzAp/app_qemu /fridaAnlzAp/app_qemu
-#dk# COPY /fridaAnlzAp/prj_env /fridaAnlzAp/prj_env
-#dk# COPY /app/bash-simplify  /app/bash-simplify
+#dk# COPY ./hostRoot/fridaAnlzAp/app_qemu /fridaAnlzAp/app_qemu
+#dk# COPY ./hostRoot/fridaAnlzAp/prj_env /fridaAnlzAp/prj_env
+#dk# COPY ./hostRoot/app/bash-simplify  /app/bash-simplify
 
 #dk# RUN bash -c ''' \
 { \
@@ -24,4 +24,4 @@ true ;} \
 
 
 
-#dk# ENTRYPOINT [ "/fridaAnlzAp/app_qemu/app_bld/qemu/docker_entry.sh" ]
+#dk# ENTRYPOINT ["/bin/bash", "-x", "/fridaAnlzAp/app_qemu/app_bld/qemu/docker_entry.sh" ]
