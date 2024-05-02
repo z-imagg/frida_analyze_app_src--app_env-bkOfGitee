@@ -4,8 +4,9 @@
 
 #dk# FROM ubuntu:22.04 as base
 #dk# WORKDIR /
-#dk# COPY ./hostRoot/app/app_env /app/app_env
-#dk# COPY ./hostRoot/app/bash-simplify  /app/bash-simplify
+#'COPY x y'== x --> x/y
+#dk# COPY ./hostRoot/app/app_env /app/
+#dk# COPY ./hostRoot/app/bash-simplify  /app/
 
 #dk# RUN bash -c ''' \
 { \
