@@ -27,16 +27,16 @@ local buszRunF=$2
 local manualTxtF=$3
 
 #'true'为true, 其余都为false
-#  isDkInstInit == docker实例初始化标记
-local _isDkInstInit=false; [[ "X$isDkInstInit" == "Xtrue" ]] && _isDkInstInit=true
+#  isDkInitProj == docker实例初始化标记
+local _isDkInitProj=false; [[ "X$isDkInitProj" == "Xtrue" ]] && _isDkInitProj=true
 #  isDkBuszRun == docker实例运行业务脚本标记
 local _isDkBuszRun=false; [[ "X$isDkBuszRun" == "Xtrue" ]] && _isDkBuszRun=true
 
-local flagDone_DkInstInit=/flagDone_DkInstInit
+local flagDone_DkInitProj=/flagDone_DkInitProj
 local flagDone_DkBuszRun=/flagDone_DkBuszRun
 
 #此次是否应该执行$initProjF:     从未执行$initProjF           且    调用者要求执行$initProjF
-local do_initProjF=false; ( [[ ! -f $flagDone_DkInstInit ]] &&  $_isDkInstInit ;) && do_initProjF=true
+local do_initProjF=false; ( [[ ! -f $flagDone_DkInitProj ]] &&  $_isDkInitProj ;) && do_initProjF=true
 #此次是否应该执行$buszRunF:     从未执行$buszRunF             且    调用者要求执行$buszRunF
 local do_buszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;) && do_buszRunF=true
 
@@ -50,7 +50,7 @@ source /app/bash-simplify/_importBSFn.sh ;}
 # 若docker实例初次运行时，则 进行初始化
 ( \
 #若此次应该执行$initProjF 则执行之       并 设置标记表示 已执行$initProjF
-{ $do_initProjF && bash -x $initProjF && touch $flagDone_DkInstInit ;} ; \
+{ $do_initProjF && bash -x $initProjF && touch $flagDone_DkInitProj ;} ; \
 #若此次应该执行$buszRunF  则执行之       并 设置标记表示 已执行$buszRunF
 { $do_buszRunF  &&  bash -x $buszRunF && touch $flagDone_DkBuszRun ;} ; \
 true ;) && \
