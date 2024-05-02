@@ -31,17 +31,18 @@ ls -lh  $(pwd)/qemu.log
 # 删除管道 再 创建管道
 rm pipe__sym_ok ; mkfifo pipe__sym_ok
 # 写入管道pipe__sym_ok                                      记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
-( grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok & ) ; pid__sym_ok=$1; echo "pid__sym_ok=$pid__sym_ok"; head -n 0 pipe__sym_ok;      wait $pid__sym_ok;
-# 管道pipe__sym_ok已经持有完整结果,以下是正常业务命令
-head -n 5  pipe__sym_ok
-wc -l  pipe__sym_ok
+( grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok & ) ; pid__sym_ok=$1; echo "pid__sym_ok=$pid__sym_ok"; cp pipe__sym_ok f__sym_ok;      wait $pid__sym_ok;
+# f__sym_ok已经持有完整结果,以下是正常业务命令
+head -n 5  f__sym_ok
+wc -l  f__sym_ok
 #  为空的
 # 删除管道 再 创建管道
 rm pipe__sym_null ; mkfifo pipe__sym_null
 # 写入管道pipe__sym_null                                  记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
-( grep  "Trace " qemu.log > pipe__sym_null & ) ; pid__sym_null=$1; echo "pid__sym_null=$pid__sym_null"; head -n 0 pipe__sym_null;      wait $pid__sym_null;
-head -n 5  pipe__sym_null
-wc -l  pipe__sym_null
+( grep  "Trace " qemu.log > pipe__sym_null & ) ; pid__sym_null=$1; echo "pid__sym_null=$pid__sym_null"; cp pipe__sym_null f__sym_null;      wait $pid__sym_null;
+# f__sym_null已经持有完整结果,以下是正常业务命令
+head -n 5  f__sym_null
+wc -l  f__sym_null
 
 
 #命令管道举例
