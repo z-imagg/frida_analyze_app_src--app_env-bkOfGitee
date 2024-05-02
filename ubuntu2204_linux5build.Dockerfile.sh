@@ -7,6 +7,8 @@
 #dk# COPY ./hostRoot/app/app_env /app/app_env
 #dk# COPY ./hostRoot/app/bash-simplify  /app/bash-simplify
 
+#dk# ARG pdir="$pdir"
+
 #dk# RUN bash -c ''' \
 { \
 #安装系统依赖包
