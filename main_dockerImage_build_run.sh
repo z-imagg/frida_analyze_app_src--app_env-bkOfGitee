@@ -5,9 +5,20 @@
 #【术语】 
 #【备注】   
 
+function get_pdir() {
+local txt=$(caller 0)
+#txt='12 main /app/app_env/main_dockerImage_build_run.sh'
+local str_arr=(${txt})
+local lnNum=${str_arr[0]}
+local func=${str_arr[1]}
+local file=${str_arr[2]}
+local abs_file=$(readlink -f $file)
+pdir=$(dirname $abs_file)
+}
 
 #进入目录 当前目录, 变量pdir为当前目录绝对路径
-source ./pre_init.sh || exit 70
+get_pdir && source $pdir/pre_init.sh || exit 70
+# exit 0
 
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
 docker system prune --force  # --all  
