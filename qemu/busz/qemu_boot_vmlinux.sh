@@ -28,14 +28,22 @@ $qemuSysX86F  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kerne
 ls -lh  $(pwd)/qemu.log
 #qemu源码中cpu-exec.c 的 'lookup_symbol(itb->pc)'  拿到linux4的vmlinux函数符号
 #  不为空的
-mkfifo pipe__sym_ok
-grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok
-head -n 5 < pipe__sym_ok
-wc -l < pipe__sym_ok
-rm pipe__sym_ok
+# 删除管道 再 创建管道
+rm pipe__sym_ok ; mkfifo pipe__sym_ok
+# 写入管道pipe__sym_ok                                      记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
+( grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok & ) ; pid__sym_ok=$1; echo "pid__sym_ok=$pid__sym_ok"; head -n 0 pipe__sym_ok;      wait $pid__sym_ok;
+# 管道pipe__sym_ok已经持有完整结果,以下是正常业务命令
+head -n 5  pipe__sym_ok
+wc -l  pipe__sym_ok
 #  为空的
-mkfifo pipe__sym_null
-grep  "Trace " qemu.log > pipe__sym_null
-head -n 5 < pipe__sym_null
-wc -l < pipe__sym_null
-rm pipe__sym_null
+# 删除管道 再 创建管道
+rm pipe__sym_null ; mkfifo pipe__sym_null
+# 写入管道pipe__sym_null                                  记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
+( grep  "Trace " qemu.log > pipe__sym_null & ) ; pid__sym_null=$1; echo "pid__sym_null=$pid__sym_null"; head -n 0 pipe__sym_null;      wait $pid__sym_null;
+head -n 5  pipe__sym_null
+wc -l  pipe__sym_null
+
+
+#命令管道举例
+# mkfifo p1; { ls | head -n 3 > p1 & } ; pid=$!; echo "pid=$pid";  cat p1; wait $pid ; rm p1
+#            (                       )  # 上一行{}换成()也是一样效果的
