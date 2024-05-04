@@ -18,8 +18,8 @@ _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
-
-buildDir="$pdir/build-v8.2.2"
+#$prjGRpD_dk
+buildDir="/app/qemu/build-v8.2.2"
 outF1="$buildDir/i386-softmmu/qemu-system-i386"
 outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
 

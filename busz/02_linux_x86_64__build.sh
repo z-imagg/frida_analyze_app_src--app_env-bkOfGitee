@@ -18,7 +18,8 @@ _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
-qemuSysX86F=$pdir/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
+#$prjGRpD_dk
+qemuSysX86F=/app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
 #如果已启动，则提示 并 正常退出(退出代码0)
 [[ -f $qemuSysX86F ]] && pidof "qemu-system-x86_64" && echo "booted! $qemuSysX86F" && exit 0
