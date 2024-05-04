@@ -40,11 +40,7 @@ file $outF2
 
 #调用nconfig手工配置获得.config， 或者用现成的.config
 function getConfig() {
-local msg_tip="""
-无预设配置文件.config , 
-需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分: http://giteaz:3000/frida_analyze_app_src/app_env/src/branch/app/qemu/linux5/busz/linux_x86_64__build.sh
-按回车继续:
-"""
+local msg_tip="无预设配置文件.config ,  需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分:  http://giteaz:3000/frida_analyze_app_src/app_env/src/branch/app/qemu/linux5/busz/linux_x86_64__build.sh 按回车继续:"
 
 local dfltCfgF="$pdir/.config.default"
 local myCfgF="$pdir/.config.pvh__debug"

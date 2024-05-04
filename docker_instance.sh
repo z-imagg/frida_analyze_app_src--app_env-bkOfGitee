@@ -18,7 +18,7 @@ prjGRp_url="https://mirrors.ustc.edu.cn/linux.git"
 projNm="linux5build"
 
 #名称, 用作 docker镜像名称 、 docker实例名称
-dkInstName="ubuntu2204_${linux5build}"
+dkInstName="ubuntu2204_${projNm}"
 #版本号, 用作 docker镜像版本号 、 docker实例版本号
 dkInstVer="0.1"
 
