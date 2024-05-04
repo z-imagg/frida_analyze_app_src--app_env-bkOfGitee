@@ -21,7 +21,7 @@ source $pdir/util/basic_import.sh
 _importBSFn arg1EqNMsg.sh
 usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true bsFlg='+x -u' ’"
 #断言只有2个参数，否则打印命令用法
-arg1EqNMsg $# 2 $usage_txt  || exit $?
+arg1EqNMsg $# 2 "$usage_txt"  || exit $?
 _useDocker=$1
 _bsFlgVarExpr=$2
 
