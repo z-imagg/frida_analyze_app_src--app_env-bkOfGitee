@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#【描述】  
+#【描述】  以busybox制作initramfs
 #【依赖】   
 #【术语】 
 #【备注】   
@@ -14,50 +14,41 @@ source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source $pdir/util/Load__importBSFn.sh
 
-# 引入配置: prjGRpD 等
-source $pdir/docker_instance.sh
-
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
-buildDir="$prjGRpD/build-v8.2.2"
-outF1="$buildDir/i386-softmmu/qemu-system-i386"
-outF2="$buildDir/x86_64-softmmu/qemu-system-x86_64"
+Hm=/app/linux/initRamFsHome/
+initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
 
-#展示编译产物 函数
-function printOutF() {
-ls -lh $outF1 && file $outF1
-ls -lh $outF2 && file $outF2
+function print_initrdF() {
+echo "展示initrdF"
+ls -lh $initrdF
 }
 
 #如果已有编译产物，则显示产物 并 正常退出(退出代码0)
-[[ -f $outF1 ]] && [[ -f $outF2 ]] && printOutF && exit 0
+[[ -f $initrdF ]] && print_initrdF && exit 0
 
-#安装 编译命令拦截器
-source  /app/cmd-wrap/script/cmd_setup.sh || true
+#正文开始
+mkdir $Hm && cd $Hm
 
-#编译步骤
-rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
-#  以下三行为编译步骤
-../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-tcg --enable-debug-info && \
-make -j4
-# make install
+wget https://www.busybox.net/downloads/binaries/1.16.1/busybox-i686
+chmod +x busybox-i686
+
+wget http://giteaz:3000/bal/bal/raw/tag/tag__fridaAnlzAp_app_qemu-linux4/bldLinux4RunOnBochs/init
+chmod +x init
+
+# 执行 cpio_gzip 以 生成 initRamFS
+RT=initramfs && \
+( rm -frv $RT &&   mkdir $RT && \
+mkdir -pv $RT/{bin,sbin,etc,proc,sys,dev} && \
+cp busybox-i686 init $RT/ &&  cd $RT  && \
+# 创建 initrd
+{ find . | cpio --create --format=newc   | gzip -9 > $initrdF ; }  ) && \
 # 收集产物
-cpFPathToDir  $outF1 $gainD_dk/ && \
-cpFPathToDir  $outF2 $gainD_dk/ && \
-#展示编译产物
-printOutF
-
-#卸载 编译命令拦截器
-bash /app/cmd-wrap/script/remove_interceptor.sh
+cpFPathToDir  $initrdF $gainD_dk/ && \
+print_initrdF
 
 
-#*-linux-user : 用户态模拟，  系统调用转发给物理宿主机操作系统. 因此不支持执行内核
-#*-softmmu    ：全系统模拟 
-
-#--disable-tcg  禁用tcg的话，是不能有目标 i386-linux-user ，否则 报错：
-#ERROR: TCG disabled, but hardware accelerator not available for 'i386-linux-user'
-
-
-##编译产物记录
+# [init](http://giteaz:3000/bal/bal/raw/tag/tag__fridaAnlzAp_app_qemu-linux4/bldLinux4RunOnBochs/init),
+# [eecdc/init](http://giteaz:3000/bal/bal/src/commit/eecdce9efdc46a630119831bec2abbb0263ffe16/bldLinux4RunOnBochs/init)

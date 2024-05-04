@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 #【描述】  linux-5.11编译步骤
 #【依赖】   
@@ -14,65 +14,80 @@ source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source $pdir/util/Load__importBSFn.sh
 
-# 引入配置: prjGRpD 等
-source $pdir/docker_instance.sh
 
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
-qemuSysX86F=$prjGRpD/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
-#如果已启动，则提示 并 正常退出(退出代码0)
-[[ -f $qemuSysX86F ]] && pidof "qemu-system-x86_64" && echo "booted! $qemuSysX86F" && exit 0
+outF1=/app/linux/vmlinux
+outF2=/app/linux/arch/x86/boot/bzImage
+
+#编译产物展示 函数
+function printLinuxKernel() {
+echo "展示linux内核编译产物"
+ls -lh  $outF1
+# -rwxr-xr-x   22M  vmlinux
+file   $outF1
+# vmlinux: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, BuildID[sha1]=6c22a4b562ebb84c9d1055bb9e341363d4844eab, not stripped
+ls -lh $outF2
+# -rw-r--r--   7.5M   arch/x86/boot/bzImage
+file $outF2
+}
+
+#如果已有编译产物，则显示产物 并 正常退出(退出代码0)
+[[ -f $outF1 ]] && [[ -f $outF2 ]] && printLinuxKernel && exit 0
+
+#调用nconfig手工配置获得.config， 或者用现成的.config
+function getConfig() {
+local msg_tip="无预设配置文件.config ,  需以nconfig手工选填配置文件以生成配置文件/app/linux/.config ,参考此文注释部分:  http://giteaz:3000/frida_analyze_app_src/app_env/src/branch/app/qemu/linux5/busz/linux_x86_64__build.sh 按回车继续:"
+
+local dfltCfgF="$pdir/.config.default"
+local myCfgF="$pdir/.config.pvh__debug"
+local objCfgF="/app/linux/.config"
+#是否有预设配置文件 .config.pvh__debug
+local HasMyCfg=false; [[ -f $myCfgF ]] && HasMyCfg=true
+#【取反】NoMyCfg==not HasMyCfg
+local NoMyCfg=true; $HasMyCfg && NoMyCfg=false
+
+#首次 nconfig手工配置 并保存为 预设配置文件 ， 下次 无需nconfig 而 直接使用该 预设配置文件
+# 【下次】若有预设配置文件 , 则使用之
+{ $HasMyCfg && cp -v $myCfgF   $objCfgF ; \
+# 【首次】若无预设配置文件 , 则以nconfig手工选填配置文件 并 保存之供给下次用（下次无需手工nconfig）
+$NoMyCfg  && read -p "$msg_tip" &&  ( make ARCH=x86_64 CC=gcc defconfig && cp -v $objCfgF $dfltCfgF && make ARCH=x86_64 CC=gcc nconfig && cp -v $objCfgF $myCfgF ;) ; \
+true ;}
+
+}
+
+#编译步骤
+cd /app/linux/ && \
+make mrproper && \
+make clean && \
+getConfig && \
+make ARCH=x86_64 CC=gcc -j 6  V=1 && \
+# 收集产物
+cpFPathToDir  $outF1 $gainD_dk/ && \
+cpFPathToDir  $outF2 $gainD_dk/ && \
 
 
-#若docker下,写:
-cd /gain/
-#若宿主机下,写:
-# cd /
 
-$qemuSysX86F  -d exec -D qemu.log    -nographic  -append "console=ttyS0"  -kernel  ./app/linux/vmlinux     -initrd ./app/linux/initRamFsHome/initramfs-busybox-i686.cpio.tar.gz
+#编译产物展示
+printLinuxKernel
 
-#展示qemu日志中linux4内核vmlinux中的函数符号名
-ls -lh  $(pwd)/qemu.log
-#qemu源码中cpu-exec.c 的 'lookup_symbol(itb->pc)'  拿到linux4的vmlinux函数符号
-#  不为空的
-# 删除管道 再 创建管道
-rm pipe__sym_ok ; mkfifo pipe__sym_ok
-# 写入管道pipe__sym_ok                                      记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
-( grep -E  "^Trace .+\] .+$" qemu.log > pipe__sym_ok & ) ; pid__sym_ok=$!; echo "pid__sym_ok=$pid__sym_ok"; cp pipe__sym_ok f__sym_ok;      wait $pid__sym_ok;
-# f__sym_ok已经持有完整结果,以下是正常业务命令
-head -n 5  f__sym_ok
-wc -l  f__sym_ok
-#  为空的
-# 删除管道 再 创建管道
-rm pipe__sym_null ; mkfifo pipe__sym_null
-# 写入管道pipe__sym_null                                  记录写管道的进程id                                 读该管道 从而引发写管道实际发生    等写管道进程执行完
-( grep  "Trace " qemu.log > pipe__sym_null & ) ; pid__sym_null=$!; echo "pid__sym_null=$pid__sym_null"; cp pipe__sym_null f__sym_null;      wait $pid__sym_null;
-# f__sym_null已经持有完整结果,以下是正常业务命令
-head -n 5  f__sym_null
-wc -l  f__sym_null
+#####以下是文档
+
+#nconfig 和 menuconfig 都是 文本界面, 但 nconfig更好操作一些
+
+#defconfig==default config==默认配置
+#若去掉 nconfig 不会弹出修改配置菜单 
 
 
-#命令管道举例
-# mkfifo p1; { ls | head -n 3 > p1 & } ; pid=$!; echo "pid=$pid";  cat p1; wait $pid ; rm p1
-#            (                       )  # 上一行{}换成()也是一样效果的
+#linux-5.0 的 nconfig 启用PVH、试图启用调试: 
+# 启用PVH:
+#   Processor type and features --> Linux guest support  --> Support for running PVH guests
+# 试图启用调试
+#   General  --> Include all symbols in kallsyms
+#   kernel hacking --> Compile-time checks and compiler options --> Compile the kernel with debug info
+#   kernel hacking --> Kernel debugging (默认已启用)
 
-
-#部分结果记录
-# head -n 5 f__sym_ok
-# Trace 0: 0x78cd82cb8ac0 [00000000/ffffffff810006c0/0000c090/ff020000] early_setup_idt
-# Trace 0: 0x78cd82cb98c0 [00000000/ffffffff82d39472/0000c290/ff020000] x86_64_start_kernel
-# Trace 0: 0x78cd82cb9ac0 [00000000/ffffffff82d39488/0000c290/ff020000] x86_64_start_kernel
-# Trace 0: 0x78cd82cb9c80 [00000000/ffffffff82d3948f/0000c290/ff020000] x86_64_start_kernel
-# Trace 0: 0x78cd82cb9e80 [00000000/ffffffff82d3915a/0000c290/ff020000] reset_early_page_tables
-# wc -l f__sym_ok # 35907263 
-# head -n 5 f__sym_null
-# Trace 0: 0x78cd82aef100 [ffff0000/00000000fffffff0/00000040/ff020000] 
-# Trace 0: 0x78cd82aef240 [000f0000/00000000000fe05b/00000040/ff020000] 
-# Trace 0: 0x78cd82aef440 [000f0000/00000000000fe066/00000040/ff020000] 
-# Trace 0: 0x78cd82aef580 [000f0000/00000000000fe06a/00000048/ff020000] 
-# Trace 0: 0x78cd82aef6c0 [000f0000/00000000000fe070/00000040/ff020000] 
-# wc -l f__sym_null # 36725239 
-
+#nconfig 生成的配置保存在文件.config中,  mrproper && clean 会删除 .config文件
