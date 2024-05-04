@@ -19,7 +19,7 @@ find /app/ -maxdepth 2 && \
 #安装系统依赖包
 bash $bsFlg $pdir/depent/sys.sh && \
 #基本需求: 域名设置、克隆基本仓库
-source  $pdir/util/basic_require.sh && \
+source $pdir/util/basic_require.sh && \
 true ;} \
 || false #dk# '''
 
