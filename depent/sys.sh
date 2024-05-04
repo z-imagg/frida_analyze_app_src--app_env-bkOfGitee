@@ -9,7 +9,10 @@
 ArgAptGet="-qq   -y" && \
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
 ( set -x && \
-SUDO="sudo" ; { [[ $(id --name --user) == root ]] && SUDO="" ;} && \
+#isRootUsr 是否为root用户
+{ isRootUsr=false; [[ $(id --name --user) == root ]] && isRootUsr=true ; true ;} && \
+#若不是root用户,有sudo             ; 若是root用户,无sudo
+{ { $isRootUsr || SUDO="sudo" ;} ; { $isRootUsr && SUDO="" ;} ; true ;} && \
 $SUDO apt-get $ArgAptGet update  1>/dev/null && \
 $SUDO apt-get $ArgAptGet install -y  sudo  1>/dev/null && \
 sudo apt-get $ArgAptGet install  build-essential 1>/dev/null && \
