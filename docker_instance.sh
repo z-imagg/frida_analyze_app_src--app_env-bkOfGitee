@@ -2,7 +2,7 @@
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   
-#【术语】 
+#【术语】 prjGRpD == projectGitRepoDir == 项目git仓库目录
 #【备注】   
 
 prjWord="linux"
@@ -26,4 +26,14 @@ app_env__tag="tag_release__${projNm}"
 dkInstName="ubuntu2204_${projNm}"
 #版本号, 用作 docker镜像版本号 、 docker实例版本号
 dkInstVer="0.1"
+
+#项目git仓库目录
+source /app/bash-simplify/_importBSFn.sh
+prjGRpD=""
+#判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
+_importBSFn "isInDocker.sh" && isInDocker
+#  若在docker实例中 ，计算prjGRpD
+$inDocker && prjGRpD=$prjGRpD_dk
+#  若在宿主机中 ，计算prjGRpD
+$inDocker || prjGRpD=$prjGRpD_host
 
