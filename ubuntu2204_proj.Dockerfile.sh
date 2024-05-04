@@ -15,7 +15,7 @@
 #标记此时是在docker镜像构建阶段
 touch /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage && \
 #粗略显示已复制文件
-find /app/ -maxdepth 2 && \
+find /app/ -maxdepth 1 && \
 #安装系统依赖包
 bash $bsFlg $pdir/depent/sys.sh && \
 #基本需求: 域名设置、克隆基本仓库
