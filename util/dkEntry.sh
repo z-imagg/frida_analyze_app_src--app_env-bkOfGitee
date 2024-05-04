@@ -18,6 +18,8 @@ _importBSFn "argCntEqN.sh"
 #docker实例初始化
 function dkEntry() {
 
+#导入配置, 如变量 projNm
+source $pdir/docker_instance.sh
 
 #断言参数个数为3个
 echo 3 | argCntEqN $* || return $?
@@ -32,8 +34,8 @@ local _isDkInitProj=false; [[ "X$isDkInitProj" == "Xtrue" ]] && _isDkInitProj=tr
 #  isDkBuszRun == docker实例运行业务脚本标记
 local _isDkBuszRun=false; [[ "X$isDkBuszRun" == "Xtrue" ]] && _isDkBuszRun=true
 
-local flagDone_InitProj=/tmp/flagDone_InitProj
-local flagDone_DkBuszRun=/tmp/flagDone_DkBuszRun
+local flagDone_InitProj=/tmp/flagDone_InitProj_${projNm}
+local flagDone_DkBuszRun=/tmp/flagDone_DkBuszRun_${projNm}
 
 #此次是否应该执行$InitProjF:     从未执行$InitProjF           且    调用者要求执行$InitProjF
 local do_InitProjF=false; ( [[ ! -f $flagDone_InitProj ]] &&  $_isDkInitProj ;) && do_InitProjF=true
