@@ -5,7 +5,7 @@
 #【术语】  gain == 产物,  dk == docker, Vol == Volume, def == define == 定义
 #【备注】   
 
-set -e
+set -e -u
 
 _importBSFn "mkMyDirBySudo.sh"
 

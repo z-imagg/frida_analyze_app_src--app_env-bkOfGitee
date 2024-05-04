@@ -7,7 +7,7 @@
 #【运行环境】 
 
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
-set -e
+set -e -u
 
 #本地域名总是要设置的
 source $pdir/util/LocalDomainSet.sh
