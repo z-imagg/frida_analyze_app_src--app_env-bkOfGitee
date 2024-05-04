@@ -79,8 +79,14 @@ dkVolMap_if_HDir_No_or_Empty_or_Git "/app/linux" "/app/linux"
 docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" $dkVolMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
 }
 
+
+function hostDo() {
+pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_linux5build.Dockerfile.sh
+pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/docker_entry.sh
+}
+
 #若指定用docker，则执行函数 dockerDo 并退出
 $useDocker && { dockerDo ; exit $? ;}
 
-#若指定不用docker，则执行脚本 .Dockerfile.sh 并退出
-$useDocker || { pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_linux5build.Dockerfile.sh; exit $? ;}
+#若指定不用docker，则执行函数 hostDo 并退出
+$useDocker || { hostDo ; exit $? ;}
