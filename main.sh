@@ -34,6 +34,8 @@ source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 #去此脚本所在目录
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
+_importBSFn mapBool2Txt.sh
+
 #返回变量 useDocker
 str2bool_notF2T $_useDocker "useDocker"
 #返回变量 bsFlg
