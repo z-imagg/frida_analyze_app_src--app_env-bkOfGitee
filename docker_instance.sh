@@ -14,8 +14,11 @@ prjGRp_tag="v5.11"
 #项目git仓库url
 prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 
-#项目名称
-projNm="linux5build"
+#项目名称 linux_v5.11_build
+projNm="linux_${prjGRp_tag}_build"
+
+#app_env 所用标签 tag_release__linux_v5.11_build
+app_env__tag="tag_release__${projNm}"
 
 #名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${projNm}"
