@@ -5,17 +5,19 @@
 #【术语】 prjGRpD == projectGitRepoDir == 项目git仓库目录
 #【备注】   
 
+prjWord="qemu"
+
 #主机 项目git仓库目录
-prjGRpD_host="/app/qemu"
+prjGRpD_host="/app/${prjWord}"
 #docker实例 项目git仓库目录
-prjGRpD_dk="/app/qemu"
+prjGRpD_dk="/app/${prjWord}"
 #项目git仓库标签
 prjGRp_tag="v5.11"
 #项目git仓库url
 prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 
 #项目名称 qemu_v8.2.2_build
-projNm="qumu_${prjGRp_tag}_build"
+projNm="${prjWord}_${prjGRp_tag}_build"
 
 #app_env 所用标签 tag_release__linux_v5.11_build
 app_env__tag="tag_release__${projNm}"
