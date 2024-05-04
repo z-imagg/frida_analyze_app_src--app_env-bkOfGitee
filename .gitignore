@@ -12,3 +12,5 @@ qemu/ubuntu2204_qemu500build.Dockerfile
 ubuntu2204_linux5build.Dockerfile
 
 flag_dockerBuildImage
+
+**/.fuse_hidden*
