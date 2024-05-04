@@ -81,7 +81,7 @@ docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" -e bsFlg
 
 
 function hostDo() {
-pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_projbuild.Dockerfile.sh
+pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_proj.Dockerfile.sh
 pdir="$pdir" bsFlg="$bsFlg" isDkInitProj=true isDkBuszRun=true bash $bsFlg $pdir/docker_entry.sh
 }
 
