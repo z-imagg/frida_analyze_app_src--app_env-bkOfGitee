@@ -6,12 +6,19 @@
 #【备注】   
 #【运行环境】 
 
-#本地域名总是要设置的
-source /fridaAnlzAp/prj_env/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source /fridaAnlzAp/prj_env/util/Load__importBSFn.sh
+#此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
+set -e -u
 
-qemuSysX86F=/app/qemu/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
+#本地域名总是要设置的
+source $pdir/util/LocalDomainSet.sh
+#导入_importBSFn.sh
+source $pdir/util/Load__importBSFn.sh
+
+_importBSFn "cpFPathToDir.sh"
+# 引入全局变量 gainD_dk
+source $pdir/util/dkVolMap_gain_def.sh
+
+qemuSysX86F=$pdir/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
 #如果已启动，则提示 并 正常退出(退出代码0)
 [[ -f $qemuSysX86F ]] && pidof "qemu-system-x86_64" && echo "booted! $qemuSysX86F" && exit 0
