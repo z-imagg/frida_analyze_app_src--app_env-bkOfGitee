@@ -71,8 +71,9 @@ convert_sh_to_Dockerfile__rmInst__rmImg__bldImg    $dkInstName $dkInstVer
 dkVolMap="${dkVolMap_gain}"
 
 #若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例. 修改变量 dkVolMap
-#                                  宿主机的git仓库   docker实例中git仓库
-dkVolMap_if_HDir_No_or_Empty_or_Git "/app/linux" "/app/linux"
+#                                  宿主机的git仓库     docker实例中git仓库
+dkVolMap_if_HDir_No_or_Empty_or_Git "$prjGRpD_host"  "$prjGRpD_dk"
+
 
 # 若初次启动时，则 克隆项目代码 并 退出
 #  最终调用 init_proj.sh , 再以busz_run.sh启动bash

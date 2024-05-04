@@ -5,6 +5,15 @@
 #【术语】 
 #【备注】   
 
+#主机 项目git仓库目录
+prjGRpD_host="/app/linux"
+#docker实例 项目git仓库目录
+prjGRpD_dk="/app/linux"
+#项目git仓库标签
+prjGRp_tag="v5.11"
+#项目git仓库url
+prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
+
 #项目名称
 projNm="linux5build"
 

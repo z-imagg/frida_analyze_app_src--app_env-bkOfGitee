@@ -16,7 +16,9 @@ source $pdir/util/basic_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
 
-#克隆仓库linux版本v5.11
-git_Clone_SwitchTag "https://mirrors.ustc.edu.cn/linux.git"  "v5.11"  "/app/linux"
+source $pdir/docker_instance.sh
+
+#克隆 项目仓库 的 给定标签 到 docker实例中给定目录
+git_Clone_SwitchTag "$prjGRp_url"  "$prjGRp_tag"  "$prjGRpD_dk"
 
 
