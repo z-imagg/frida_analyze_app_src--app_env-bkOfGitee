@@ -23,6 +23,7 @@ dkInstName="ubuntu2204_${projNm}"
 dkInstVer="0.1"
 
 #项目git仓库目录
+source /app/bash-simplify/_importBSFn.sh
 prjGRpD=""
 #判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
 _importBSFn "isInDocker.sh" && isInDocker
