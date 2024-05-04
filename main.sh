@@ -19,7 +19,7 @@ get_pdir && source $pdir/pre_init.sh || exit 70
 source $pdir/util/basic_import.sh
 
 _importBSFn arg1EqNMsg.sh
-usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true bsFlg='+x -u' ’"
+usage_txt="""命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true "bsFlg='+x -u'" ’"""
 #断言只有2个参数，否则打印命令用法
 arg1EqNMsg $# 2 "$usage_txt"  || exit $?
 _useDocker=$1
@@ -34,16 +34,10 @@ source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 #去此脚本所在目录
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
-_importBSFn mapBool2Txt.sh
-
-
 #返回变量 useDocker
 str2bool_notF2T $_useDocker "useDocker"
-#返回变量bsFlg
-eval "$_bsFlgVarExpr"
-
 #返回变量 bsFlg
-mapBool2Txt $enBsDbg "-x" "+x" "bsFlg"
+eval "$_bsFlgVarExpr"
 
 function dockerDo() {
 
