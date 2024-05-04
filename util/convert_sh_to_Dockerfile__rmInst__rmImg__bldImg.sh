@@ -33,6 +33,7 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
     #执行sh转Dockerfile :  x.Dockerfile.sh  --->  x.Dockerfile
     cp -v $shF $dockerF
     python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF '$pdir'         "$pdir"
+    python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF '$bsFlg'        "$bsFlg"
     python3 /app/bash-simplify/ReplaceStrInFile.py $dockerF "#dk# "         ""
 
     #打印提示消息

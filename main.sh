@@ -76,7 +76,7 @@ dkVolMap_if_HDir_No_or_Empty_or_Git "/app/linux" "/app/linux"
 
 # 若初次启动时，则 克隆项目代码 并 退出
 #  最终调用 init_proj.sh , 再以busz_run.sh启动bash
-docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" $dkVolMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
+docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" -e bsFlg="$bsFlg" $dkVolMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
 }
 
 
