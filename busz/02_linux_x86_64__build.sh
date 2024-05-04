@@ -14,14 +14,16 @@ source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source $pdir/util/Load__importBSFn.sh
 
+# 引入配置: prjGRpD 等
+source $pdir/docker_instance.sh
 
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
 
-outF1=/app/linux/vmlinux
-outF2=/app/linux/arch/x86/boot/bzImage
+outF1=$prjGRpD/vmlinux
+outF2=$prjGRpD/arch/x86/boot/bzImage
 
 #编译产物展示 函数
 function printLinuxKernel() {
@@ -60,7 +62,7 @@ true ;}
 }
 
 #编译步骤
-cd /app/linux/ && \
+cd $prjGRpD/ && \
 make mrproper && \
 make clean && \
 getConfig && \

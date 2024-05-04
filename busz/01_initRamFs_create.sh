@@ -14,11 +14,14 @@ source $pdir/util/LocalDomainSet.sh
 #导入_importBSFn.sh
 source $pdir/util/Load__importBSFn.sh
 
+# 引入配置: prjGRpD 等
+source $pdir/docker_instance.sh
+
 _importBSFn "cpFPathToDir.sh"
 # 引入全局变量 gainD_dk
 source $pdir/util/dkVolMap_gain_def.sh
 
-Hm=/app/linux/initRamFsHome/
+Hm=$prjGRpD/initRamFsHome/
 initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
 
 function print_initrdF() {
