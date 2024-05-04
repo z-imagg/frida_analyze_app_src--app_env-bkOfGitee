@@ -15,6 +15,16 @@ pdir=$(dirname $(readlink -f $(echo $(caller 0) | cut -d' ' -f3) ) )
 get_pdir && source $pdir/pre_init.sh || exit 70
 # exit 0
 
+#基本导入: 域名设置、_importBSFn
+source $pdir/util/basic_import.sh
+
+_importBSFn arg1EqNMsg.sh
+usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true bsFlg='+x -u' ’"
+#断言只有2个参数，否则打印命令用法
+arg1EqNMsg $# 2 $usage_txt  || return $?
+_useDocker=$1
+_bsFlgVarExpr=$2
+
 #基本需求:  导入 _importBSFn.sh、 域名设置、克隆基本仓库
 source $pdir/util/basic_require.sh
 
@@ -25,14 +35,8 @@ source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
 _importBSFn str2bool_anyNotFalseStrAsTrue.sh
-_importBSFn arg1EqNMsg.sh
 _importBSFn mapBool2Txt.sh
 
-usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true bsFlg='+x -u' ’"
-#断言只有2个参数，否则打印命令用法
-arg1EqNMsg $# 2 $usage_txt  || return $?
-_useDocker=$1
-_bsFlgVarExpr=$2
 
 #返回变量 useDocker
 str2bool_notF2T $_useDocker "useDocker"
