@@ -72,4 +72,4 @@ docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" $dkVolMa
 $useDocker && { dockerDo ; exit $? ;}
 
 #若指定不用docker，则执行脚本 .Dockerfile.sh 并退出
-$useDocker || { bash -x $pdir/ubuntu2204_linux5build.Dockerfile.sh; exit $? ;}
+$useDocker || { pdir="$pdir" bash -x $pdir/ubuntu2204_linux5build.Dockerfile.sh; exit $? ;}
