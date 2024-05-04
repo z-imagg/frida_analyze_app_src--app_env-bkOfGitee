@@ -65,7 +65,7 @@ source $pdir/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 
 #构建基础镜像 
 #  转换 ubuntu2204_proj.Dockerfile.sh ---> ubuntu2204_proj.Dockerfile ，停止、删除  实例 ， 删除、构建 镜像
-convert_sh_to_Dockerfile__rmInst__rmImg__bldImg    "ubuntu2204_proj" $dkInstVer
+convert_sh_to_Dockerfile__rmInst__rmImg__bldImg     $dkInstName $dkInstVer
 
 # docker实例的volume映射
 dkVolMap="${dkVolMap_gain}"

@@ -21,8 +21,8 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
     #脚本参数定义
     ImgName=$1  #ImgName==base_ubuntu_22.04, ImgName==frida_anlz_ap
     ver=$2      #ver==01, ver==0.1_prv
-    shF="${ImgName}.Dockerfile.sh"
-    dockerF="${ImgName}.Dockerfile"
+    dockerF="ubuntu2204_proj.Dockerfile"
+    shF="${dockerF}.sh"
     tag="${ImgName}:${ver}"  #tag==base_ubuntu_22.04:01, tag==frida_anlz_ap:0.1_prv
 
 
