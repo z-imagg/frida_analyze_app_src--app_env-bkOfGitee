@@ -30,10 +30,6 @@ _useDocker=$1
 #一切非false的字符串都被当作true
 useDocker=true; [[ "X$_useDocker" -eq "Xfalse" ]] && useDocker=false
 
-#若宿主机 产物目录 创建
-mk_gainD_host
-
-
 function dockerDo() {
 
 #当长久build docker镜像后，需要清理docker占用的磁盘空间
@@ -45,6 +41,8 @@ _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 source $pdir/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
 source $pdir/util/dkVolMap_gain_def.sh
 
+#宿主机 产物目录 创建
+mk_gainD_host
 
 #重建 供给docker build用的根目录
 source $pdir/util/hostRootReCreate4DkBuild.sh
