@@ -5,17 +5,19 @@
 #【术语】 
 #【备注】   
 
+prjWord="linux"
+
 #主机 项目git仓库目录
-prjGRpD_host="/app/linux"
+prjGRpD_host="/app/${prjWord}"
 #docker实例 项目git仓库目录
-prjGRpD_dk="/app/linux"
+prjGRpD_dk="/app/${prjWord}"
 #项目git仓库标签
 prjGRp_tag="v5.11"
 #项目git仓库url
 prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 
 #项目名称 linux_v5.11_build
-projNm="linux_${prjGRp_tag}_build"
+projNm="${prjWord}_${prjGRp_tag}_build"
 
 #app_env 所用标签 tag_release__linux_v5.11_build
 app_env__tag="tag_release__${projNm}"
