@@ -2,28 +2,31 @@
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   
-#【术语】 prjGRpD == projectGitRepoDir == 项目git仓库目录
+#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
 #【备注】   
 
-prjWord="linux"
+prjNm="项目名称"
 
 #主机 项目git仓库目录
-prjGRpD_host="/app/${prjWord}"
+prjGRpD_host="/app/${prjNm}"
 #docker实例 项目git仓库目录
-prjGRpD_dk="/app/${prjWord}"
+prjGRpD_dk="/app/${prjNm}"
 #项目git仓库标签
-prjGRp_tag="v5.11"
+prjTag="项目版本"
 #项目git仓库url
-prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
+prjGRp_url="https://xxx.com/prj.git" 
 
-#项目名称 linux_v5.11_build
-projNm="${prjWord}_${prjGRp_tag}_build"
+#环境主题
+envTopic="环境主题"
 
-#app_env 所用标签 tag_release__linux_v5.11_build
-app_env__tag="tag_release__${projNm}"
+#环境名称 项目名称_项目版本_
+envNm="${prjNm}_${prjTag}_${envTopic}"
+
+#app_env 所用标签 tag_release__项目名称_项目版本_环境主题
+app_env__tag="tag_release__${envNm}"
 
 #名称, 用作 docker镜像名称 、 docker实例名称
-dkInstName="ubuntu2204_${projNm}"
+dkInstName="ubuntu2204_${envNm}"
 #版本号, 用作 docker镜像版本号 、 docker实例版本号
 dkInstVer="0.1"
 

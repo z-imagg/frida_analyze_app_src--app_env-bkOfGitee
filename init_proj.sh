@@ -19,6 +19,6 @@ _importBSFn "git_Clone_SwitchTag.sh"
 source $pdir/docker_instance.sh
 
 #克隆 项目仓库 的 给定标签 到 docker实例中给定目录
-git_Clone_SwitchTag "$prjGRp_url"  "$prjGRp_tag"  "$prjGRpD_dk"
+git_Clone_SwitchTag "$prjGRp_url"  "$prjTag"  "$prjGRpD_dk"
 
 
