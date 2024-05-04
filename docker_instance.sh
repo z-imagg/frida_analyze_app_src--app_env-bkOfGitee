@@ -6,16 +6,16 @@
 #【备注】   
 
 #主机 项目git仓库目录
-prjGRpD_host="/app/linux"
+prjGRpD_host="/app/qemu"
 #docker实例 项目git仓库目录
-prjGRpD_dk="/app/linux"
+prjGRpD_dk="/app/qemu"
 #项目git仓库标签
 prjGRp_tag="v5.11"
 #项目git仓库url
 prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 
 #项目名称
-projNm="linux5build"
+projNm="qemu500build"
 
 #名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${projNm}"
