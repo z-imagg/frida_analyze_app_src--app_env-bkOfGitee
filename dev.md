@@ -13,7 +13,8 @@ lazygit  --git-dir=/app/app_env/.git --work-tree=/app/app_env/
 rm -fv /tmp/flagDone_DkBuszRun  /tmp/flagDone_InitProj
 #删除上次编译产物
 rm -fv /app/linux/vmlinux
-
+#删除上次编译产物
+rm -fr /app/qemu/build-v8.2.2
 ```
 
 宿主机上运行
