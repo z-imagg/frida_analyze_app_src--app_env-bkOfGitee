@@ -26,7 +26,7 @@ true ;} \
 
 #dk# LABEL maintainer="prgrmz07 <prgrmz07@163.com>"
 #dk# LABEL version="0.1"
-#dk# LABEL description="ubuntu22.04 linux5 编译环境 docker "
+#dk# LABEL description="ubuntu22.04 proj 编译环境 docker "
 
 
 
