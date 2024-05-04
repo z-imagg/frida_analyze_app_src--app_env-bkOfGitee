@@ -32,8 +32,8 @@ local _isDkInitProj=false; [[ "X$isDkInitProj" == "Xtrue" ]] && _isDkInitProj=tr
 #  isDkBuszRun == docker实例运行业务脚本标记
 local _isDkBuszRun=false; [[ "X$isDkBuszRun" == "Xtrue" ]] && _isDkBuszRun=true
 
-local flagDone_InitProj=/flagDone_InitProj
-local flagDone_DkBuszRun=/flagDone_DkBuszRun
+local flagDone_InitProj=/tmp/flagDone_InitProj
+local flagDone_DkBuszRun=/tmp/flagDone_DkBuszRun
 
 #此次是否应该执行$InitProjF:     从未执行$InitProjF           且    调用者要求执行$InitProjF
 local do_InitProjF=false; ( [[ ! -f $flagDone_InitProj ]] &&  $_isDkInitProj ;) && do_InitProjF=true
@@ -50,9 +50,9 @@ source /app/bash-simplify/_importBSFn.sh ;}
 # 若docker实例初次运行时，则 进行初始化
 ( \
 #若此次应该执行$InitProjF 则执行之       并 设置标记表示 已执行$InitProjF
-{ $do_InitProjF && bash $bsFlg $InitProjF && touch $flagDone_InitProj ;} ; \
+{ $do_InitProjF && pdir="$pdir" bsFlg="$bsFlg"  bash $bsFlg $InitProjF && touch $flagDone_InitProj ;} ; \
 #若此次应该执行$BuszRunF  则执行之       并 设置标记表示 已执行$BuszRunF
-{ $do_BuszRunF  &&  bash $bsFlg $BuszRunF && touch $flagDone_DkBuszRun ;} ; \
+{ $do_BuszRunF  &&  pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $BuszRunF &&  touch $flagDone_DkBuszRun ;} ; \
 true ;) && \
 # 显示 使用手册文本
 bash $manualTxtF && \
