@@ -6,7 +6,7 @@
 #【备注】   
 
 #定义 docker镜像、实例 的 名称、版本号
-source /fridaAnlzAp/app_qemu/app_bld/qemu/docker_instance.sh
+source $pdir/docker_instance.sh
 
 manual_txt="""使用说明
 
@@ -24,10 +24,10 @@ manual_txt="""使用说明
   docker start  $dkInstName ; docker exec -it $dkInstName  /bin/bash
 
 2.2. 编译qemu5.0.0:
-  bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/busz/rebuild-qemu-v8.2.2--disable-tcg-interpreter--disable-tcg.sh
+  bash -x $pdir/busz/rebuild-qemu-v8.2.2--disable-tcg-interpreter--disable-tcg.sh
 
 3.3. qemu启动vmlinux:
-  bash -x /fridaAnlzAp/app_qemu/app_bld/qemu/busz/qemu_boot_vmlinux.sh
+  bash -x $pdir/busz/qemu_boot_vmlinux.sh
 """
 
 
