@@ -34,7 +34,6 @@ source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 #去此脚本所在目录
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
-_importBSFn str2bool_anyNotFalseStrAsTrue.sh
 _importBSFn mapBool2Txt.sh
 
 
