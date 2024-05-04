@@ -12,7 +12,7 @@ prjGRpD_host="/app/${prjWord}"
 #docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjWord}"
 #项目git仓库标签
-prjGRp_tag="v5.11"
+prjGRp_tag="v8.2.2"
 #项目git仓库url
 prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 
