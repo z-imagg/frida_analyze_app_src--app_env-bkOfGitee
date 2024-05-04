@@ -50,9 +50,9 @@ source /app/bash-simplify/_importBSFn.sh ;}
 # 若docker实例初次运行时，则 进行初始化
 ( \
 #若此次应该执行$InitProjF 则执行之       并 设置标记表示 已执行$InitProjF
-{ $do_InitProjF && bash -x $InitProjF && touch $flagDone_InitProj ;} ; \
+{ $do_InitProjF && bash $bsFlg $InitProjF && touch $flagDone_InitProj ;} ; \
 #若此次应该执行$BuszRunF  则执行之       并 设置标记表示 已执行$BuszRunF
-{ $do_BuszRunF  &&  bash -x $BuszRunF && touch $flagDone_DkBuszRun ;} ; \
+{ $do_BuszRunF  &&  bash $bsFlg $BuszRunF && touch $flagDone_DkBuszRun ;} ; \
 true ;) && \
 # 显示 使用手册文本
 bash $manualTxtF && \

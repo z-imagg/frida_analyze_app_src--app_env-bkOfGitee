@@ -8,7 +8,7 @@
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
 ArgAptGet="-qq   -y" && \
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
-( set -x && \
+( \
 #isRootUsr 是否为root用户
 { isRootUsr=false; [[ $(id --name --user) == root ]] && isRootUsr=true ; true ;} && \
 #若不是root用户,有sudo             ; 若是root用户,无sudo

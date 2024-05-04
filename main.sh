@@ -2,7 +2,7 @@
 
 #【描述】  
 #【依赖】   
-#【术语】 
+#【术语】 bsFlg=bashFlag
 #【备注】   
 
 #get_pdir 参考 http://giteaz:3000/bal/bash-simplify/src/branch/release/parseCallerN.sh
@@ -24,11 +24,23 @@ source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
 #去此脚本所在目录
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
-#断言只有1个参数，否则打印命令用法
-_importBSFn arg1EqNMsg.sh && { arg1EqNMsg $# 1 "命令用法:main.sh useDocker=true|false. 比如 'main.sh true'"  || return $? ;}
+_importBSFn str2bool_anyNotFalseStrAsTrue.sh
+_importBSFn arg1EqNMsg.sh
+_importBSFn mapBool2Txt.sh
+
+usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 ‘main.sh true bsFlg='+x -u' ’"
+#断言只有2个参数，否则打印命令用法
+arg1EqNMsg $# 2 $usage_txt  || return $?
 _useDocker=$1
-#一切非false的字符串都被当作true
-useDocker=true; [[ "X$_useDocker" -eq "Xfalse" ]] && useDocker=false
+_bsFlgVarExpr=$2
+
+#返回变量 useDocker
+str2bool_notF2T $_useDocker "useDocker"
+#返回变量bsFlg
+eval "$_bsFlgVarExpr"
+
+#返回变量 bsFlg
+mapBool2Txt $enBsDbg "-x" "+x" "bsFlg"
 
 function dockerDo() {
 
@@ -72,4 +84,4 @@ docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" $dkVolMa
 $useDocker && { dockerDo ; exit $? ;}
 
 #若指定不用docker，则执行脚本 .Dockerfile.sh 并退出
-$useDocker || { pdir="$pdir" bash -x $pdir/ubuntu2204_linux5build.Dockerfile.sh; exit $? ;}
+$useDocker || { pdir="$pdir" bash $bsFlg $pdir/ubuntu2204_linux5build.Dockerfile.sh; exit $? ;}
