@@ -16,7 +16,7 @@ get_pdir && source $pdir/pre_init.sh || exit 70
 # exit 0
 
 #基本导入: 域名设置、_importBSFn
-source $pdir/util/basic_import.sh
+source $pdir/docker_instance.sh
 
 _importBSFn arg1EqNMsg.sh
 usage_txt="命令用法:main.sh useDocker=true|false bsFlg='-x|-xu|+x -u'. 比如 【main.sh true “bsFlg='+x -u'” 】"
@@ -25,8 +25,8 @@ arg1EqNMsg $# 2 "$usage_txt"  || exit $?
 _useDocker=$1
 _bsFlgVarExpr=$2
 
-#基本需求:  导入 _importBSFn.sh、 域名设置、克隆基本仓库
-source $pdir/util/basic_require.sh
+#克隆必须仓库
+source $pdir/util/repo_require.sh
 
 #克隆宿主机中需要的依赖仓库
 source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends

@@ -5,14 +5,9 @@
 #【术语】 
 #【备注】   
 
-#基本导入: 域名设置、_importBSFn
-source $pdir/util/basic_import.sh
-
-# 引入配置: app_env__tag 等
+#基本导入: 域名设置、_importBSFn 、 docker_instance.sh 、 isInDocker
 source $pdir/docker_instance.sh
 
-#判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
-_importBSFn "isInDocker.sh" && isInDocker
 #  删除 构建Dockerfile时 用的目录  
 $inDocker && ( mv /app/app_env /app/tmp_app_env ;  \
 mv /app/bash-simplify /app/tmp_bash-simplify ;)

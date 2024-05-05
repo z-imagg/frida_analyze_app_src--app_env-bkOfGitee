@@ -8,18 +8,14 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e -u
 
-#本地域名总是要设置的
-source $pdir/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source $pdir/util/Load__importBSFn.sh
+#导入配置
+source $pdir/docker_instance.sh
 
 _importBSFn "argCntEqN.sh"
 
 #docker实例初始化
 function dkEntry() {
 
-#导入配置, 如变量 envNm
-source $pdir/docker_instance.sh
 
 #断言参数个数为3个
 echo 3 | argCntEqN $* || return $?
@@ -44,10 +40,8 @@ local do_BuszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;
 
 #若此次应该执行$InitProjF或$BuszRunF, 则应source此两脚本
 ( $do_InitProjF ||  $do_BuszRunF ;) && { \
-#本地域名总是要设置的
-source $pdir/util/LocalDomainSet.sh ; \
-#导入_importBSFn.sh
-source /app/bash-simplify/_importBSFn.sh ;}
+#导入配置
+source $pdir/docker_instance.sh   ;}
 
 # 若docker实例初次运行时，则 进行初始化
 ( \
