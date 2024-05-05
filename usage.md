@@ -13,6 +13,8 @@ git clone -b tag_release http://giteaz:3000/bal/bash-simplify.git /app/bash-simp
 
 #### hello_world
 
+https://gitee.com/repok/helloWorld/tree/v1
+
 ```shell
 source /app/bash-simplify/git_switch_to_remote_tag.sh
 #  将git仓库/app/app_env切换到远程标签
