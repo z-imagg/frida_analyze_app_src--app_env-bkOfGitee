@@ -13,7 +13,8 @@ if [[ ! -v  _loaded__docker_instance ]]; then
 _loaded__docker_instance=true
 
 #定义项目配置
-prjNm="helloWorld"
+# 项目名称中不允许都大写字母, 因为其作为docker img名称的一部分了, 而docker img名称不允许有大写字母
+prjNm="hello-world"
 # 主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 # docker实例 项目git仓库目录
@@ -26,7 +27,7 @@ prjGRp_url="https://gitee.com/repok/hello_world.git"
 envTopic="demo"
 # 环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
-# app_env 所用标签 tag_release__helloWorld_v1_demo
+# app_env 所用标签 tag_release__hello-world_v1_demo
 app_env__tag="tag_release__${envNm}"
 # 名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${envNm}"
