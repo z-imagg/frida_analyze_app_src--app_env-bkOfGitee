@@ -28,9 +28,6 @@ _bsFlgVarExpr=$2
 #克隆必须仓库
 source $pdir/util/repo_require.sh
 
-#克隆宿主机中需要的依赖仓库
-source $pdir/util/git_clone_host_depends.sh && git_clone_host_depends
-
 #去此脚本所在目录
 _importBSFn cdCurScriptDir.sh && cdCurScriptDir
 
