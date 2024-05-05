@@ -6,7 +6,9 @@
 #【备注】   
 
 #此脚本只引入一次
-if [[ ! "X$_loaded__docker_instance" == "X" ]]; then
+#  若未定义变量...,则进入
+#      bash请务必设置-u以不允许使用未定义变量
+if [[ ! -v  _loaded__docker_instance ]]; then
 #标记此脚本是否已引入
 _loaded__docker_instance=true
 
