@@ -9,12 +9,7 @@
 #此脚本任何语句 退出代码不为正常值0 ，都会导致整个脚本退出
 set -e -u
 
-#本地域名总是要设置的
-source $pdir/util/LocalDomainSet.sh
-#导入_importBSFn.sh
-source $pdir/util/Load__importBSFn.sh
-
-# 引入配置: prjGRpD 等
+# 导入配置
 source $pdir/docker_instance.sh
 
 _importBSFn "cpFPathToDir.sh"
