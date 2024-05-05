@@ -12,7 +12,7 @@
 set -e -u
 
 #基本需求: 域名设置、克隆基本仓库
-source $pdir/util/basic_require.sh
+source $pdir/util/repo_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
 

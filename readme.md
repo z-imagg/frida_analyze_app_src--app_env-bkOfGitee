@@ -1,2 +1,1 @@
-
-日常开发用命令备忘,  http://giteaz:3000/frida_analyze_app_src/app_env/src/branch/brch_release/dev.md
+使用手册, [app_env.git/brch_template/usage.md](http://giteaz:3000/frida_analyze_app_src/app_env/src/branch/brch_template/usage.md)

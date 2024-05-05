@@ -53,6 +53,9 @@ function convert_sh_to_Dockerfile__rmInst__rmImg__bldImg() {
     [[ "x" == "x$imageIdLs" ]] || { docker image rm $imageIdLs ;}
 
     #构建镜像
+    # 重建 供给docker build用的根目录
+    source $pdir/util/hostRootReCreate4DkBuild.sh
+    #docker build
     #  在.Dockfile的RUN脚本中使用的本地域名
     docker build  --add-host=giteaz:10.0.4.9 --add-host=westgw:10.0.4.9  --progress=plain --no-cache    -f "$dockerF"    -t "$tag"     "/hostTop" 
 }

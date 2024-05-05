@@ -3,7 +3,10 @@
 
 
 #业务脚本们路径 读取到 BASH变量buszScriptFPath_Arr中
-mapfile -t buszScriptFPath_Arr < <(find $pdir/busz/ -type f | sort --unique )
+mapfile -t buszScriptFPath_Arr < <(find $pdir/busz/  -maxdepth 1  -and  -type f -and -name "*.sh" | sort --unique )
+
+#若busz目录下无脚本文件,则正常退出
+[[ ! -v buszScriptFPath_Arr || ${#buszScriptFPath_Arr} -eq 0 ]] && exit 0
 
 echo "业务脚本路径数组:【${buszScriptFPath_Arr[@]}】"
 
