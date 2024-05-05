@@ -5,19 +5,19 @@
 #【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
 #【备注】   
 
-prjNm="项目名称"
+prjNm="hello_world"
 
 #主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 #docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjNm}"
 #项目git仓库标签
-prjTag="项目版本"
+prjTag="tag_v1"
 #项目git仓库url
-prjGRp_url="https://xxx.com/prj.git" 
+prjGRp_url="https://gitee.com/repok/hello_world.git" 
 
 #环境主题
-envTopic="环境主题"
+envTopic="demo"
 
 #环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
