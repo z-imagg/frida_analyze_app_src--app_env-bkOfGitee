@@ -8,6 +8,7 @@ function hostRootReCreate4DkBuild() {
 local HostTop="/hostTop"
 local HostRoot="$HostTop/hostRoot"
 local _app="$HostRoot/app"
+#r_==real_
 local r_app="/app"
 sudo rm -fr $HostTop
 mkMyDirBySudo $HostTop
