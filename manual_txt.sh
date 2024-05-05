@@ -9,11 +9,12 @@
 source $pdir/docker_instance.sh
 
 manual_txt="""使用说明
-使用说明正文
-1. 步骤1,比如构建,已经执行过了
-2. 步骤2,比如运行,已经执行过了
-3. 构建过程中所用到的参考文档url为: http://xxx.com/build_doc.md
-4. 本项目git仓库地址: https://gitee.com/repok/hello-world.git
+
+
+linux-v5.11 PVH+调试 的 menuconfig配置人工修改,参考此文注释部分: 
+  http://giteaz:3000/frida_analyze_app_src/app_env/src/tag/tag_release__linux_v5.11_build/manual_txt.sh
+
+
 """
 
 
