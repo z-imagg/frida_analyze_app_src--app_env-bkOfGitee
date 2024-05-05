@@ -40,8 +40,8 @@ bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
 
 ```shell
 source /app/bash-simplify/git_switch_to_remote_tag.sh
-#  将git仓库/app/app_env切换到远程标签tag_release__qemu_v8.2.2_build
-git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
+#  将git仓库/app/app_env切换到远程标签
+git_switch_to_remote_tag /app/app_env tag_release__linux_v5.11_build
 
 ```
 
@@ -60,7 +60,7 @@ bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
 #### qemu-v8.2.2
 ```shell
 source /app/bash-simplify/git_switch_to_remote_tag.sh
-#  将git仓库/app/app_env切换到远程标签tag_release__qemu_v8.2.2_build
+#  将git仓库/app/app_env切换到远程标签
 git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
 
 ```
