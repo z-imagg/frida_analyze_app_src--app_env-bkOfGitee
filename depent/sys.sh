@@ -15,5 +15,6 @@ ArgAptGet="-qq   -y" && \
 { { $isRootUsr || SUDO="sudo" ;} ; { $isRootUsr && SUDO="" ;} ; true ;} && \
 $SUDO apt-get $ArgAptGet update  1>/dev/null && \
 $SUDO apt-get $ArgAptGet install -y  sudo  1>/dev/null && \
+sudo apt-get $ArgAptGet install git curl file rsync  1>/dev/null && \
 echo "end_of_'sys.sh'" ;) && \
 true
