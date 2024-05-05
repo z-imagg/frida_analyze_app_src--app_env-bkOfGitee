@@ -14,17 +14,17 @@ _loaded__docker_instance=true
 
 #定义项目配置
 # 项目名称中不允许都大写字母, 因为其作为docker img名称的一部分了, 而docker img名称不允许有大写字母
-prjNm="hello-world"
+prjNm="linux"
 # 主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 # docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjNm}"
 # 项目git仓库标签
-prjTag="v1"
+prjTag="v5.11"
 # 项目git仓库url
-prjGRp_url="https://gitee.com/repok/hello_world.git" 
+prjGRp_url="https://mirrors.ustc.edu.cn/linux.git" 
 # 环境主题
-envTopic="demo"
+envTopic="build"
 # 环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
 # app_env 所用标签 tag_release__hello-world_v1_demo
