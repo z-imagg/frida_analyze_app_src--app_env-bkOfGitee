@@ -5,14 +5,14 @@
 #【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
 #【备注】   
 
-prjNm="hello_world"
+prjNm="helloWorld"
 
 #主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 #docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjNm}"
 #项目git仓库标签
-prjTag="tag_v1"
+prjTag="v1"
 #项目git仓库url
 prjGRp_url="https://gitee.com/repok/hello_world.git" 
 
@@ -22,7 +22,7 @@ envTopic="demo"
 #环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
 
-#app_env 所用标签 tag_release__项目名称_项目版本_环境主题
+#app_env 所用标签 tag_release__helloWorld_v1_demo
 app_env__tag="tag_release__${envNm}"
 
 #名称, 用作 docker镜像名称 、 docker实例名称
