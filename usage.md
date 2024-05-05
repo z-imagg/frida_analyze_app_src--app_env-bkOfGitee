@@ -3,6 +3,10 @@
 #### 公共部分
 
 ```shell
+rm -fr /app/app_env/ /app/bash-simplify/ /tmp/flagDone*
+```
+
+```shell
 git clone -b brch_template http://giteaz:3000/frida_analyze_app_src/app_env.git /app/app_env
 #lazygit --git-dir=/app/bash-simplify/.git --work-tree=/app/bash-simplify/
 git clone -b tag_release http://giteaz:3000/bal/bash-simplify.git /app/bash-simplify
