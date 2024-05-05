@@ -15,5 +15,5 @@ ArgAptGet="-qq   -y" && \
 { { $isRootUsr || SUDO="sudo" ;} ; { $isRootUsr && SUDO="" ;} ; true ;} && \
 $SUDO apt-get $ArgAptGet update  1>/dev/null && \
 $SUDO apt-get $ArgAptGet install -y  sudo  1>/dev/null && \
-gcc --version ;) && \
+echo "end_of_'sys.sh'" ;) && \
 true
