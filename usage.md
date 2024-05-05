@@ -3,7 +3,8 @@
 #### 公共部分
 
 ```shell
-rm -fr /app/app_env/ /app/bash-simplify/ /tmp/flagDone*
+rm -fr /app/app_env/ /app/bash-simplify/ 
+rm -fv /tmp/flagDone*
 ```
 
 ```shell
@@ -28,7 +29,7 @@ git_switch_to_remote_tag /app/app_env tag_release__hello-world_v1_demo
 
 ```shell
 #删除上次标记文件
-rm -fv /tmp/flagDone_DkBuszRun  /tmp/flagDone_InitProj
+rm -fv /tmp/flagDone_DkBuszRun*  /tmp/flagDone_InitProj*
 #宿主机上运行
 bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
 #docker实例上运行
@@ -46,7 +47,7 @@ git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
 
 ```shell
 #删除上次标记文件
-rm -fv /tmp/flagDone_DkBuszRun  /tmp/flagDone_InitProj
+rm -fv /tmp/flagDone_DkBuszRun*  /tmp/flagDone_InitProj*
 #删除上次编译产物
 rm -fv /app/linux/vmlinux
 #宿主机上运行
@@ -66,7 +67,7 @@ git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
 
 ```shell
 #删除上次标记文件
-rm -fv /tmp/flagDone_DkBuszRun  /tmp/flagDone_InitProj
+rm -fv /tmp/flagDone_DkBuszRun*  /tmp/flagDone_InitProj*
 #删除上次编译产物
 rm -fv /app/qemu/build-v8.2.2
 #宿主机上运行
