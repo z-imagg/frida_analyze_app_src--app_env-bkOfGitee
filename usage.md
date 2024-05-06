@@ -36,6 +36,28 @@ bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
 bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
 ```
 
+
+#### ap-run-anlz v1 prj-env
+
+```shell
+source /app/bash-simplify/git_switch_to_remote_tag.sh
+#  将git仓库/app/app_env切换到远程标签
+git_switch_to_remote_tag /app/app_env tag_release__ap-run-anlz_v1_prj-env
+
+```
+
+```shell
+#删除上次标记文件
+prjNm=prj-env; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
+#删除上次安装产物?
+# rm -fv /app/
+#宿主机上运行
+bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
+#docker实例上运行
+bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
+```
+
+
 #### linux-v5.11
 
 ```shell
