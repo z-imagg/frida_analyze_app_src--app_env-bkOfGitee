@@ -17,6 +17,8 @@
 touch /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage && \
 #粗略显示已复制文件
 find /app/ -maxdepth 1 && \
+#安装系统依赖包,此依赖包是基础,否则后续脚本可能无法执行
+bash $bsFlg $pdir/depent/___sys.sh && \
 #基本导入: 域名设置、_importBSFn 、 docker_instance.sh 、 isInDocker
 source $pdir/docker_instance.sh && \
 #循环执行依赖脚本

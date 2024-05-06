@@ -20,7 +20,8 @@ argCntEq1 $* || return 81
 local _dir=$1
 
 #业务脚本们路径 读取到 BASH变量shFPath_Arr中
-mapfile -t shFPath_Arr < <(find $_dir/  -maxdepth 1  -and  -type f -and -name "*.sh" | sort --unique )
+#  跳过 以 ___ 开头的文件,  比如 depent/___sys.sh
+mapfile -t shFPath_Arr < <(find $_dir/  -maxdepth 1  -and  -type f -and -name "*.sh" \( -not -name "___*" \) | sort --unique )
 
 #若busz目录下无脚本文件,则正常退出
 [[ ! -v shFPath_Arr || ${#shFPath_Arr} -eq 0 ]] && exit 0
