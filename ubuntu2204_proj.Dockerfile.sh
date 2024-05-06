@@ -9,6 +9,7 @@
 
 #Dockerfile: 定义 'ARG x=...' , 使用 RUN 'echo $x; bash -x f_use_x.sh'
 #dk# ARG pdir="$pdir"
+#dk# ARG bsFlg="$bsFlg"
 
 #dk# RUN bash -c ''' \
 { \
