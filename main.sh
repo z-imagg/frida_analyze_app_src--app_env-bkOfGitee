@@ -77,7 +77,7 @@ docker run -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" -e bsFlg
 
 function hostDo() {
 pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_proj.Dockerfile.sh
-pdir="$pdir" bsFlg="$bsFlg" isDkInitProj=true isDkBuszRun=true bash $bsFlg $pdir/docker_entry.sh
+pdir="$pdir" bsFlg="$bsFlg" isDkInitProj=true isDkBuszRun=true bash $bsFlg $pdir/util/dkEntry.sh
 }
 
 #若指定用docker，则执行函数 dockerDo 并退出

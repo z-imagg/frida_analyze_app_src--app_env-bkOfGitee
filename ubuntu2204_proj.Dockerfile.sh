@@ -33,4 +33,4 @@ true ;} \
 
 
 
-#dk# ENTRYPOINT ["/bin/bash", "$pdir/docker_entry.sh" ]
+#dk# ENTRYPOINT ["/bin/bash", "$pdir/util/dkEntry.sh" ]
