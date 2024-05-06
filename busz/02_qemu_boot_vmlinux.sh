@@ -10,11 +10,10 @@
 set -e -u
 
 # 导入配置
+#   引入全局变量 比如 gainD_dk
 source $pdir/docker_instance.sh
 
 _importBSFn "cpFPathToDir.sh"
-# 引入全局变量 gainD_dk
-source $pdir/util/dkVolMap_gain_def.sh
 
 qemuSysX86F=$prjGRpD/build-v8.2.2/x86_64-softmmu/qemu-system-x86_64
 
