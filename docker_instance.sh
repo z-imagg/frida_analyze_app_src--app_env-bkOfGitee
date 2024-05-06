@@ -34,6 +34,13 @@ dkInstName="ubuntu2204_${envNm}"
 # 版本号, 用作 docker镜像版本号 、 docker实例版本号
 dkInstVer="0.1"
 
+
+#docker实例 port配置
+# dk实例 port配置: neo4j 宿主机端口:dk实例端口
+_dkPortMap_neo4j="--publish 7474:7474 --publish 7687:7687"
+#dk实例 port配置
+dkPortMap="$_dkPortMap_neo4j"
+
 #docker实例 volume配置
 #docker volume映射 : 产物目录
 # 宿主机 产物目录
