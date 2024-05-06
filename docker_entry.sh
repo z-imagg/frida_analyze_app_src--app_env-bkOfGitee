@@ -16,8 +16,6 @@ set -e -u
 
 source $pdir/util/dkEntry.sh
 
-declare -r PrjHm="$pdir"
-
 #docker实例初始化
-dkEntry "$PrjHm/init_proj.sh" "$PrjHm/busz_run.sh" "$PrjHm/manual_txt.sh"
+dkEntry #"$pdir/init_proj.sh" "$pdir/busz_run.sh" "$pdir/manual_txt.sh"
 
