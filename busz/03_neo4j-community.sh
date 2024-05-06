@@ -29,5 +29,4 @@ cp -v $F_cfg "${F_cfg}_$(date +%s)" && \
 sed -i  "s/#dbms.default_listen_address=0.0.0.0/dbms.default_listen_address=0.0.0.0/g"  $F_cfg && \
 #修改 neo4j 线程数目为 4 
 sed -i  's/#dbms.threads.worker_count=/dbms.threads.worker_count=4/'   $F_cfg && \
-echo $msg1 && \
 true
