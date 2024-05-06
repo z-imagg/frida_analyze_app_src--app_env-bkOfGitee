@@ -5,6 +5,9 @@
 #【术语】 
 #【备注】  nvm_.sh 加下划线是为了防止和nvm重复
 
+#'-e': 任一语句异常将导致此脚本终止; '-u': 使用未声明变量将导致异常
+set -e -u
+
 mkdir -p /app/nvm && \
 #nvm克隆. TODO 有隐患， 应改为 在下一行写 切换到 远程标签v0.39.7 ，但我始终不知道怎么写这句命令。
 { [[ -f /app/nvm/.git/config ]] || git clone --branch=v0.39.7   https://gitee.com/repok/nvm-sh--nvm.git  /app/nvm ;} && \
