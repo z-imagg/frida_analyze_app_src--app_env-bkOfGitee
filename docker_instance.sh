@@ -14,20 +14,20 @@ _loaded__docker_instance=true
 
 #定义项目配置
 # 项目名称中不允许都大写字母, 因为其作为docker img名称的一部分了, 而docker img名称不允许有大写字母
-prjNm="anlz-ap"
+prjNm="frida-analyze-app-src"
 # 主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 # docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjNm}"
 # 项目git仓库标签
-prjTag="tag-anlz--linux-5.11--qemu-v8.2.2"
+prjTag="v1"
 # 项目git仓库url
 prjGRp_url="http://giteaz:3000/frida_analyze_app_src/anlz-ap.git" 
 # 环境主题 environment==env,prj-env==项目环境
 envTopic="prj-env"
 # 环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
-# app_env 所用标签 tag_release__anlz-ap_tag-anlz--linux-5.11--qemu-v8.2.2_prj-env
+# app_env 所用标签 tag_release__frida-analyze-app-src_v1_prj-env
 app_env__tag="tag_release__${envNm}"
 # 名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${envNm}"
