@@ -52,7 +52,7 @@ prjNm=prj-env; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
 #删除上次安装产物?
 # rm -fv /app/
 #宿主机上运行
-bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
+# bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
 #docker实例上运行
 bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
 ```
