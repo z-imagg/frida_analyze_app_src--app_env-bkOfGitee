@@ -16,9 +16,9 @@ _loaded__docker_instance=true
 # 项目名称中不允许都大写字母, 因为其作为docker img名称的一部分了, 而docker img名称不允许有大写字母
 prjNm="ap-run-anlz"
 # 主机 项目git仓库目录
-prjGRpD_host="/app/${prjNm}"
+prjGRpD_host="/fridaAnlzAp/${prjNm}"
 # docker实例 项目git仓库目录
-prjGRpD_dk="/app/${prjNm}"
+prjGRpD_dk="/fridaAnlzAp/${prjNm}"
 # 项目git仓库标签
 prjTag="v1"
 # 项目git仓库url
