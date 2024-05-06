@@ -10,11 +10,10 @@
 set -e -u
 
 #导入配置
+#   引入全局变量 比如 gainD_dk
 source $pdir/docker_instance.sh
 
 _importBSFn "cpFPathToDir.sh"
-# 引入全局变量 gainD_dk
-source $pdir/util/dkVolMap_gain_def.sh
 
 Hm=$prjGRpD/initRamFsHome/
 initrdF=${Hm}/initramfs-busybox-i686.cpio.tar.gz
