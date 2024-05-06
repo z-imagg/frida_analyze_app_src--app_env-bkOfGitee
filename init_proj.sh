@@ -11,12 +11,13 @@
 #'-e': 任一语句异常将导致此脚本终止; '-u': 使用未声明变量将导致异常
 set -e -u
 
+#导入配置
+source $pdir/docker_instance.sh
+
 #基本需求: 域名设置、克隆基本仓库
 source $pdir/util/repo_require.sh
 
 _importBSFn "git_Clone_SwitchTag.sh"
-
-source $pdir/docker_instance.sh
 
 #克隆 项目仓库 的 给定标签 到 docker实例中给定目录
 git_Clone_SwitchTag "$prjGRp_url"  "$prjTag"  "$prjGRpD_dk"
