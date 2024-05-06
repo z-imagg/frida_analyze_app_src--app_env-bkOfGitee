@@ -36,10 +36,12 @@ dkInstVer="0.1"
 
 
 #docker实例 port配置
+# dk实例 port配置: ssh 宿主机端口:dk实例端口
+_dkPortMap_ssh="--publish 522:22"
 # dk实例 port配置: neo4j 宿主机端口:dk实例端口
 _dkPortMap_neo4j="--publish 7474:7474 --publish 7687:7687"
 #dk实例 port配置
-dkPortMap="$_dkPortMap_neo4j"
+dkPortMap="$_dkPortMap_ssh $_dkPortMap_neo4j"
 
 #docker实例 volume配置
 #docker volume映射 : 产物目录
