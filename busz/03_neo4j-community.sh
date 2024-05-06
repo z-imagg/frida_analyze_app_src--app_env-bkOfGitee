@@ -5,8 +5,12 @@
 #【术语】 
 #【备注】   
 
-#公共依赖
-source /fridaAnlzAp/prj_env/env/common_all.sh && \
+#'-e': 任一语句异常将导致此脚本终止; '-u': 使用未声明变量将导致异常
+set -e -u
+
+#导入配置
+source $pdir/docker_instance.sh
+
 #jdk11 
 export JAVA_HOME=/app/zulu11.70.15-ca-jdk11.0.22-linux_x64 && \
 #neo4j-4.4.32
