@@ -34,12 +34,26 @@ dkInstName="ubuntu2204_${envNm}"
 # 版本号, 用作 docker镜像版本号 、 docker实例版本号
 dkInstVer="0.1"
 
+#docker实例 volume配置
+#docker volume映射 : 产物目录
+# 宿主机 产物目录
+gainD_host="/gain"
+#                  宿主机目录   : dk实例目录
+dkVolMap="--volume $gainD_host:/gain"
+
 #导入必须包
 # 本地域名总是要设置的
 source $pdir/util/LocalDomainSet.sh
 # 导入_importBSFn.sh
 source /app/bash-simplify/_importBSFn.sh
 _importBSFn "git_Clone_SwitchTag.sh"
+
+#宿主机 产物目录 创建
+_importBSFn "mkMyDirBySudo.sh"
+function mk_gainD_host() {
+#宿主机 产物目录 创建
+mkMyDirBySudo $gainD_host
+}
 
 #引入必须量
 # 判定当前 是在docker实例中 还是 在 宿主物理机 中  .  返回变量为 inDocker
