@@ -16,8 +16,11 @@
 touch /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage && \
 #粗略显示已复制文件
 find /app/ -maxdepth 1 && \
-#安装系统依赖包
-bash $bsFlg $pdir/depent/sys.sh && \
+#基本导入: 域名设置、_importBSFn 、 docker_instance.sh 、 isInDocker
+source $pdir/docker_instance.sh && \
+#循环执行依赖脚本
+source $pdir/util/run_shLs_in_dir.sh && \
+run_shLs_in_dir $pdir/depent && \
 #基本需求: 域名设置、克隆基本仓库
 source $pdir/util/repo_require.sh && \
 true ;} \
