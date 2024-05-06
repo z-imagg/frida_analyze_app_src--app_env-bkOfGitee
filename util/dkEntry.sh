@@ -55,5 +55,4 @@ bash $manualTxtF && \
 
 }
 
-# 使用举例
-# dkEntry "$pdir/qemu/init_proj.sh"
+dkEntry #实际执行依次了此三脚本: "$pdir/init_proj.sh" "$pdir/busz_run.sh" "$pdir/manual_txt.sh"
