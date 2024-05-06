@@ -47,7 +47,6 @@ function dockerDo() {
 _importBSFn "docker_skip_sudo.sh" && docker_skip_sudo
 
 source $pdir/util/dkVolMap_if_HDir_No_or_Empty_or_Git.sh
-source $pdir/util/dkVolMap_gain_def.sh
 
 #宿主机 产物目录 创建
 mk_gainD_host
@@ -62,8 +61,6 @@ source $pdir/util/convert_sh_to_Dockerfile__rmInst__rmImg__bldImg.sh
 convert_sh_to_Dockerfile__rmInst__rmImg__bldImg     $dkInstName $dkInstVer
 
 # docker实例的volume映射
-dkVolMap="${dkVolMap_gain}"
-
 #若主机目录不存在或为空或为git仓库，则 必要时新建该目录 并 映射到docker实例. 修改变量 dkVolMap
 #                                  宿主机的git仓库     docker实例中git仓库
 dkVolMap_if_HDir_No_or_Empty_or_Git "$prjGRpD_host"  "$prjGRpD_dk"
