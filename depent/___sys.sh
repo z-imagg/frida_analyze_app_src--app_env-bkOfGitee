@@ -14,5 +14,8 @@ ArgAptGet="-qq   -y" && \
 SUDO="sudo" ; { [[ $(id --name --user) == root ]] && SUDO="" ;} && \
 $SUDO apt-get $ArgAptGet update  1>/dev/null && \
 $SUDO apt-get $ArgAptGet install -y  sudo  1>/dev/null && \
-sudo apt-get $ArgAptGet install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3  1>/dev/null  ;) && \
+sudo apt-get $ArgAptGet install -y axel wget curl  net-tools git  iputils-ping cpio python3 python3-urllib3  1>/dev/null && \
+# 若无python  , 则/bin/python --> python3
+{ which python || ln -s $(readlink -f $(which python3)) /bin/python ;} && \
+true ;) && \
 true
