@@ -45,8 +45,10 @@ dkPortMap="$_dkPortMap_neo4j"
 #docker volume映射 : 产物目录
 # 宿主机 产物目录
 gainD_host="/gain"
+# dk实例 产物目录
+gainD_dk="/gain"
 #                  宿主机目录   : dk实例目录
-dkVolMap="--volume $gainD_host:/gain"
+dkVolMap="--volume $gainD_host:$gainD_dk"
 #docker volume映射 : /app/pack/
 #                         宿主机目录    : dk实例目录
 dkVolMap="$dkVolMap --volume /app/pack/:/app/pack/"
