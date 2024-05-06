@@ -40,6 +40,9 @@ dkInstVer="0.1"
 gainD_host="/gain"
 #                  宿主机目录   : dk实例目录
 dkVolMap="--volume $gainD_host:/gain"
+#docker volume映射 : /app/pack/
+#                         宿主机目录    : dk实例目录
+dkVolMap="$dkVolMap --volume /app/pack/:/app/pack/"
 
 #导入必须包
 # 本地域名总是要设置的
