@@ -5,6 +5,9 @@
 #【术语】 
 #【备注】  
 
+#'-e': 任一语句异常将导致此脚本终止; '-u': 使用未声明变量将导致异常
+set -e -u
+
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
 ArgAptGet="-qq   -y" && \
 # 在子shell进程开启繁琐模式 即 (set -x ; ... ;)
@@ -29,6 +32,8 @@ sudo apt-get $ArgAptGet install bc 1>/dev/null && \
 sudo apt-get $ArgAptGet install libelf-dev  1>/dev/null && \
 #工具
 sudo apt-get $ArgAptGet install git file cpio wget curl rsync   1>/dev/null && \
+# 若无python  , 则/bin/python --> python3
+{ which python || ln -s $(readlink -f $(which python3)) /bin/python ;} && \
 # gcc (Ubuntu 5.4.0-6ubuntu1~22.04.12) 5.4.0 20160609
 gcc --version ;) && \
 true
