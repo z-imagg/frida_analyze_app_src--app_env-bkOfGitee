@@ -45,8 +45,10 @@ dkPortMap="$_dkPortMap_neo4j"
 #docker volume映射 : 产物目录
 # 宿主机 产物目录
 gainD_host="/gain"
+# dk实例 产物目录
+gainD_dk="/gain"
 #                  宿主机目录   : dk实例目录
-dkVolMap="--volume $gainD_host:/gain"
+dkVolMap="--volume $gainD_host:$gainD_dk"
 
 #导入必须包
 # 本地域名总是要设置的
