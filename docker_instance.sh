@@ -50,6 +50,10 @@ gainD_dk="/gain"
 #                  宿主机目录   : dk实例目录
 dkVolMap="--volume $gainD_host:$gainD_dk"
 
+#docker实例 privileged配置
+dk_privileged=""
+#比如 --privileged=true
+
 #导入必须包
 # 本地域名总是要设置的
 source $pdir/util/LocalDomainSet.sh
