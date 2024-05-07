@@ -44,7 +44,7 @@ bash -x /app/app_env/main.sh true "bsFlg='-x -u'"
 ```shell
 source /app/bash-simplify/git_switch_to_remote_tag.sh
 #  将git仓库/app/app_env切换到远程标签
-git_switch_to_remote_tag /app/app_env tag_release__ap-run-anlz_v1_prj-env
+git_switch_to_remote_tag /app/app_env tag_release__ap-run-anlz_v1-q822l511_prj-env
 
 ```
 
