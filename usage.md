@@ -28,7 +28,9 @@ git_switch_to_remote_tag /app/app_env tag_release__hello-world_v1_demo
 ```
 
 ```shell
-#删除上次标记文件
+#删除上次标记文件:docker镜像构建
+rm -fv  /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage
+#删除上次标记文件:docker实例执行
 prjNm=hello-world_v1_demo; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
 #宿主机上运行
 bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
@@ -47,7 +49,9 @@ git_switch_to_remote_tag /app/app_env tag_release__ap-run-anlz_v1_prj-env
 ```
 
 ```shell
-#删除上次标记文件
+#删除上次标记文件:docker镜像构建
+rm -fv  /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage
+#删除上次标记文件:docker实例执行
 prjNm=prj-env; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
 #删除上次安装产物?
 # rm -fv /app/
@@ -68,7 +72,9 @@ git_switch_to_remote_tag /app/app_env tag_release__linux_v5.11_build
 ```
 
 ```shell
-#删除上次标记文件
+#删除上次标记文件:docker镜像构建
+rm -fv  /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage
+#删除上次标记文件:docker实例执行
 prjNm=linux; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
 #删除上次编译产物
 rm -fv /app/linux/vmlinux
@@ -88,7 +94,9 @@ git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
 ```
 
 ```shell
-#删除上次标记文件
+#删除上次标记文件:docker镜像构建
+rm -fv  /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage
+#删除上次标记文件:docker实例执行
 prjNm=qemu; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
 #删除上次编译产物
 rm -fv /app/qemu/build-v8.2.2
