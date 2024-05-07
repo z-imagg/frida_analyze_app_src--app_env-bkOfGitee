@@ -2,7 +2,7 @@
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   
-#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
+#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录, dk==docker
 #【备注】   
 
 #此脚本只引入一次
