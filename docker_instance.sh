@@ -56,7 +56,7 @@ dkVolMap="--volume $gainD_host:$gainD_dk"
 dkVolMap="$dkVolMap --volume /app/pack/:/app/pack/"
 
 #docker实例 privileged配置
-dk_privileged=""
+dk_privileged="--privileged=true"
 #比如 --privileged=true
 
 #导入必须包
