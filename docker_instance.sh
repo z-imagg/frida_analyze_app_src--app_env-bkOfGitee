@@ -2,7 +2,7 @@
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   
-#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
+#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录, q822l511='qemu-v8.2.2, linux-v5.11'
 #【备注】   
 
 #此脚本只引入一次
@@ -20,14 +20,14 @@ prjGRpD_host="/fridaAnlzAp/${prjNm}"
 # docker实例 项目git仓库目录
 prjGRpD_dk="/fridaAnlzAp/${prjNm}"
 # 项目git仓库标签
-prjTag="v1"
+prjTag="v1-q822l511"
 # 项目git仓库url
 prjGRp_url="http://giteaz:3000/frida_analyze_app_src/ap-run-anlz.git" 
 # 环境主题 environment==env,prj-env==项目环境
 envTopic="prj-env"
 # 环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
-# app_env 所用标签 tag_release__ap-run-anlz_v1_prj-env
+# app_env 所用标签 tag_release__ap-run-anlz_v1-q822l511_prj-env
 app_env__tag="tag_release__${envNm}"
 # 名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${envNm}"
