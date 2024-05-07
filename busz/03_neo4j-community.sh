@@ -25,6 +25,8 @@ F_cfg=/app/neo4j-community-4.4.32/conf/neo4j.conf && \
 grep dbms.default_listen_address $F_cfg && \
 grep dbms.memory $F_cfg && \
 cp -v $F_cfg "${F_cfg}_$(date +%s)" && \
+#neo4j无认证(公开可用，无需密码登陆)
+sed -i  "s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/g"  $F_cfg && \
 #修改 neo4j 监听地址为0.0.0.0
 sed -i  "s/#dbms.default_listen_address=0.0.0.0/dbms.default_listen_address=0.0.0.0/g"  $F_cfg && \
 #修改 neo4j 线程数目为 4 
