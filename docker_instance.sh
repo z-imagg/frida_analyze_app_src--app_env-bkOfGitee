@@ -2,7 +2,7 @@
 
 #【描述】  定义 docker镜像、实例 的 名称、版本号
 #【依赖】   
-#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录
+#【术语】 Nm==Name, prjGRpD == projectGitRepoDir == 项目git仓库目录, dk==docker
 #【备注】   
 
 #此脚本只引入一次
@@ -45,11 +45,17 @@ dkPortMap="$_dkPortMap_neo4j"
 #docker volume映射 : 产物目录
 # 宿主机 产物目录
 gainD_host="/gain"
+# dk实例 产物目录
+gainD_dk="/gain"
 #                  宿主机目录   : dk实例目录
-dkVolMap="--volume $gainD_host:/gain"
+dkVolMap="--volume $gainD_host:$gainD_dk"
 #docker volume映射 : /app/pack/
 #                         宿主机目录    : dk实例目录
 dkVolMap="$dkVolMap --volume /app/pack/:/app/pack/"
+
+#docker实例 privileged配置
+dk_privileged=""
+#比如 --privileged=true
 
 #导入必须包
 # 本地域名总是要设置的
