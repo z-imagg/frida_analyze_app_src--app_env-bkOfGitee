@@ -54,6 +54,10 @@ dkVolMap="--volume $gainD_host:$gainD_dk"
 #docker volume映射 : /app/pack/
 #                         宿主机目录    : dk实例目录
 dkVolMap="$dkVolMap --volume /app/pack/:/app/pack/"
+#volume映射 : /app/qemu/.  宿主机目录    : dk实例目录
+dkVolMap="$dkVolMap --volume /app/qemu/:/app/qemu/"
+#volume映射 : /app/linux/.  宿主机目录    : dk实例目录
+dkVolMap="$dkVolMap --volume /app/linux/:/app/linux/"
 
 #docker实例 privileged配置
 dk_privileged="--privileged=true"
