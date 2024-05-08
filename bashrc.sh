@@ -9,6 +9,8 @@ enterEnvMsg="fridaAnlzAp环境"
 OkEnvMsg="fridaAnlzAp环境 ok: [Miniconda3, neo4j-community, cytoscape]"
 
 echo $enterEnvMsg && \
+#git设置
+source /app/bash-simplify/git_settings.sh
 #激活
 # 激活 miniconda
 source /app/Miniconda3-py310_22.11.1-1/bin/activate && \
