@@ -50,8 +50,8 @@ source $pdir/docker_instance.sh   ;}
 true ;) && \
 # 显示 使用手册文本
 bash $manualTxtF && \
-# 最后  启动bash（以bashrc.sh为rcfile）
-{ bash --rcfile $pdir/bashrc.sh ;}
+# 最后  启动bash（以bashrc.sh为init-file）
+{ bash --init-file $pdir/bashrc.sh ;}
 
 }
 
