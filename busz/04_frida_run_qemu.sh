@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#【描述】  frida_js运行应用程序qemu
+#【描述】  ap-run-anlz入口脚本
 #【依赖】   
 #【术语】 
 #【备注】   
@@ -9,5 +9,5 @@
 set -e -u
 
 
-# frida_js运行应用程序qemu
-bash -x /fridaAnlzAp/ap-run-anlz/frida_run__qemu_v8.2.2__brch__linux_v5.11.sh
+# ap-run-anlz入口脚本
+bash -x /fridaAnlzAp/ap-run-anlz/prj_main.sh
