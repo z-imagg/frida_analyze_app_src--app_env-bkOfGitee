@@ -35,5 +35,6 @@ true ;} \
 #dk# LABEL description="ubuntu22.04 proj 编译环境 docker "
 
 
-
-#dk# ENTRYPOINT ["/bin/bash", "$pdir/util/dkEntry.sh" ]
+#不指定ENTRYPOINT、不指定CMD, 
+#  'docker run'(业务过程)入口指定为'/bin/bash dkMain.sh' 
+#  'docker exec'(单纯的日常使用)入口为'/bin/bash --init-file $pdir/bashrc.sh'
