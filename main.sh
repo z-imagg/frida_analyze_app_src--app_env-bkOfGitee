@@ -67,14 +67,15 @@ dkVolMap_if_HDir_No_or_Empty_or_Git "$prjGRpD_host"  "$prjGRpD_dk"
 
 
 # 若初次启动时，则 克隆项目代码 并 退出
-#  最终调用 init_proj.sh , 再以busz_run.sh启动bash
-docker run $dk_privileged -e isDkInitProj='true' -e isDkBuszRun='true' -e pdir="$pdir" -e bsFlg="$bsFlg" $dkVolMap  $dkPortMap  --name $dkInstName --hostname $dkInstName  --interactive  --tty  $dkInstName:$dkInstVer
+# 'docker run'指定运行dkMain.sh  :    init_proj.sh + busz_run.sh ;  
+#     以后日常'docker exec'都只需要运行bash而不再需要运行dkMain.sh
+docker run $dk_privileged    -e pdir="$pdir" -e bsFlg="$bsFlg" $dkVolMap  $dkPortMap  --name $dkInstName --hostname $dkInstName    $dkInstName:$dkInstVer "$pdir/util/dkMain.sh"
 }
 
 
 function hostDo() {
 pdir="$pdir" bsFlg="$bsFlg" bash $bsFlg $pdir/ubuntu2204_proj.Dockerfile.sh
-pdir="$pdir" bsFlg="$bsFlg" isDkInitProj=true isDkBuszRun=true bash $bsFlg $pdir/util/dkEntry.sh
+pdir="$pdir" bsFlg="$bsFlg"    bash $bsFlg $pdir/util/dkMain.sh
 }
 
 #若指定用docker，则执行函数 dockerDo 并退出
