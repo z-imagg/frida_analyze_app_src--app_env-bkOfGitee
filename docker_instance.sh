@@ -40,11 +40,8 @@ dkInstVer="0.1"
 _dkPortMap_ssh="--publish 522:22"
 # dk实例 port配置: neo4j 宿主机端口:dk实例端口
 _dkPortMap_neo4j="--publish 7474:7474 --publish 7687:7687"
-_dkPortMap_neo4j_qemu8Thread0="--publish 6474:6474 --publish 6687:6687"
-_dkPortMap_neo4j_qemu8Thread1="--publish 5474:5474 --publish 5687:5687"
-_dkPortMap_neo4j_qemu8Thread2="--publish 4474:4474 --publish 4687:4687"
 #dk实例 port配置
-dkPortMap="$_dkPortMap_ssh $_dkPortMap_neo4j $_dkPortMap_neo4j_qemu8Thread0 $_dkPortMap_neo4j_qemu8Thread1 $_dkPortMap_neo4j_qemu8Thread2"
+dkPortMap="$_dkPortMap_ssh $_dkPortMap_neo4j"
 
 #docker实例 volume配置
 #docker volume映射 : 产物目录
