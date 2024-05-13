@@ -16,25 +16,21 @@ source $pdir/util/run_shLs_in_dir.sh
 _importBSFn "argCntEqN.sh"
 
 #docker实例初始化
-function dkEntry() {
+function dkMain() {
 
 local InitProjF="$pdir/init_proj.sh"
 local BuszShD="$pdir/busz/"
 local manualTxtF="$pdir/manual_txt.sh"
 
 #'true'为true, 其余都为false
-#  isDkInitProj == docker实例初始化标记
-local _isDkInitProj=false; [[ "X$isDkInitProj" == "Xtrue" ]] && _isDkInitProj=true
-#  isDkBuszRun == docker实例运行业务脚本标记
-local _isDkBuszRun=false; [[ "X$isDkBuszRun" == "Xtrue" ]] && _isDkBuszRun=true
 
 local flagDone_InitProj=/tmp/flagDone_InitProj_${envNm}
 local flagDone_DkBuszRun=/tmp/flagDone_DkBuszRun_${envNm}
 
-#此次是否应该执行$InitProjF:     从未执行$InitProjF           且    调用者要求执行$InitProjF
-local do_InitProjF=false; ( [[ ! -f $flagDone_InitProj ]] &&  $_isDkInitProj ;) && do_InitProjF=true
-#此次是否应该执行$BuszShD:     从未执行$BuszShD             且    调用者要求执行$BuszShD
-local do_BuszRunF=false;  ( [[ ! -f $flagDone_DkBuszRun  ]] &&  $_isDkBuszRun  ;) && do_BuszRunF=true
+#此次是否应该执行$InitProjF:     从未执行$InitProjF           
+local do_InitProjF=false;  [[ ! -f $flagDone_InitProj ]]      && do_InitProjF=true
+#此次是否应该执行$BuszShD:     从未执行$BuszShD              
+local do_BuszRunF=false;   [[ ! -f $flagDone_DkBuszRun  ]]    && do_BuszRunF=true
 
 #若此次应该执行$InitProjF或$BuszShD, 则应source此两脚本
 ( $do_InitProjF ||  $do_BuszRunF ;) && { \
@@ -50,9 +46,8 @@ source $pdir/docker_instance.sh   ;}
 true ;) && \
 # 显示 使用手册文本
 bash $manualTxtF && \
-# 最后  启动bash（以bashrc.sh为init-file）
-{ bash --init-file $pdir/bashrc.sh ;}
+true
 
 }
 
-dkEntry #实际执行依次了此三脚本: "$pdir/init_proj.sh" "$pdir/busz_run.sh" "$pdir/manual_txt.sh"
+dkMain #实际执行依次了此三脚本: "$pdir/init_proj.sh" "$pdir/busz_run.sh" "$pdir/manual_txt.sh"
