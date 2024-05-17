@@ -97,9 +97,10 @@ git_switch_to_remote_tag /app/app_env tag_release__qemu_v8.2.2_build
 #删除上次标记文件:docker镜像构建
 rm -fv  /app/app_env/flag_dockerBuildImage /app/bash-simplify/flag_dockerBuildImage
 #删除上次标记文件:docker实例执行
-prjNm=qemu; rm -fv /tmp/{flagDone_DkBuszRun_$prjNm,flagDone_InitProj_$prjNm}
+#  /tmp/flagDone_InitProj_qemu_v8.2.2_build   /tmp/flagDone_DkBuszRun_qemu_v8.2.2_build
+prjNm=qemu_v8.2.2_build; rm -fv /tmp/{flagDone_InitProj_$prjNm,flagDone_DkBuszRun_$prjNm}
 #删除上次编译产物
-rm -fv /app/qemu/build-v8.2.2
+rm -frv /app/qemu/build-v8.2.2
 #宿主机上运行
 bash -x /app/app_env/main.sh false "bsFlg='-x -u'"
 #docker实例上运行
