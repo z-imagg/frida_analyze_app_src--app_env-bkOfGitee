@@ -30,11 +30,14 @@ ls -lh $outF2 && file $outF2
 
 #安装 编译命令拦截器
 source  /app/cmd-wrap/script/cmd_setup.sh || true
+clang_Wrap=/usr/bin/clang
+clangXX_Wrap=/usr/bin/clang++
 
 #编译步骤
 rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 #  以下三行为编译步骤
-../configure --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-tcg --enable-debug-info && \
+#     指定编译器使用cmd-wrap包裹的clang
+../configure --cc=$clang_Wrap --cxx=$clangXX_Wrap --target-list=i386-softmmu,x86_64-softmmu --disable-tcg-interpreter --enable-tcg --enable-debug-info && \
 make -j4
 # make install
 # 收集产物
