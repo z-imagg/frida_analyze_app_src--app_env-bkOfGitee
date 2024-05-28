@@ -33,6 +33,15 @@ source  /app/cmd-wrap/script/cmd_setup.sh || true
 clang_Wrap=/usr/bin/clang
 clangXX_Wrap=/usr/bin/clang++
 
+#删除/app/qemu下的各git仓库, configure命令会重新下载这些子仓库
+#   因为其中可能有上次clang插件修改的残留物
+# /app/qemu/subprojects/dtc
+# /app/qemu/subprojects/keycodemapdb
+# /app/qemu/subprojects/berkeley-softfloat-3
+# /app/qemu/subprojects/berkeley-testfloat-3
+#  prjGRpD==/app/qemu
+find $prjGRpD  -mindepth 2  -type d -name .git   -print0 | xargs -0 -I@ dirname @ | xargs -I@ rm -fr  @
+
 #编译步骤
 rm -fr $buildDir && mkdir $buildDir && cd $buildDir && \
 #  以下三行为编译步骤
