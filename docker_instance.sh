@@ -14,20 +14,20 @@ _loaded__docker_instance=true
 
 #定义项目配置
 # 项目名称中不允许都大写字母, 因为其作为docker img名称的一部分了, 而docker img名称不允许有大写字母
-prjNm="hello-world"
+prjNm="sleuthkit"
 # 主机 项目git仓库目录
 prjGRpD_host="/app/${prjNm}"
 # docker实例 项目git仓库目录
 prjGRpD_dk="/app/${prjNm}"
 # 项目git仓库标签
-prjTag="v1"
+prjTag="v4.12.1"
 # 项目git仓库url
-prjGRp_url="https://gitee.com/repok/hello_world.git" 
+prjGRp_url="https://gitee.com/repok/sleuthkit-4.12.1.git" 
 # 环境主题
-envTopic="demo"
+envTopic="build"
 # 环境名称 项目名称_项目版本_
 envNm="${prjNm}_${prjTag}_${envTopic}"
-# app_env 所用标签 tag_release__hello-world_v1_demo
+# app_env 所用标签 tag_release__sleuthkit-v4.12.1_build
 app_env__tag="tag_release__${envNm}"
 # 名称, 用作 docker镜像名称 、 docker实例名称
 dkInstName="ubuntu2204_${envNm}"
@@ -37,7 +37,7 @@ dkInstVer="0.1"
 
 #docker实例 port配置
 # dk实例 port配置: ssh 宿主机端口:dk实例端口
-_dkPortMap_ssh="--publish 122:22"
+_dkPortMap_ssh="--publish 522:22"
 #dk实例 port配置
 dkPortMap="$_dkPortMap_ssh"
 

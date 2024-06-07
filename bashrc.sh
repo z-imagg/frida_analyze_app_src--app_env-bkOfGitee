@@ -5,8 +5,8 @@
 #【术语】 
 #【备注】 
 
-enterEnvMsg="hello-world环境"
-OkEnvMsg="hello-world环境 ok 已具有软件包: [xxx,yyy]"
+enterEnvMsg="sleuthkit环境"
+OkEnvMsg="sleuthkit环境 ok 已具有软件包: [xxx,yyy]"
 
 echo $enterEnvMsg && \
 #...
